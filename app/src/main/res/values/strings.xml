@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">baseShop</string>
+
+
+    <string name="main_bnv_menu">Меню</string>
+    <string name="main_bnv_basket">Корзина</string>
+    <string name="main_bnv_profile">Профиль</string>
+
+
+
+</resources>

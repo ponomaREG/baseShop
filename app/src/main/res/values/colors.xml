@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#858080</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="mainBackground">#FFFFFFFF</color>
+
+
+    <color name="bnv_background">#FFFFFF</color>
+
+    <color name="bnv_item_text">#808080</color>
+    <color name="bnv_item_text_pressed">#333333</color>
+
+    <color name="bnv_item_icon_tint">#808080</color>
+    <color name="bnv_item_icon_tint_pressed">#333333</color>
+
+
+</resources>

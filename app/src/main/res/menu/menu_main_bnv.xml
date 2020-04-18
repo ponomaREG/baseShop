@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_main_menu"
+    android:title="@string/main_bnv_menu"
+    android:icon="@android:drawable/ic_menu_compass"
+    />
+    <item android:id="@+id/menu_main_basket"
+        android:title="@string/main_bnv_basket"
+        android:icon="@android:drawable/ic_menu_compass"
+        />
+    <item android:id="@+id/menu_main_profile"
+        android:title="@string/main_bnv_profile"
+        android:icon="@android:drawable/ic_menu_compass"
+        />
+</menu>

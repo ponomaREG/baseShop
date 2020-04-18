@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fragment_menu_section_textsize">18sp</dimen>
+    <dimen name="fragment_menu_section_margin">6dp</dimen>
+    <dimen name="fragment_menu_recyclerview_margin_top">10dp</dimen>
+
+
+
+
+</resources>

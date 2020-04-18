@@ -5,6 +5,15 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="mainBackground">#FFFFFFFF</color>
+    <color name="fragmentMenuBackground">#FFFFFFFF</color>
+    <color name="fragmentProfileBackground">#FFFFFFFF</color>
+    <color name="fragmentBasketBackground">#FFFFFFFF</color>
+
+
+    <color name="fragment_menu_section_text">#989494</color>
+    <color name="fragment_menu_section_selected">#076008</color>
+
+
 
 
     <color name="bnv_background">#FFFFFF</color>

@@ -3,22 +3,24 @@ package com.test.baseshop.fragment_menu;
 public class Item {
 
     private String title = "TEST",desc = "TEST DESCRIPTION";
-    private int weight = 1000, id;
+    private int weight = 1000, id, price;
     private String image_link = "TeSt";
 
 
-    Item(){
+    public Item(){
     }
 
-    Item setId(int id){this.id = id; return this;}
-    Item setTitle(String title){this.title = title; return this;}
-    Item setDesc(String desc){this.desc = desc; return this;}
-    Item setImageLink(String image_link){this.image_link = image_link; return this;}
-    Item setWeight(int weight){this.weight = weight; return this;}
+    public Item setId(int id){this.id = id; return this;}
+    public Item setTitle(String title){this.title = title; return this;}
+    public Item setDesc(String desc){this.desc = desc; return this;}
+    public Item setImageLink(String image_link){this.image_link = image_link; return this;}
+    public Item setWeight(int weight){this.weight = weight; return this;}
+    public Item setPrice(int price){this.price = price; return  this;}
 
-    int getId(){return this.id; }
-    String getTitle(){return this.title;}
-    String getDesc(){return this.desc;}
-    String getImage_link(){return this.image_link;}
-    int getWeight(){return this.weight;}
+    public int getId(){return this.id; }
+    public String getTitle(){return this.title;}
+    public String getDesc(){return this.desc;}
+    public String getImage_link(){return this.image_link;}
+    public int getWeight(){return this.weight;}
+    public int getPrice(){return this.price;}
 }

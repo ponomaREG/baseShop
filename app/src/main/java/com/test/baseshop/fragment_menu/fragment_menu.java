@@ -50,7 +50,8 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         menu_presenter.getSections();
-        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.BURGERS);
+        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.ALL);
+
 
     }
 
@@ -75,18 +76,16 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     }
 
     @Override
-    public void setSections(String[] sections) {
-        int position = 0;
+    public void setSections(int[] sections_codes) {
         View.OnClickListener ocl = getOclForSectionItem();
         LayoutInflater inflater = this.getLayoutInflater();
         LinearLayout ll_sections = Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_ll_section);
-        for(String section:sections){
+        for(int section_code:sections_codes){
             TextView section_view = inflater.inflate(R.layout.fragment_menu_section_item,ll_sections,false).findViewById(R.id.fragment_menu_section_item);
-            section_view.setText(section);
-            section_view.setTag(position);
+            section_view.setText(menu_presenter.getTitleOfSectionByCode(section_code));
+            section_view.setTag(section_code);
             section_view.setOnClickListener(ocl);
             ll_sections.addView(section_view);
-            position++;
         }
     }
 

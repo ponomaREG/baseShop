@@ -13,6 +13,8 @@
     <color name="fragment_menu_section_text">#989494</color>
     <color name="fragment_menu_section_selected">#076008</color>
 
+    <color name="fragment_menu_rv_item_icons_background">#E1DCDC</color>
+
 
 
 

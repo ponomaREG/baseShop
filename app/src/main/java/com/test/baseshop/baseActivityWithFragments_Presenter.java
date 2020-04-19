@@ -1,10 +1,6 @@
 package com.test.baseshop;
 
 import android.content.Context;
-import android.util.Log;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.test.baseshop.fragment_basket.fragment_basket;
 import com.test.baseshop.fragment_menu.fragment_menu;

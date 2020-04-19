@@ -60,7 +60,10 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
     @Override
     public void showPage(Fragment fragment) {
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.current_page,fragment);
-        ft.commit();
+        if(!fm.popBackStackImmediate(fragment.getClass().getName(),0)) {
+            ft.replace(R.id.current_page, fragment);
+            ft.addToBackStack(fragment.getClass().getName());
+            ft.commit();
+        }
     }
 }

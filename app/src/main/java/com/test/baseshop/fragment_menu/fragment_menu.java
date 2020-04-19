@@ -50,9 +50,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         menu_presenter.getSections();
-        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.ALL);
-
-
+//        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.ALL);
     }
 
     private void initPresenter(){
@@ -90,6 +88,10 @@ public class fragment_menu extends Fragment implements Interfaces.View{
             section_view.setTag(section_code);
             section_view.setOnClickListener(ocl);
             ll_sections.addView(section_view);
+            if(section_code == fragment_menu_presenter.ALL) {
+                menu_presenter.OnSectionItemClick(section_view);
+                menu_presenter.getData(getContext(),section_code);
+            }
         }
     }
 

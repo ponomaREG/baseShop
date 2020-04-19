@@ -24,6 +24,8 @@ public class fragment_menu_model implements Interfaces.Model {
             case fragment_menu_presenter.WOK:
                 for(int i = 0;i<10;i++){arr.add(new Item().setTitle(String.valueOf(i)));}
                 break;
+            default:
+                for(int i = 0;i<25;i++){arr.add(new Item().setTitle(String.valueOf(i)));}
 
         }
         return arr;

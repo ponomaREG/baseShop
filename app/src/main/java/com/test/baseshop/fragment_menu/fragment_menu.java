@@ -1,6 +1,5 @@
 package com.test.baseshop.fragment_menu;
 
-import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -10,30 +9,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.test.baseshop.R;
 
-import java.util.List;
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_menu#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class fragment_menu extends Fragment implements Interfaces.View{
 
-    private Interfaces.Presenter fragment_menu_presenter;
+    private Interfaces.Presenter menu_presenter;
 
     private RecyclerViewAdapter adapter;
 
@@ -59,13 +49,13 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragment_menu_presenter.getSections();
-        fragment_menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.BURGERS);
+        menu_presenter.getSections();
+        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.BURGERS);
 
     }
 
     private void initPresenter(){
-        this.fragment_menu_presenter = new fragment_menu_presenter(this);
+        this.menu_presenter = new fragment_menu_presenter(this);
     }
 
 
@@ -110,8 +100,8 @@ public class fragment_menu extends Fragment implements Interfaces.View{
                 HorizontalScrollView hr = (Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_sections_horizontal_scrool_view));
                 float offset = (float) (size.x/2.26);
                 hr.smoothScrollTo((int) (v.getLeft() - offset),0);
-
-                fragment_menu_presenter.OnSectionItemClick(v);
+                menu_presenter.OnSectionItemClick(v);
+                menu_presenter.getData(getContext(), (Integer) v.getTag());
             }
         };
     }

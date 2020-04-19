@@ -38,9 +38,9 @@ public class fragment_menu_presenter implements Interfaces.Presenter{
 
     @Override
     public void OnSectionItemClick(View v) {
-        int code_section = (int) v.getTag();
         if(section_current != null) section_current.setSelected(false);
         v.setSelected(true);
         section_current = v;
+
     }
 }

@@ -1,13 +1,17 @@
 package com.test.baseshop.fragment_menu;
 
-import com.test.baseshop.model_helper.Json;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.ImageView;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.test.baseshop.model_helper.Json;
+import com.test.baseshop.model_helper.PhotoDownloader;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class fragment_menu_model implements Interfaces.Model {
+public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.Photo{
 
     private Interfaces.Presenter presenter;
     private Json json;
@@ -31,5 +35,14 @@ public class fragment_menu_model implements Interfaces.Model {
     @Override
     public int[] getSections() {
         return new int[]{1,2,3,4,5,6,8};
+    }
+
+    @Override
+    public void setImageInBackground(Item item) {
+        try {
+            new PhotoDownloader().execute(item);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

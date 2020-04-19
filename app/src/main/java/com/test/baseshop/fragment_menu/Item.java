@@ -1,10 +1,13 @@
 package com.test.baseshop.fragment_menu;
 
+import android.widget.ImageView;
+
 public class Item {
 
     private String title = "TEST",desc = "TEST DESCRIPTION";
     private int weight = 1000, id, price;
     private String image_link = "TeSt";
+    private ImageView image_view_of_icon;
 
 
     public Item(){
@@ -16,6 +19,7 @@ public class Item {
     public Item setImageLink(String image_link){this.image_link = image_link; return this;}
     public Item setWeight(int weight){this.weight = weight; return this;}
     public Item setPrice(int price){this.price = price; return  this;}
+    public Item setImageView(ImageView view){this.image_view_of_icon = view; return this;}
 
     public int getId(){return this.id; }
     public String getTitle(){return this.title;}
@@ -23,4 +27,5 @@ public class Item {
     public String getImage_link(){return this.image_link;}
     public int getWeight(){return this.weight;}
     public int getPrice(){return this.price;}
+    public ImageView getImageViewOfIcon(){return this.image_view_of_icon;}
 }

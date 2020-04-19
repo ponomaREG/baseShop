@@ -1,8 +1,9 @@
 package com.test.baseshop.fragment_menu;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface Interfaces {
@@ -24,6 +25,9 @@ public interface Interfaces {
         List<Item> getItemsByFilter(int code);
         int[] getSections();
 
+        interface Photo{
+            void setImageInBackground(Item item);
+            }
     }
 
 }

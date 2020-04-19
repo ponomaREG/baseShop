@@ -22,7 +22,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter{
     @Override
     public void getData(Context context, int code) {
         List<Item> items = model.getItemsByFilter(code);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model);
         view.setAdapter(adapter);
         view.updateRecyclerView();
     }

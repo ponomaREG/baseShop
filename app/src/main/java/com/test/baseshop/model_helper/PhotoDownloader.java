@@ -1,22 +1,37 @@
 package com.test.baseshop.model_helper;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
 
-import java.net.MalformedURLException;
+import com.test.baseshop.fragment_menu.Item;
+
+import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PhotoDownloader extends AsyncTask<Integer,Void, Bitmap> {
+public class PhotoDownloader extends AsyncTask<Item,Void, Void> {
 
-    private final static String URL_PHOTO = "http://161.35.108.15:8000/images?image_id=%s";
+    private final static String URL_PHOTO = "http://161.35.108.15:8000/static/images/%s.jpg";
+
+    @SuppressLint("StaticFieldLeak")
+    private ImageView image_view_of_photo;
+    private Bitmap bitmap_of_photo;
 
     @Override
-    protected Bitmap doInBackground(Integer... integers) {
-        int item_id = integers[0];
+    protected Void doInBackground(Item... items) {
+        image_view_of_photo = items[0].getImageViewOfIcon();
         try {
-            URL url = new URL(String.format(URL_PHOTO,item_id));
-            return BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            URL url = new URL(String.format(URL_PHOTO,items[0].getId()));
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            bitmap_of_photo = BitmapFactory.decodeStream(connection.getInputStream());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,7 +39,25 @@ public class PhotoDownloader extends AsyncTask<Integer,Void, Bitmap> {
     }
 
     @Override
-    protected void onPostExecute(Bitmap bitmap) {
-        super.onPostExecute(bitmap);
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        image_view_of_photo.setImageBitmap(bitmap_of_photo);
     }
+
+//    private Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+//        int width = bm.getWidth();
+//        int height = bm.getHeight();
+//        float scaleWidth = ((float) newWidth) / width;
+//        float scaleHeight = ((float) newHeight) / height;
+//        // CREATE A MATRIX FOR THE MANIPULATION
+//        Matrix matrix = new Matrix();
+//        // RESIZE THE BIT MAP
+//        matrix.postScale(scaleWidth, scaleHeight);
+//
+//        // "RECREATE" THE NEW BITMAP
+//        Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height,
+//                matrix, false);
+//
+//        return resizedBitmap;
+//    }
 }

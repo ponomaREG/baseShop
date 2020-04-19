@@ -89,6 +89,7 @@
             android:id="@+id/fragment_menu_rv_item_icon"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:scaleType="fitXY"
             />
     </LinearLayout>
 

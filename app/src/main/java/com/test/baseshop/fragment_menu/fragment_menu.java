@@ -66,6 +66,10 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     public void setAdapter(RecyclerViewAdapter adapter) {
         this.adapter = adapter;
         RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
+        rv.setHasFixedSize(true);
+        rv.setItemViewCacheSize(20);
+        rv.setDrawingCacheEnabled(true);
+        rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
     }

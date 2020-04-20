@@ -22,7 +22,9 @@ public class Json {
 
     private final static String
             SEARCH_API = "http://161.35.108.15:8000/app/items?section_code=%s",
-            GET_BASKET_API = "http://161.35.108.15:8000/basket/get?user=%s";
+            GET_BASKET_API = "http://161.35.108.15:8000/basket/get?user=%s",
+            SET_BASKET_API = "http://161.35.108.15:8000/basket/set?user_id=%s&item_id=%s&count=%s";
+
 
     private Json instance;
 
@@ -67,6 +69,13 @@ public class Json {
         Gson g = new Gson();
         return g.fromJson(result_of_query,Map.class);
 
+    }
+
+    public Map jsonify_basket(int user_id, int item_id, int count_of_items_for_order) throws ExecutionException, InterruptedException {
+        GetDataFromBackground searchInfo = new GetDataFromBackground();
+        String result_of_query = searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order)).get();
+        Gson g = new Gson();
+        return g.fromJson(result_of_query,Map.class);
     }
 
 }

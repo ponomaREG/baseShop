@@ -118,6 +118,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private void updateInViewAndInModel(int position, int count_of_item_for_order){
         presenter_to_view.tellViewToSetNumberOfItemForOrder(position,count_of_item_for_order);
+        if(count_of_item_for_order != 0)
         presenter_to_model.tellModelToSetNewNumberOfItemsForOrder(
                 items.get(position).getId(),
                 count_of_item_for_order

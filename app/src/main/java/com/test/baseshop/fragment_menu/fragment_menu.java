@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -93,6 +94,35 @@ public class fragment_menu extends Fragment implements Interfaces.View{
                 menu_presenter.getData(getContext(),section_code);
             }
         }
+    }
+
+    @Override
+    public void showMinusIconAndNumberOfItemForOrder(int position) {
+        RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
+        View v = rv.getChildAt(position);
+        ImageView icon_minus = v.findViewById(R.id.fragment_menu_rv_item_icon_minus);
+        icon_minus.setVisibility(View.VISIBLE);
+        TextView count_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
+        count_of_item_for_order.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideMinusIconAndNumberOfItemForOrder(int position) {
+        RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
+        View v = rv.getChildAt(position);
+        ImageView icon_minus = v.findViewById(R.id.fragment_menu_rv_item_icon_minus);
+        icon_minus.setVisibility(View.INVISIBLE);
+        TextView count_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
+        count_of_item_for_order.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void setNumberOfItemForOrder(int position, int number_of_item_for_order) {
+        RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
+        View v = rv.getChildAt(position);
+        TextView count_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
+        count_of_item_for_order.setText(String.valueOf(number_of_item_for_order));
+        count_of_item_for_order.setTag(number_of_item_for_order);
     }
 
     private View.OnClickListener getOclForSectionItem() {

@@ -20,13 +20,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater inflater;
     private List<Item> items;
     private Interfaces.Model.Photo model;
+    private Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList presenter_to_view;
 
     private final static String MONEY_SIGN = "%sР", WEIGHT_SIGN = "%s г.";
 
-    RecyclerViewAdapter(Context context, List<Item> items, Interfaces.Model.Photo model){
+    RecyclerViewAdapter(Context context, List<Item> items, Interfaces.Model.Photo model, Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList presenter_to_view){
         this.inflater = LayoutInflater.from(context);
         this.items = items;
         this.model = model;
+        this.presenter_to_view = presenter_to_view;
     }
 
     @NonNull
@@ -36,12 +38,45 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.title.setText(items.get(position).getTitle());
         holder.desc.setText(items.get(position).getDesc());
         holder.price.setText(String.format(MONEY_SIGN,items.get(position).getPrice()));
         holder.weight.setText(String.format(WEIGHT_SIGN,items.get(position).getWeight()));
         model.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
+
+        if(items.get(position).getNumberOfItemForOrder() != 0){
+            presenter_to_view.tellViewToShowMinusIconAndNumberOfItemForOrder(position);
+            presenter_to_view.tellViewToSetNumberOfItemForOrder(position,items.get(position).getNumberOfItemForOrder());
+        }
+
+        holder.plus_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item item = items.get(position);
+                int count_of_item_for_order = item.getNumberOfItemForOrder();
+                count_of_item_for_order++;
+                item.setNumberOfItemForOrder(count_of_item_for_order);
+                if(count_of_item_for_order == 1){
+                    presenter_to_view.tellViewToShowMinusIconAndNumberOfItemForOrder(position);
+                }
+                presenter_to_view.tellViewToSetNumberOfItemForOrder(position,count_of_item_for_order);
+            }
+        });
+        holder.minus_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item item = items.get(position);
+                int count_of_item_for_order = item.getNumberOfItemForOrder();
+                count_of_item_for_order--;
+                item.setNumberOfItemForOrder(count_of_item_for_order);
+                if(count_of_item_for_order == 0){
+                    presenter_to_view.tellViewToHideMinusIconAndNumberOfItemForOrder(position);
+                }
+                presenter_to_view.tellViewToSetNumberOfItemForOrder(position,count_of_item_for_order);
+            }
+        });
+
     }
 
     @Override
@@ -50,8 +85,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, desc, price, weight;
-        ImageView image_of_item;
+        TextView title, desc, price, weight, number_of_item_for_order;
+        ImageView image_of_item, plus_icon, minus_icon;
         MyViewHolder(View v) {
             super(v);
             title = v.findViewById(R.id.fragment_menu_rv_item_title);
@@ -59,6 +94,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             price = v.findViewById(R.id.fragment_menu_rv_item_price);
             weight = v.findViewById(R.id.fragment_menu_rv_item_weight);
             image_of_item = v.findViewById(R.id.fragment_menu_rv_item_icon);
+            number_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
+            plus_icon = v.findViewById(R.id.fragment_menu_rv_item_icon_plus);
+            minus_icon = v.findViewById(R.id.fragment_menu_rv_item_icon_minus);
+
         }
     }
+
+
+//    private android.view.View.OnClickListener getOclForIconsPlusAndMinus(){
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(v.getId() == R.id.fragment_menu_rv_item_icon_plus){
+//                    items.get()
+//                }else if (v.getId() == R.id.fragment_menu_rv_item_icon_minus){
+//
+//                }
+//            }
+//        };
+//    }
 }

@@ -1,8 +1,6 @@
 package com.test.baseshop.fragment_menu;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
 
 import java.util.List;
 
@@ -12,6 +10,9 @@ public interface Interfaces {
         void setAdapter(RecyclerViewAdapter adapter);
         void updateRecyclerView();
         void setSections(int[] sections_codes);
+        void showMinusIconAndNumberOfItemForOrder(int position);
+        void hideMinusIconAndNumberOfItemForOrder(int position);
+        void setNumberOfItemForOrder(int position, int number_of_item_for_order);
     }
 
     interface Presenter{
@@ -19,6 +20,12 @@ public interface Interfaces {
         void getSections();
         void OnSectionItemClick(android.view.View v);
         String getTitleOfSectionByCode(int code);
+
+        interface ConnectionBetweenViewAndRecyclerList {
+            void tellViewToShowMinusIconAndNumberOfItemForOrder(int position);
+            void tellViewToHideMinusIconAndNumberOfItemForOrder(int position);
+            void tellViewToSetNumberOfItemForOrder(int position, int number_of_item_for_order);
+        }
     }
 
     interface Model{

@@ -5,7 +5,7 @@ import android.view.View;
 
 import java.util.List;
 
-public class fragment_menu_presenter implements Interfaces.Presenter{
+public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList{
 
     private Interfaces.View view;
     private Interfaces.Model model;
@@ -22,7 +22,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter{
     @Override
     public void getData(Context context, int code) {
         List<Item> items = model.getItemsByFilter(code);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model, this);
         view.setAdapter(adapter);
         view.updateRecyclerView();
     }
@@ -59,5 +59,20 @@ public class fragment_menu_presenter implements Interfaces.Presenter{
                 return "Сеты";
         }
         return null;
+    }
+
+    @Override
+    public void tellViewToShowMinusIconAndNumberOfItemForOrder(int position) {
+        view.showMinusIconAndNumberOfItemForOrder(position);
+        }
+
+    @Override
+    public void tellViewToHideMinusIconAndNumberOfItemForOrder(int position) {
+        view.hideMinusIconAndNumberOfItemForOrder(position);
+    }
+
+    @Override
+    public void tellViewToSetNumberOfItemForOrder(int position, int number_of_item_for_order) {
+        view.setNumberOfItemForOrder(position,number_of_item_for_order);
     }
 }

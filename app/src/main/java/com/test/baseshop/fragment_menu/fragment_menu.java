@@ -1,5 +1,7 @@
 package com.test.baseshop.fragment_menu;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;

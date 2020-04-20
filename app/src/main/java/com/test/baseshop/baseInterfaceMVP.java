@@ -6,7 +6,6 @@ public interface baseInterfaceMVP {
 
     interface Presenter{
         void OnItemClick(int page);
-
     }
 
 

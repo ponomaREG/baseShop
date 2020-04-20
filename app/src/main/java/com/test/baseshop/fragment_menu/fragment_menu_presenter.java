@@ -1,21 +1,28 @@
 package com.test.baseshop.fragment_menu;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList{
+public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList, Interfaces.Presenter.ConnectionBetweenModelAndRecyclerList{
 
     private Interfaces.View view;
     private Interfaces.Model model;
     private View section_current = null;
+    private int USER_ID;
 
     static final int ALL = 1, SUSHI = 2, PIZZA = 3, BURGERS = 5, DRINKS = 6, WOK = 4, SETS = 8;
 
-    fragment_menu_presenter(Interfaces.View view){
+    fragment_menu_presenter(fragment_menu view){
         this.view = view;
         this.model = new fragment_menu_model(this);
+        SharedPreferences sh = Objects.requireNonNull(view.getContext()).getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        USER_ID = sh.getInt("USER_ID",0);
     }
 
 
@@ -74,5 +81,15 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     @Override
     public void tellViewToSetNumberOfItemForOrder(int position, int number_of_item_for_order) {
         view.setNumberOfItemForOrder(position,number_of_item_for_order);
+    }
+
+    @Override
+    public void tellModelToSetNewNumberOfItemsForOrder( int item_id, int new_count_of_items_for_order) {
+        ((Interfaces.Model.Basket) model).sendNewNumberOfItemsForOrder(USER_ID,item_id,new_count_of_items_for_order);
+    }
+
+    @Override
+    public HashMap<Integer,Integer> tellModelToGetBasketOfItemsForOrder() {
+        return ((Interfaces.Model.Basket) model).getBasketForUser(USER_ID);
     }
 }

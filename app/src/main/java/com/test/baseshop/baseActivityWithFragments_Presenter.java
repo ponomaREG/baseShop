@@ -1,6 +1,7 @@
 package com.test.baseshop;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.test.baseshop.fragment_basket.fragment_basket;
 import com.test.baseshop.fragment_menu.fragment_menu;
@@ -23,6 +24,8 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
         this.menu = fragment_menu.newInstance();
         this.profile = fragment_profile.newInstance();
         main_view.showPage(this.menu);
+        initPreferences(context);
+
     }
 
 
@@ -42,5 +45,11 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
         }
     }
 
+    private void initPreferences(Context context){
+        SharedPreferences sf = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sf.edit();
+        editor.putInt("USER_ID",1);
+        editor.apply();
+    }
 
 }

@@ -20,7 +20,10 @@ import java.util.concurrent.ExecutionException;
 
 public class Json {
 
-    private final static String SEARCH_API = "http://161.35.108.15:8000/app/items?section_code=%d";
+    private final static String
+            SEARCH_API = "http://161.35.108.15:8000/app/items?section_code=%s",
+            GET_BASKET_API = "http://161.35.108.15:8000/basket/get?user=%s";
+
     private Json instance;
 
     public Json(){
@@ -32,7 +35,7 @@ public class Json {
     public List<Item> jsonify(int section_code) throws ExecutionException, InterruptedException {
         GetDataFromBackground searchInfo = new GetDataFromBackground();
         List<Item> items = new ArrayList<>();
-        @SuppressLint("DefaultLocale") String query = String.format(SEARCH_API,section_code);
+        String query = String.format(SEARCH_API,section_code);
         query = searchInfo.execute(query).get();
         Gson g = new Gson();
         Map data = g.fromJson(query,Map.class);
@@ -57,6 +60,15 @@ public class Json {
         }
         return items;
     }
+
+    public Map jsonify_basket(int user_id) throws ExecutionException, InterruptedException {
+        GetDataFromBackground searchInfo = new GetDataFromBackground();
+        String result_of_query = searchInfo.execute(String.format(GET_BASKET_API,user_id)).get();
+        Gson g = new Gson();
+        return g.fromJson(result_of_query,Map.class);
+
+    }
+
 }
 
 class GetDataFromBackground extends AsyncTask<String,Void,String> {

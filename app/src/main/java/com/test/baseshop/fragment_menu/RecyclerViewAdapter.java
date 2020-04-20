@@ -13,22 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.test.baseshop.R;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
     private List<Item> items;
-    private Interfaces.Model.Photo model;
+    private Interfaces.Model.Photo model_photo;
     private Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList presenter_to_view;
+    private Interfaces.Presenter.ConnectionBetweenModelAndRecyclerList presenter_to_model;
+    private HashMap<Integer,Integer> items_which_already_in_busket;
 
     private final static String MONEY_SIGN = "%sР", WEIGHT_SIGN = "%s г.";
 
-    RecyclerViewAdapter(Context context, List<Item> items, Interfaces.Model.Photo model, Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList presenter_to_view){
+    RecyclerViewAdapter(Context context, List<Item> items, Interfaces.Model.Photo model, Interfaces.Presenter presenter_to_view){
         this.inflater = LayoutInflater.from(context);
         this.items = items;
-        this.model = model;
-        this.presenter_to_view = presenter_to_view;
+        this.model_photo = model;
+        this.presenter_to_view = (Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList) presenter_to_view;
+        this.presenter_to_model = (Interfaces.Presenter.ConnectionBetweenModelAndRecyclerList) presenter_to_view;
+        this.items_which_already_in_busket = this.presenter_to_model.tellModelToGetBasketOfItemsForOrder();
     }
 
     @NonNull
@@ -43,12 +48,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.desc.setText(items.get(position).getDesc());
         holder.price.setText(String.format(MONEY_SIGN,items.get(position).getPrice()));
         holder.weight.setText(String.format(WEIGHT_SIGN,items.get(position).getWeight()));
-        model.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
+        model_photo.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
 
-        if(items.get(position).getNumberOfItemForOrder() != 0){
-            presenter_to_view.tellViewToShowMinusIconAndNumberOfItemForOrder(position);
-            presenter_to_view.tellViewToSetNumberOfItemForOrder(position,items.get(position).getNumberOfItemForOrder());
+
+        if(this.items_which_already_in_busket.containsKey(items.get(position).getId())){
+            holder.minus_icon.setVisibility(View.VISIBLE);
+            holder.number_of_item_for_order.setVisibility(View.VISIBLE);
+            int count_of_items_for_already_whichs_already_in_busket = this.items_which_already_in_busket.get(items.get(position).getId());
+            holder.number_of_item_for_order.setText(String.valueOf(count_of_items_for_already_whichs_already_in_busket));
+            items.get(position).setNumberOfItemForOrder(count_of_items_for_already_whichs_already_in_busket);
+//        }
         }
+
+//        if((items.get(position).getNumberOfItemForOrder() != 0)){
+//            presenter_to_view.tellViewToShowMinusIconAndNumberOfItemForOrder(position);
+//            presenter_to_view.tellViewToSetNumberOfItemForOrder(position,items.get(position).getNumberOfItemForOrder());
+//        }
 
         holder.plus_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +75,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 if(count_of_item_for_order == 1){
                     presenter_to_view.tellViewToShowMinusIconAndNumberOfItemForOrder(position);
                 }
-                presenter_to_view.tellViewToSetNumberOfItemForOrder(position,count_of_item_for_order);
+                updateInViewAndInModel(position, count_of_item_for_order);
             }
         });
         holder.minus_icon.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +88,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 if(count_of_item_for_order == 0){
                     presenter_to_view.tellViewToHideMinusIconAndNumberOfItemForOrder(position);
                 }
-                presenter_to_view.tellViewToSetNumberOfItemForOrder(position,count_of_item_for_order);
+                updateInViewAndInModel(position, count_of_item_for_order);
             }
         });
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -97,8 +113,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             number_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
             plus_icon = v.findViewById(R.id.fragment_menu_rv_item_icon_plus);
             minus_icon = v.findViewById(R.id.fragment_menu_rv_item_icon_minus);
-
         }
+    }
+
+    private void updateInViewAndInModel(int position, int count_of_item_for_order){
+        presenter_to_view.tellViewToSetNumberOfItemForOrder(position,count_of_item_for_order);
+        presenter_to_model.tellModelToSetNewNumberOfItemsForOrder(
+                items.get(position).getId(),
+                count_of_item_for_order
+        );
     }
 
 

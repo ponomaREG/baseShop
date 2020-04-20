@@ -4,15 +4,12 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.test.baseshop.fragment_menu.Item;
@@ -38,6 +35,14 @@ public class PhotoDownloader extends AsyncTask<Item,Void, Void> {
             connection.setDoInput(true);
             connection.connect();
             bitmap_of_photo = BitmapFactory.decodeStream(connection.getInputStream());
+            if(bitmap_of_photo == null){
+                url = new URL(String.format(URL_PHOTO,1));
+                connection = (HttpURLConnection) url
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                bitmap_of_photo = BitmapFactory.decodeStream(connection.getInputStream());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,7 +52,9 @@ public class PhotoDownloader extends AsyncTask<Item,Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        image_view_of_photo.setImageBitmap(getRoundedCornerBitmap(bitmap_of_photo,30));
+        Bitmap bitmap_rounder = getRoundedCornerBitmap(bitmap_of_photo);
+        if(bitmap_rounder == null) bitmap_rounder = bitmap_of_photo;
+        image_view_of_photo.setImageBitmap(bitmap_rounder);
     }
 
 //    private Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
@@ -67,21 +74,30 @@ public class PhotoDownloader extends AsyncTask<Item,Void, Void> {
 //        return resizedBitmap;
 //    }
 
-    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
-                .getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
+
+    private static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
+        Bitmap output;
+        Canvas canvas;
 
         final int color = 0xff424242;
         final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final int pixels = 30;
+        final Rect rect;
+        try {
+            output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+                    .getHeight(), Bitmap.Config.ARGB_8888);
+            canvas = new Canvas(output);
+            rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
         final RectF rectF = new RectF(rect);
-        final float roundPx = pixels;
 
         paint.setAntiAlias(true);
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
-        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawRoundRect(rectF, (float) pixels, (float) pixels, paint);
 
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);

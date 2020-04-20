@@ -99,7 +99,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     @Override
     public void showMinusIconAndNumberOfItemForOrder(int position) {
         RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
-        View v = rv.getChildAt(position);
+        View v = rv.getLayoutManager().findViewByPosition(position);
         ImageView icon_minus = v.findViewById(R.id.fragment_menu_rv_item_icon_minus);
         icon_minus.setVisibility(View.VISIBLE);
         TextView count_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
@@ -109,7 +109,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     @Override
     public void hideMinusIconAndNumberOfItemForOrder(int position) {
         RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
-        View v = rv.getChildAt(position);
+        View v = rv.getLayoutManager().findViewByPosition(position);
         ImageView icon_minus = v.findViewById(R.id.fragment_menu_rv_item_icon_minus);
         icon_minus.setVisibility(View.INVISIBLE);
         TextView count_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
@@ -119,7 +119,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     @Override
     public void setNumberOfItemForOrder(int position, int number_of_item_for_order) {
         RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
-        View v = rv.getChildAt(position);
+        View v = rv.getLayoutManager().findViewByPosition(position);
         TextView count_of_item_for_order = v.findViewById(R.id.fragment_menu_rv_item_count_of_item);
         count_of_item_for_order.setText(String.valueOf(number_of_item_for_order));
         count_of_item_for_order.setTag(number_of_item_for_order);

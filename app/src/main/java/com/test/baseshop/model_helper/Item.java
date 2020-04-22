@@ -1,4 +1,4 @@
-package com.test.baseshop.fragment_menu;
+package com.test.baseshop.model_helper;
 
 import android.widget.ImageView;
 

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.baseshop.R;
+import com.test.baseshop.model_helper.Item;
 
 
 import java.util.HashMap;

@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_basket.fragment_basket">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:gravity="center"
+    <LinearLayout
+        android:id="@+id/fragment_basket_LL_total_summ"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="80sp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginStart="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:text="В корзине товаров на сумму"/>
+        <TextView
+            android:id="@+id/fragment_basket_total_summ"
+            android:layout_marginStart="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:text="0"/>
+        <TextView
+            android:layout_marginStart="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:text="Р"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_basket_recycler_view"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/fragment_basket_LL_total_summ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/fragment_basket_button_for_order"
+        android:textColor="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_marginVertical="30dp"
+        android:layout_width="300dp"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/fragment_basket_button_for_order"
+        android:text="Заказать"/>
+
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.test.baseshop.fragment_menu;
 
 import android.util.Log;
 
+import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
 import com.test.baseshop.model_helper.PhotoDownloader;
 
@@ -68,11 +69,12 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
 
     @Override
     public void sendNewNumberOfItemsForOrder(int user_id, int item_id, int count) {
-        Map raw_map_status;
+//        Map raw_map_status;
         try {
-            raw_map_status = json.jsonify_basket(user_id,item_id,count);
-            int status_code = (int) (double) raw_map_status.get("status");
-            Log.d("Status code of query",String.valueOf(status_code));
+            json.jsonify_basket(user_id,item_id,count);
+//            raw_map_status = json.jsonify_basket(user_id,item_id,count);
+//            int status_code = (int) (double) raw_map_status.get("status");
+//            Log.d("Status code of query",String.valueOf(status_code));
         } catch (Exception e) {
             e.printStackTrace();
         }

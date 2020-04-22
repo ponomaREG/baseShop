@@ -12,8 +12,6 @@ import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-import com.test.baseshop.fragment_menu.Item;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 

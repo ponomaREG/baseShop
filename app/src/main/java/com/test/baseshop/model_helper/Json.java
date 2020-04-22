@@ -1,12 +1,10 @@
 package com.test.baseshop.model_helper;
 
-import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.util.Log;
 
 
 import com.google.gson.Gson;
-import com.test.baseshop.fragment_menu.Item;
 
 import org.apache.commons.io.IOUtils;
 
@@ -63,19 +61,27 @@ public class Json {
         return items;
     }
 
-    public Map jsonify_basket(int user_id) throws ExecutionException, InterruptedException {
-        GetDataFromBackground searchInfo = new GetDataFromBackground();
-        String result_of_query = searchInfo.execute(String.format(GET_BASKET_API,user_id)).get();
-        Gson g = new Gson();
-        return g.fromJson(result_of_query,Map.class);
+        public Map jsonify_basket(int user_id) throws ExecutionException, InterruptedException {
+            GetDataFromBackground searchInfo = new GetDataFromBackground();
+            String result_of_query = searchInfo.execute(String.format(GET_BASKET_API,user_id)).get();
+            Gson g = new Gson();
+            return g.fromJson(result_of_query,Map.class);
 
     }
 
-    public Map jsonify_basket(int user_id, int item_id, int count_of_items_for_order) throws ExecutionException, InterruptedException {
+//    public Map jsonify_basket(int user_id, int item_id, int count_of_items_for_order) throws ExecutionException, InterruptedException {
+//        GetDataFromBackground searchInfo = new GetDataFromBackground();
+//        String result_of_query = searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order)).get();
+//        Gson g = new Gson();
+//        Log.d("USER_ID",user_id+"");
+//        return g.fromJson(result_of_query,Map.class);
+//    }
+    public void jsonify_basket(int user_id, int item_id, int count_of_items_for_order){
         GetDataFromBackground searchInfo = new GetDataFromBackground();
-        String result_of_query = searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order)).get();
+        searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order));
         Gson g = new Gson();
-        return g.fromJson(result_of_query,Map.class);
+        Log.d("USER_ID",user_id+"");
+
     }
 
 }

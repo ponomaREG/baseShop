@@ -17,11 +17,12 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     private View section_current = null;
     private int USER_ID;
 
-    static final int ALL = 1, SUSHI = 2, PIZZA = 3, BURGERS = 5, DRINKS = 6, WOK = 4, SETS = 8;
+    static final int ALL = 1;
+    private static final int SUSHI = 2, PIZZA = 3, BURGERS = 5, DRINKS = 6, WOK = 4, SETS = 8;
 
     fragment_menu_presenter(fragment_menu view){
         this.view = view;
-        this.model = new fragment_menu_model(this);
+        this.model = new fragment_menu_model();
         SharedPreferences sh = Objects.requireNonNull(view.getContext()).getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
         USER_ID = sh.getInt("USER_ID",0);
     }

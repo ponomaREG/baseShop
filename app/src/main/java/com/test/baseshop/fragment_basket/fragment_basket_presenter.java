@@ -17,7 +17,7 @@ public class fragment_basket_presenter implements Interfaces.Presenter,Interface
 
     fragment_basket_presenter(fragment_basket view){
         this.view = view;
-        this.model = new fragment_basket_model(this);
+        this.model = new fragment_basket_model();
         SharedPreferences sh = Objects.requireNonNull(view.getContext()).getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
         USER_ID = sh.getInt("USER_ID",0);
     }

@@ -115,9 +115,9 @@ public class RecyclerViewAdapterBasket extends RecyclerView.Adapter<RecyclerView
         this.total_summ_of_items_for_order = 0;
     }
 
-    private void checkIfBasketIsEmpty(){
-        if(this.total_summ_of_items_for_order == 0){presenter_to_view.tellViewToSetTotalSummOfItemsForOrder(0);}
-    }
+//    private void checkIfBasketIsEmpty(){
+//        if(this.total_summ_of_items_for_order == 0){presenter_to_view.tellViewToSetTotalSummOfItemsForOrder(0);}
+//    }
 
 
     @Override

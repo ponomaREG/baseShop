@@ -1,6 +1,5 @@
 package com.test.baseshop.fragment_basket;
 
-import android.util.Log;
 
 import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
@@ -12,11 +11,9 @@ import java.util.Map;
 
 public class fragment_basket_model implements Interfaces.Model.Basket,Interfaces.Model.Photo{
 
-    private Interfaces.Presenter presenter;
     private Json json;
 
-    fragment_basket_model(Interfaces.Presenter presenter){
-        this.presenter = presenter;
+    fragment_basket_model(){
         this.json = new Json();
     }
 
@@ -39,6 +36,7 @@ public class fragment_basket_model implements Interfaces.Model.Basket,Interfaces
         for(Object key:raw_result_of_query.keySet()){
             Map  raw_map_of_curent_item = (Map) raw_result_of_query.get(key);
             Item item = new Item();
+            assert raw_map_of_curent_item != null;
             item.setId(Integer.parseInt((String) key))
                     .setTitle((String) raw_map_of_curent_item.get("title"))
                     .setDesc((String) raw_map_of_curent_item.get("desc"))

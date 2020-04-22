@@ -12,11 +12,9 @@ import java.util.Map;
 
 public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.Photo, Interfaces.Model.Basket{
 
-    private Interfaces.Presenter presenter;
     private Json json;
 
-    fragment_menu_model(Interfaces.Presenter presenter){
-        this.presenter = presenter;
+    fragment_menu_model(){
         this.json = new Json();
     }
 

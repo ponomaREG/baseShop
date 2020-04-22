@@ -1,7 +1,6 @@
 package com.test.baseshop.fragment_menu;
 
 
-import android.util.Log;
 
 import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;

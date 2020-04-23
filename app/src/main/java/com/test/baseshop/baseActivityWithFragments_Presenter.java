@@ -20,9 +20,11 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
 
     baseActivityWithFragments_Presenter(Context context){
         this.main_view = (baseInterfaceMVP.View) context;
+
         this.basket = fragment_basket.newInstance();
         this.menu = fragment_menu.newInstance();
         this.profile = fragment_profile.newInstance();
+
         main_view.showPage(this.menu);
         initPreferences(context);
 

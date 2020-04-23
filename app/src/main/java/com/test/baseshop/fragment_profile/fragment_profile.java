@@ -46,7 +46,6 @@ public class fragment_profile extends Fragment implements Interfaces.View{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initOclOfSectionLayouts();
-
     }
 
     private void initFragmentManager(){
@@ -69,9 +68,15 @@ public class fragment_profile extends Fragment implements Interfaces.View{
         Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_section_orders).setOnClickListener(ocl);
         getView().findViewById(R.id.fragment_profile_section_info).setOnClickListener(ocl);
         getView().findViewById(R.id.fragment_profile_section_addresses).setOnClickListener(ocl);
-
-
     }
+
+
+    //first page
+//    private void showFirstPageWhenLauch(){
+//        int FIRST_SECTION_ID = R.id.fragment_profile_section_info;
+//        presenter.OnSectionItemClick(Objects.requireNonNull(getView()).findViewById(FIRST_SECTION_ID));
+//    }
+
 
     @Override
     public void showPage(Fragment fragment) {

@@ -1,5 +1,7 @@
 package com.test.baseshop.fragment_profile.info;
 
+import android.content.Context;
+import android.inputmethodservice.InputMethodService;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,8 +11,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.test.baseshop.R;
 
@@ -53,10 +58,12 @@ public class fragment_info extends Fragment implements Interfaces.View{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initOfclToEdittexts();
+        initOclToCommitInEdittext();
     }
 
 
     private void initPresenter(){ this.presenter = new fragment_info_presenter(this);}
+
 
 
     private void initOfclToEdittexts(){
@@ -75,5 +82,38 @@ public class fragment_info extends Fragment implements Interfaces.View{
         email_edit.setOnFocusChangeListener(ofcl);
         phone_edit.setOnFocusChangeListener(ofcl);
 
+    }
+
+    private void initOclToCommitInEdittext(){
+        ImageView commit_name = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_name_commit);
+        ImageView commit_email = getView().findViewById(R.id.fragment_profile_fragment_info_email_commit);
+        ImageView commit_phone = getView().findViewById(R.id.fragment_profile_fragment_info_phone_commit);
+
+        View.OnClickListener ocl = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onCommitClick(v,getView());
+            }
+        };
+
+        commit_name.setOnClickListener(ocl);
+        commit_email.setOnClickListener(ocl);
+        commit_phone.setOnClickListener(ocl);
+    }
+
+
+    @Override
+    public void showError(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void hideKeyboardAndClearFocus() {
+        View v = Objects.requireNonNull(getActivity()).getCurrentFocus();
+        InputMethodManager ims = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        assert ims != null;
+        assert v != null;
+        ims.hideSoftInputFromWindow(v.getWindowToken(),0);
+        v.clearFocus();
     }
 }

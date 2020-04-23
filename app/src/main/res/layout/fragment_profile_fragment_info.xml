@@ -13,11 +13,18 @@
         android:layout_height="150dp"
         android:src="@drawable/fragment_profile_fragment_info_icon_man"/>
 
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_profile_fragment_info_usericon"
+        android:padding="3dp">
+
+
     <RelativeLayout
         android:id="@+id/fragment_profile_fragment_info_name_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_profile_fragment_info_usericon"
         android:layout_marginTop="23dp">
 
         <TextView
@@ -79,6 +86,8 @@
             android:visibility="invisible"/>
     </RelativeLayout>
 
+
+
     <RelativeLayout
         android:id="@+id/fragment_profile_fragment_info_phone_container"
         android:layout_width="match_parent"
@@ -107,6 +116,10 @@
             android:src="@android:drawable/ic_menu_edit"
             android:visibility="invisible"/>
     </RelativeLayout>
+
+
+    </RelativeLayout>
+
 
 
 </RelativeLayout>

@@ -52,14 +52,14 @@ public class fragment_info extends Fragment implements Interfaces.View{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initOfclToEditexts();
+        initOfclToEdittexts();
     }
 
 
     private void initPresenter(){ this.presenter = new fragment_info_presenter(this);}
 
 
-    private void initOfclToEditexts(){
+    private void initOfclToEdittexts(){
         EditText name_edit = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_name);
         EditText email_edit = getView().findViewById(R.id.fragment_profile_fragment_info_email);
         EditText phone_edit = getView().findViewById(R.id.fragment_profile_fragment_info_phone);

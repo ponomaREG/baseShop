@@ -104,8 +104,10 @@ public class fragment_info extends Fragment implements Interfaces.View{
 
     @Override
     public void showError(String message) {
-        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+
 
     @Override
     public void hideKeyboardAndClearFocus() {

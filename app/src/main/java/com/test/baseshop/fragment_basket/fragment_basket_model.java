@@ -70,4 +70,9 @@ public class fragment_basket_model implements Interfaces.Model.Basket,Interfaces
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void setImageWithPicasso(Item item) {
+        new PhotoDownloader().setImageWithPicasso(item);
+    }
 }

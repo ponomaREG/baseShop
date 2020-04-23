@@ -3,6 +3,7 @@ package com.test.baseshop.model_helper;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -12,8 +13,14 @@ import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
+import com.test.baseshop.R;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class PhotoDownloader extends AsyncTask<Item,Void, Void> {
 
@@ -71,6 +78,17 @@ public class PhotoDownloader extends AsyncTask<Item,Void, Void> {
 //
 //        return resizedBitmap;
 //    }
+
+
+    public void setImageWithPicasso(Item item){
+        Picasso.get().load(String.format(URL_PHOTO,item.getId()))
+                .transform(new RoundedCornersTransformation(50,0))
+                .placeholder(R.drawable.fragment_menu_and_basket_placeholder)
+                .into(item.getImageViewOfIcon());
+    }
+
+
+
 
 
     private static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {

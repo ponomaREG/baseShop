@@ -33,6 +33,7 @@ public interface Interfaces {
         }
 
         interface ConnectionBetweenModelAndRecyclerList {
+            void tellModelToDownloadImageOfItemAndSetToImageViewByItem(Item item);
             void tellModelToSetNewNumberOfItemsForOrder(int item_id, int new_count_of_items_for_order);
         }
     }
@@ -46,6 +47,7 @@ public interface Interfaces {
 
         interface Photo {
             void setImageInBackground(Item item);
+            void setImageWithPicasso(Item item);
         }
 
 

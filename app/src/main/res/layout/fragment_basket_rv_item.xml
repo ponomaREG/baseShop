@@ -103,7 +103,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/fragment_menu_rv_item_icons"
-                    android:padding="3dp"
+                    android:padding="6dp"
                     android:src="@drawable/more" />
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/fragment_menu_rv_item_icons"
-                    android:padding="3dp"
+                    android:padding="6dp"
                     android:src="@drawable/minus"
                     />
             </LinearLayout>

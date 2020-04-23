@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment_profile.fragment_profile">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="80sp"
-       />
+    <include layout="@layout/fragment_profile_section"/>
 
-</LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_profile_current_section"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/fragment_profile_sections"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+</RelativeLayout>

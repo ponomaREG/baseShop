@@ -91,6 +91,11 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     }
 
     @Override
+    public void tellModelToDownloadImageOfItemAndSetToImageViewByItem(Item item) {
+        ((Interfaces.Model.Photo) model).setImageWithPicasso(item);
+    }
+
+    @Override
     public HashMap<Integer,Integer> tellModelToGetBasketOfItemsForOrder() {
         return ((Interfaces.Model.Basket) model).getBasketForUser(USER_ID);
     }

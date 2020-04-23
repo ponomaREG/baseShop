@@ -37,6 +37,11 @@ public class fragment_basket_presenter implements Interfaces.Presenter,Interface
     }
 
     @Override
+    public void tellModelToDownloadImageOfItemAndSetToImageViewByItem(Item item) {
+        ((Interfaces.Model.Photo) model).setImageWithPicasso(item);
+    }
+
+    @Override
     public void tellModelToSetNewNumberOfItemsForOrder(int item_id, int new_count_of_items_for_order) {
         model.sendNewNumberOfItemsForOrder(USER_ID,item_id,new_count_of_items_for_order);
     }

@@ -17,6 +17,13 @@
 
 
 
+    <color name="fragment_profile_section_background">#CCCCCC</color>
+    <color name="fragment_profile_section_background_pressed">#8C8A8A</color>
+    <color name="fragment_profile_section_text">#000000</color>
+
+
+
+
 
     <color name="bnv_background">#FFFFFF</color>
 
@@ -25,6 +32,8 @@
 
     <color name="bnv_item_icon_tint">#808080</color>
     <color name="bnv_item_icon_tint_pressed">#333333</color>
+
+
 
 
 </resources>

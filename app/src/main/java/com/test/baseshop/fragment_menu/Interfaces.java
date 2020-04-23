@@ -33,9 +33,10 @@ public interface Interfaces {
             void tellViewToSetNumberOfItemForOrder(int position, int number_of_item_for_order);
         }
 
-        interface ConnectionBetweenModelAndRecyclerList{
+        interface ConnectionBetweenModelAndRecyclerList {
             void tellModelToSetNewNumberOfItemsForOrder(int item_id, int new_count_of_items_for_order);
-            HashMap<Integer,Integer> tellModelToGetBasketOfItemsForOrder();
+            void tellModelToDownloadImageOfItemAndSetToImageViewByItem(Item item);
+            HashMap<Integer, Integer> tellModelToGetBasketOfItemsForOrder();
         }
     }
 
@@ -50,6 +51,7 @@ public interface Interfaces {
 
         interface Photo{
             void setImageInBackground(Item item);
+            void setImageWithPicasso(Item item);
             }
     }
 

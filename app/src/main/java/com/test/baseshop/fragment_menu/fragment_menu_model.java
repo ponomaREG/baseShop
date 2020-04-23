@@ -2,6 +2,8 @@ package com.test.baseshop.fragment_menu;
 
 
 
+import android.content.Context;
+
 import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
 import com.test.baseshop.model_helper.PhotoDownloader;
@@ -37,10 +39,16 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
     @Override
     public void setImageInBackground(Item item) {
         try {
-            new PhotoDownloader().execute(item);
+//            new PhotoDownloader().execute(item);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setImageWithPicasso(Item item) {
+        new PhotoDownloader().setImageWithPicasso(item);
     }
 
     @Override

@@ -49,7 +49,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.desc.setText(items.get(position).getDesc());
         holder.price.setText(String.format(MONEY_SIGN,items.get(position).getPrice()));
         holder.weight.setText(String.format(WEIGHT_SIGN,items.get(position).getWeight()));
-        model_photo.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
+
+        presenter_to_model.tellModelToDownloadImageOfItemAndSetToImageViewByItem(items.get(position).setImageView(holder.image_of_item));
+//        model_photo.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
 
 
         if(this.items_which_already_in_busket.containsKey(items.get(position).getId())){

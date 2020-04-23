@@ -59,7 +59,8 @@ public class RecyclerViewAdapterBasket extends RecyclerView.Adapter<RecyclerView
         holder.desc.setText(current_item.getDesc());
         holder.weight.setText(String.format(WEIGHT_SIGN, current_item.getWeight()));
 
-        model_photo.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
+        model_photo.setImageWithPicasso(current_item.setImageView(holder.image_of_item));
+//        model_photo.setImageInBackground(items.get(position).setImageView(holder.image_of_item));
 
         holder.plus_icon.setOnClickListener(new View.OnClickListener() {
             @Override

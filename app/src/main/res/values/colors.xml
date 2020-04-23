@@ -24,6 +24,11 @@
 
 
 
+    <color name="fragment_profile_fragment_addresses_cell_shadow">#CABBBBBB</color>
+    <color name="fragment_profile_fragment_addresses_cell_background">#ffffff</color>
+
+
+
 
     <color name="bnv_background">#FFFFFF</color>
 

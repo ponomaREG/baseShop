@@ -8,4 +8,11 @@
 
 
 
+
+
+    <dimen name="fragment_profile_fragment_addresses_marginTop_or_distance_of_row">3dp</dimen>
+
+
+
+
 </resources>

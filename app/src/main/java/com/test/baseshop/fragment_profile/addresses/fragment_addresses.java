@@ -10,12 +10,9 @@ import android.view.ViewGroup;
 
 import com.test.baseshop.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_addresses#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_addresses extends Fragment {
+public class fragment_addresses extends Fragment implements Interfaces.View{
+
+    private fragment_addresses_presenter presenter;
 
     public fragment_addresses() {
         // Required empty public constructor
@@ -23,13 +20,13 @@ public class fragment_addresses extends Fragment {
 
     // TODO: Rename and change types and number of parameters
     public static fragment_addresses newInstance() {
-        fragment_addresses fragment = new fragment_addresses();
-        return fragment;
+        return new fragment_addresses();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initPresenter();
     }
 
     @Override
@@ -37,4 +34,9 @@ public class fragment_addresses extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile_fragment_addreses, container, false);
     }
+
+    private void initPresenter(){
+        this.presenter = new fragment_addresses_presenter(this);
+    }
+
 }

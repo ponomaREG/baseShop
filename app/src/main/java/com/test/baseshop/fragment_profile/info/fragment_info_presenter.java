@@ -88,7 +88,7 @@ public class fragment_info_presenter implements Interfaces.Presenter {
     private String checkInputForCorrent(String text){
         String result = null;
         if(text == null) result = "Что-то пошло не так(";
-        else if(text.length() == 0) result = "Одно из полей не заполнено";
+        else if(text.length() == 0) result = "Поле не заполнено";
 
         return result;
     }

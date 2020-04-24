@@ -24,8 +24,15 @@ public class fragment_basket_presenter implements Interfaces.Presenter,Interface
 
 
     @Override
-    public void OnOrderButtonClick() {
-        Log.d("BUTTON FOR ORDER CLICK","1");
+    public void OnOrderButtonClick(int size_of_adapter_items) {
+        if(size_of_adapter_items > 0) {
+            model.sendThatUserWantToMakeOrder(USER_ID);
+            view.clearBasket();
+            view.updateRecycleView();
+        }else {
+            String message_error = "Но вы же не можете заказать ничего";
+            view.showError(message_error);
+        }
     }
 
     @Override

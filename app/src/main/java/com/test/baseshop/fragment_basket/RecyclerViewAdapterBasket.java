@@ -112,6 +112,8 @@ public class RecyclerViewAdapterBasket extends RecyclerView.Adapter<RecyclerView
 
     }
 
+    public List<Item> getItems(){return this.items;}
+
     private void prepareToDatasetChangedNotify(){
         this.total_summ_of_items_for_order = 0;
     }

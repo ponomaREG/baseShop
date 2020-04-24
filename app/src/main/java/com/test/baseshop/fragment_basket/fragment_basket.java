@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.test.baseshop.R;
 
@@ -68,7 +69,7 @@ public class fragment_basket extends Fragment implements Interfaces.View{
         button_for_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                basket_presenter.OnOrderButtonClick();
+                basket_presenter.OnOrderButtonClick(adapter.getItems().size());
             }
         });
     }
@@ -86,6 +87,7 @@ public class fragment_basket extends Fragment implements Interfaces.View{
         rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
+
     }
 
     @Override
@@ -132,4 +134,16 @@ public class fragment_basket extends Fragment implements Interfaces.View{
     public void updateRecycleView() {
         this.adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void clearBasket() {
+        this.adapter.getItems().clear();
+    }
+
+    @Override
+    public void showError(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+
 }

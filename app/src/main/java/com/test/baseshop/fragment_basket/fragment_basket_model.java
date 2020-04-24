@@ -63,6 +63,11 @@ public class fragment_basket_model implements Interfaces.Model.Basket,Interfaces
     }
 
     @Override
+    public void sendThatUserWantToMakeOrder(int user_id) {
+        json.jsonify_orders_add(user_id);
+    }
+
+    @Override
     public void setImageInBackground(Item item) {
         try {
             new PhotoDownloader().execute(item);

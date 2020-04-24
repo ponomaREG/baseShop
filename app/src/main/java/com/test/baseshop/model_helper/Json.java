@@ -22,7 +22,8 @@ public class Json {
             SEARCH_API = "http://161.35.108.15:8000/app/items?section_code=%s",
             GET_BASKET_API = "http://161.35.108.15:8000/basket/get?user=%s",
             SET_BASKET_API = "http://161.35.108.15:8000/basket/set?user_id=%s&item_id=%s&count=%s",
-            GET_ORDERS_API = "http://161.35.108.15:8000/orders/get?user=%s";
+            GET_ORDERS_API = "http://161.35.108.15:8000/orders/get?user=%s",
+            SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s";
 
 
     private Json instance;
@@ -80,7 +81,6 @@ public class Json {
     public void jsonify_basket(int user_id, int item_id, int count_of_items_for_order){
         GetDataFromBackground searchInfo = new GetDataFromBackground();
         searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order));
-        Gson g = new Gson();
         Log.d("USER_ID",user_id+"");
     }
 
@@ -89,6 +89,11 @@ public class Json {
         String result_of_query = searchInfo.execute(String.format(GET_ORDERS_API,user_id)).get();
         Gson g = new Gson();
         return g.fromJson(result_of_query,Map.class);
+    }
+
+    public void jsonify_orders_add(int user_id){
+        GetDataFromBackground makeQuery = new GetDataFromBackground();
+        makeQuery.execute(String.format(SET_NEW_ORDER_API,user_id));
     }
 
 }

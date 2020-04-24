@@ -1,7 +1,6 @@
 package com.test.baseshop.fragment_profile.orders;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.baseshop.R;
-import com.test.baseshop.fragment_basket.Interfaces;
 import com.test.baseshop.model_helper.Item;
 
 import java.util.ArrayList;
@@ -46,7 +44,7 @@ public class RecyclerViewAdapterOrders extends RecyclerView.Adapter<RecyclerView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(inflater.inflate(R.layout.fragment_profile_fragment_addresses_rv_item,parent,false));
+        return new MyViewHolder(inflater.inflate(R.layout.fragment_profile_fragment_orders_rv_item,parent,false));
     }
 
 
@@ -56,7 +54,7 @@ public class RecyclerViewAdapterOrders extends RecyclerView.Adapter<RecyclerView
         List<Item> items = (List<Item>) data_with_items.get(key);
         assert items != null;
         for(Item item:items){
-            View item_view = inflater.inflate(R.layout.fragment_profile_fragment_addresses_rv_item_in_item, holder.container_LL,false);
+            View item_view = inflater.inflate(R.layout.fragment_profile_fragment_orders_rv_item_in_item, holder.container_LL,false);
 
             TextView title = item_view.findViewById(R.id.fragment_profile_fragment_addresses_rv_item_in_item_title);
             TextView count_of_items = item_view.findViewById(R.id.fragment_profile_fragment_addresses_rv_item_in_item_count_of_items_for_order);

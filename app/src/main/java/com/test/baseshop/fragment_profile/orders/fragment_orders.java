@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.baseshop.R;
+import com.test.baseshop.fragment_menu.RecyclerViewAdapter;
 
 import java.util.Objects;
 
@@ -59,6 +61,7 @@ public class fragment_orders extends Fragment implements Interfaces.View{
     public void setAdapter(RecyclerViewAdapterOrders adapter) {
         RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_addresses_rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.addItemDecoration(new DividerItemDecoration(rv.getContext(),DividerItemDecoration.VERTICAL));
         rv.setAdapter(adapter);
     }
 }

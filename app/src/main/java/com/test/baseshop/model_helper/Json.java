@@ -21,7 +21,8 @@ public class Json {
     private final static String
             SEARCH_API = "http://161.35.108.15:8000/app/items?section_code=%s",
             GET_BASKET_API = "http://161.35.108.15:8000/basket/get?user=%s",
-            SET_BASKET_API = "http://161.35.108.15:8000/basket/set?user_id=%s&item_id=%s&count=%s";
+            SET_BASKET_API = "http://161.35.108.15:8000/basket/set?user_id=%s&item_id=%s&count=%s",
+            GET_ORDERS_API = "http://161.35.108.15:8000/orders/get?user=%s";
 
 
     private Json instance;
@@ -81,7 +82,13 @@ public class Json {
         searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order));
         Gson g = new Gson();
         Log.d("USER_ID",user_id+"");
+    }
 
+    public Map jsonify_orders(int user_id) throws ExecutionException, InterruptedException {
+        GetDataFromBackground searchInfo = new GetDataFromBackground();
+        String result_of_query = searchInfo.execute(String.format(GET_ORDERS_API,user_id)).get();
+        Gson g = new Gson();
+        return g.fromJson(result_of_query,Map.class);
     }
 
 }

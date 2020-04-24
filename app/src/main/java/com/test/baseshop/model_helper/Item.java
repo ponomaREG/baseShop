@@ -5,7 +5,7 @@ import android.widget.ImageView;
 public class Item {
 
     private String title = "TEST",desc = "TEST DESCRIPTION";
-    private int weight = 1000, id, price , number_of_item_for_order = 0;
+    private int weight = 1000, id, price , number_of_item_for_order = 0 , total_price;
     private String image_link = "TeSt";
     private ImageView image_view_of_icon;
 
@@ -22,6 +22,7 @@ public class Item {
     public Item setImageView(ImageView view){this.image_view_of_icon = view; return this;}
     public Item setNumberOfItemForOrder(int number_of_item_for_order){this.number_of_item_for_order = number_of_item_for_order;return this;}
 
+    public int getTotalPrice(){return this.total_price;}
     public int getId(){return this.id; }
     public String getTitle(){return this.title;}
     public String getDesc(){return this.desc;}
@@ -30,4 +31,6 @@ public class Item {
     public int getPrice(){return this.price;}
     public ImageView getImageViewOfIcon(){return this.image_view_of_icon;}
     public int getNumberOfItemForOrder(){return this.number_of_item_for_order;}
+
+    public void calculateTotalPrice(){this.total_price = this.number_of_item_for_order * this.price;}
 }

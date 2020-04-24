@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    android:layout_marginBottom="15dp">
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/fragment_profile_fragment_addresses_rv_item_numberOfOrder_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:text="Заказ № "/>
+    <TextView
+        android:id="@+id/fragment_profile_fragment_addresses_rv_item_numberOfOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:textColor="@android:color/black"
+        android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_numberOfOrder_title"
+        android:text="1337"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_desc"
+        android:layout_below="@id/fragment_profile_fragment_addresses_rv_item_container_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_addresses"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/fragment_profile_fragment_addresses_rv_item_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textColor="@android:color/black"
+                android:text="Адрес:"/>
+            <TextView
+                android:id="@+id/fragment_profile_fragment_addresses_rv_item_address"
+                android:layout_alignParentBottom="true"
+                android:text="12 линия ВО, 51"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_time"
+            android:layout_below="@id/fragment_profile_fragment_addresses_rv_item_container_addresses"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/fragment_profile_fragment_addresses_rv_item_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textColor="@android:color/black"
+                android:text="Время:"/>
+            <TextView
+                android:id="@+id/fragment_profile_fragment_addresses_rv_item_time"
+                android:layout_alignParentBottom="true"
+                android:text="20.04.2020 20:32"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_items"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/fragment_profile_fragment_addresses_rv_item_container_desc"/>
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_total"
+        android:layout_below="@id/fragment_profile_fragment_addresses_rv_item_container_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/fragment_profile_fragment_addresses_rv_item_total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textColor="@android:color/black"
+                android:text="Общая стоимость заказа:"/>
+            <TextView
+                android:id="@+id/fragment_profile_fragment_addresses_rv_item_total"
+                android:text="2653"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_toStartOf="@id/fragment_profile_fragment_addresses_rv_item_total_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_total_sign"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/black"
+            android:text="Р"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

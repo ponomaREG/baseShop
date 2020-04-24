@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_addresses_item_rv_item_in_item_RL_container"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        >
+        <TextView
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_in_item_count_of_items_for_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="3"/>
+        <TextView
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_in_item_times"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_in_item_count_of_items_for_order"
+            android:text="X"/>
+        <TextView
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_in_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_in_item_times"
+            android:text="Филадельфия"/>
+
+        <TextView
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_in_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/fragment_profile_fragment_addresses_rv_item_in_item_price_type"
+            android:text="2000"/>
+        <TextView
+            android:layout_marginStart="5dp"
+            android:id="@+id/fragment_profile_fragment_addresses_rv_item_in_item_price_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="P"/>
+    </RelativeLayout>
+</LinearLayout>

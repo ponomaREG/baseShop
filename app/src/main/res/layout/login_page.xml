@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/login_icon"
+        android:layout_marginTop="80dp"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:src="@drawable/icon_logo_2"
+        />
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/login_container_numberInput"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/login_icon"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/login_numberInput"
+        android:textSize="24sp"
+        android:gravity="bottom"
+        android:hint="+7 (111) 111-11-11"
+        android:inputType="phone"
+        android:layout_width="215dp"
+        android:layout_height="60dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:background="@drawable/login_button_selector"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login_container_numberInput"
+        android:layout_marginTop="50dp"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Войти"
+        android:textSize="21sp"
+        />
+
+    <TextView
+        android:id="@+id/login_link_register"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        android:text="или войдите без авторизации"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -26,6 +26,7 @@ public class Json {
             GET_ADDRESSES_API = "http://161.35.108.15:8000/addresses/get?user=%s",
             SET_USER_INFO = "http://161.35.108.15:8000/user/update?user=%s&%s=%s",
             GET_USER_INFO = "http://161.35.108.15:8000/user/get?user=%s",
+            AUTH_USER = "http://161.35.108.15:8000/user/login?phone=%s",
             SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s";
 
 
@@ -117,6 +118,13 @@ public class Json {
         GetDataFromBackground sendUpdateInfo = new GetDataFromBackground();
         sendUpdateInfo.execute(String.format(SET_USER_INFO,user_id,key,value));
         return 1;
+    }
+
+    public Map jsonify_user_auth(String phone) throws ExecutionException, InterruptedException {
+        GetDataFromBackground makeQuery = new GetDataFromBackground();
+        String s = makeQuery.execute(String.format(AUTH_USER,phone)).get();
+        Gson g = new Gson();
+        return g.fromJson(s,Map.class);
     }
 
 }

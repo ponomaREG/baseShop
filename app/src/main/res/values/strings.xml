@@ -7,12 +7,9 @@
     <string name="main_bnv_profile">Профиль</string>
 
 
-
-
     <string name="fragment_profile_section_orders">Заказы</string>
     <string name="fragment_profile_section_info">Личное</string>
     <string name="fragment_profile_section_addresses">Адреса</string>
-
 
 
     <string name="fragment_profile_section_info_name_title">Имя</string>

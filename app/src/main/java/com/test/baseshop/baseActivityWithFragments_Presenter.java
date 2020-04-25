@@ -26,7 +26,6 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
         this.profile = fragment_profile.newInstance();
 
         main_view.showPage(this.menu);
-        initPreferences(context);
 
     }
 
@@ -45,13 +44,6 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
                 main_view.showPage(this.profile);
                 break;
         }
-    }
-
-    private void initPreferences(Context context){
-        SharedPreferences sf = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sf.edit();
-        editor.putInt("USER_ID",1);
-        editor.apply();
     }
 
 }

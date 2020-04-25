@@ -18,7 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    app:itemTextColor="@color/bnv_icon_selector"
+    app:itemTextColor="@color/bnv_text_selector"
     app:itemIconTint="@color/bnv_icon_selector"
     app:itemBackground="@color/bnv_background"
     />

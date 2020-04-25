@@ -6,7 +6,7 @@
     android:layout_height="240dp"
     android:background="@drawable/fragment_profile_fragment_addresses_cell">
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title_user"
         android:layout_alignParentTop="true"
         android:text="Квартира Оксаны"
         android:textAllCaps="false"
@@ -19,7 +19,7 @@
         android:layout_marginTop="@dimen/fragment_profile_fragment_addresses_marginTop_or_distance_of_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title">
+        android:layout_below="@id/title_user">
         <TextView
             android:id="@+id/district_title"
             android:textSize="15sp"
@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/district_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/district_title"
             android:textSize="15sp"
@@ -52,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/street_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/street_title"
             android:textSize="15sp"
@@ -76,6 +78,7 @@
             android:textColor="@android:color/black"
             android:textSize="15sp" />
         <TextView
+            android:id="@+id/house_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/house_title"
             android:textSize="15sp"
@@ -98,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/corpus_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/corpus_title"
             android:textSize="15sp"
@@ -120,6 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/porch_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/porch_title"
             android:textSize="15sp"
@@ -142,6 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/floor_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/floor_title"
             android:textSize="15sp"
@@ -164,6 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/flat_user"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/flat_title"
             android:textSize="15sp"

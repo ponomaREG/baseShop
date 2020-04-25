@@ -59,6 +59,8 @@ public class fragment_info extends Fragment implements Interfaces.View{
         super.onViewCreated(view, savedInstanceState);
         initOfclToEdittexts();
         initOclToCommitInEdittext();
+
+        presenter.getUserInfo();
     }
 
 
@@ -117,5 +119,23 @@ public class fragment_info extends Fragment implements Interfaces.View{
         assert v != null;
         ims.hideSoftInputFromWindow(v.getWindowToken(),0);
         v.clearFocus();
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        EditText first_name_view = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_name);
+        first_name_view.setText(firstName);
+    }
+
+    @Override
+    public void setEmail(String email) {
+        EditText email_view = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_email);
+        email_view.setText(email);
+    }
+
+    @Override
+    public void setPhone(String phone) {
+        EditText phone_view = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_phone);
+        phone_view.setText(phone);
     }
 }

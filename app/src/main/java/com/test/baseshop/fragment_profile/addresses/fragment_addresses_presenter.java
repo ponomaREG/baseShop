@@ -51,5 +51,8 @@ public class fragment_addresses_presenter implements Interfaces.Presenter{
 
             view.addNewCellOfAddress(address_view);
         }
+        View address_view_add = inflater.inflate(R.layout.fragment_profile_fragment_addresses_plus,parent,false);
+        view.addNewCellOfAddress(address_view_add);
+
     }
 }

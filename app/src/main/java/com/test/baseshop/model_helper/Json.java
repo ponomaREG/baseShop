@@ -24,7 +24,7 @@ public class Json {
             SET_BASKET_API = "http://161.35.108.15:8000/basket/set?user_id=%s&item_id=%s&count=%s",
             GET_ORDERS_API = "http://161.35.108.15:8000/orders/get?user=%s",
             GET_ADDRESSES_API = "http://161.35.108.15:8000/addresses/get?user=%s",
-            SET_USER_INFO = "http://161.35.108.15:8000/user/add?%s=%s",
+            SET_USER_INFO = "http://161.35.108.15:8000/user/update?user=%s&%s=%s",
             GET_USER_INFO = "http://161.35.108.15:8000/user/get?user=%s",
             SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s";
 
@@ -113,9 +113,10 @@ public class Json {
         return g.fromJson(result,Map.class);
     }
 
-    public void jsonify_user_update(int user_id, String key, String value){
+    public int jsonify_user_update(int user_id, String key, String value){
         GetDataFromBackground sendUpdateInfo = new GetDataFromBackground();
-        sendUpdateInfo.execute(String.format(SET_USER_INFO,key,value));
+        sendUpdateInfo.execute(String.format(SET_USER_INFO,user_id,key,value));
+        return 1;
     }
 
 }

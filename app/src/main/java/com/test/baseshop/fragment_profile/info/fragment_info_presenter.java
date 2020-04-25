@@ -58,7 +58,7 @@ public class fragment_info_presenter implements Interfaces.Presenter {
             case R.id.fragment_profile_fragment_info_name_commit:
                 row_view =  parentView.findViewById(R.id.fragment_profile_fragment_info_name);
                 input_text = row_view.getText().toString();
-                input_type_of_data = "name";
+                input_type_of_data = "first_name";
                 break;
             case R.id.fragment_profile_fragment_info_phone_commit:
                 row_view =  parentView.findViewById(R.id.fragment_profile_fragment_info_phone);

@@ -20,13 +20,15 @@ public class fragment_info_model implements Interfaces.Model {
 
     @Override
     public String sendNewInfoAboutUser(String key, String new_info, int user_id) {
-        int result_of_query = 0;
+        int result_of_query = json.jsonify_user_update(user_id,key,new_info);
         String message = null;
-        if(result_of_query == 1){
+        if(result_of_query == 2){
             message = "Данный email уже существует";
-        }else if(result_of_query == 2){
+        }else if(result_of_query == 3){
             message = "Данный номер уже зарегистрирован";
         }
+
+
         return message;
     }
 

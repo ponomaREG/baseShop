@@ -6,13 +6,9 @@
     <dimen name="fragment_menu_recyclerview_margin_top">10dp</dimen>
 
 
-
-
-
-
     <dimen name="fragment_profile_fragment_addresses_marginTop_or_distance_of_row">3dp</dimen>
-
-
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
 
 
 </resources>

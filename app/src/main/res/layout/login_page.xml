@@ -28,13 +28,79 @@
         android:inputType="phone"
         android:layout_width="215dp"
         android:layout_height="60dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_container_code"
+        android:animateLayoutChanges="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@id/login_container_numberInput"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Введите Ваш код потверждения"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/login_code_firstNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:nextFocusForward="@id/login_code_secondNumber"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:maxLength="1" />
+            <EditText
+                android:id="@+id/login_code_secondNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:nextFocusForward="@id/login_code_thirdNumber"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:maxLength="1" />
+            <EditText
+                android:id="@+id/login_code_thirdNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:nextFocusForward="@id/login_code_fourthNumber"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:maxLength="1" />
+            <EditText
+                android:id="@+id/login_code_fourthNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:maxLength="1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/login_timer_AND_button_send_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Отправить еще раз"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/login_button"
         android:background="@drawable/login_button_selector"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/login_container_numberInput"
+        android:layout_below="@id/login_container_code"
         android:layout_marginTop="50dp"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
@@ -42,6 +108,8 @@
         android:text="Войти"
         android:textSize="21sp"
         />
+
+
 
     <TextView
         android:id="@+id/login_link_register"
@@ -54,13 +122,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
-        <include layout="@layout/login_fill_info"/>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>

@@ -2,7 +2,12 @@ package com.test.baseshop.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+
+import com.test.baseshop.R;
+import com.test.baseshop.auth.fill_info.BottomSheetFillInfo;
 
 import ru.tinkoff.decoro.MaskImpl;
 import ru.tinkoff.decoro.parser.PhoneNumberUnderscoreSlotsParser;
@@ -40,15 +45,17 @@ public class login_presenter implements Interfaces.Presenter {
         this.phone = input_phone;
         mask_phone.insertFront(input_phone);
         int user_id_OR_status_of_query = model.authUserByPhone(input_phone);
+        user_id_OR_status_of_query = -1;
         if(user_id_OR_status_of_query == 0){
             view.showError();
         }else if (user_id_OR_status_of_query == -1){
-            view.showOfferOfFillDesc();
+            view.showSectionOfPhoneCode();
         }else{
             initPreferences(this.context, user_id_OR_status_of_query);
             view.startNextActivity();
         }
     }
+
 
 
     private void initPreferences(Context context, int user_id){
@@ -57,4 +64,6 @@ public class login_presenter implements Interfaces.Presenter {
         editor.putInt("USER_ID",user_id);
         editor.apply();
     }
+
+
 }

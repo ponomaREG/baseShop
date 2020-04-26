@@ -44,6 +44,7 @@
 
     <color name="login_button">#64e1dc</color>
     <color name="login_button_pressed">#55C6C1</color>
+    <color name="login_button_block">#437371</color>
 
 
 

@@ -1,6 +1,6 @@
 package com.test.baseshop.auth;
 
-import android.widget.EditText;
+import com.test.baseshop.auth.fill_info.BottomSheetFillInfo;
 
 import ru.tinkoff.decoro.watchers.FormatWatcher;
 
@@ -10,7 +10,13 @@ public interface Interfaces {
         void setMaskToEditText(FormatWatcher formatWatcher);
         void startNextActivity();
         void showError();
-        void showOfferOfFillDesc();
+        void showSectionOfPhoneCode();
+        void showOfferOfFillDesc(BottomSheetFillInfo bottom_sheet_fill_info);
+        void hideKeyboardAndClearFocus();
+        void setSendAgainButton();
+        void setTimer(String input_time);
+        void makeSendAgainButtonClickable();
+        void makeSendAgainButtonNotClickable();
     }
 
     interface Presenter {

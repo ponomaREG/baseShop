@@ -14,6 +14,7 @@ public class login_presenter implements Interfaces.Presenter {
     private Interfaces.View view;
     private Interfaces.Model model;
     private Context context;
+    private String phone;
 
     private MaskImpl mask_phone;
 
@@ -36,11 +37,12 @@ public class login_presenter implements Interfaces.Presenter {
 
     @Override
     public void OnButtonClick(String input_phone) {
+        this.phone = input_phone;
         mask_phone.insertFront(input_phone);
         int user_id_OR_status_of_query = model.authUserByPhone(input_phone);
         if(user_id_OR_status_of_query == 0){
             view.showError();
-        }else if (user_id_OR_status_of_query < 0){
+        }else if (user_id_OR_status_of_query == -1){
             view.showOfferOfFillDesc();
         }else{
             initPreferences(this.context, user_id_OR_status_of_query);

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="150dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/login_fillInfo_title"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textColor="@android:color/black"
+        android:text="Пожалуйста , расскажите о себе , чтобы мы знали Вас лучше"/>
+
+    <RelativeLayout
+        android:id="@+id/login_fillInfo_container_name"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/login_fillInfo_title"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/login_fillInfo_name_title"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Мое имя"/>
+
+        <EditText
+            android:id="@+id/login_fillInfo_name"
+            android:layout_below="@id/login_fillInfo_name_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:hint="Роберт"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/login_fillInfo_container_sex"
+        android:layout_below="@id/login_fillInfo_container_name"
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/login_fillInfo_sex_title"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Мой пол"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/login_fillInfo_sex_title"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/login_fill_info_rb_man"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/login_icon_man"/>
+
+
+
+                <RadioButton
+                    android:id="@+id/login_fill_info_rb_woman"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/login_icon_woman"/>
+            </RadioGroup>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/login_fillInfo_container_email"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/login_fillInfo_container_sex"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/login_fillInfo_email_title"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Мой Email (по желанию)"/>
+
+        <EditText
+            android:id="@+id/login_fillInfo_email"
+            android:layout_below="@id/login_fillInfo_email_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:hint="test@test.test"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/login_fillInfo_button_commit"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login_fillInfo_container_email"
+        android:background="@drawable/login_button_selector"
+        android:text="Рассказать о себе"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

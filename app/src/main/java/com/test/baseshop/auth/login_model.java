@@ -16,7 +16,7 @@ public class login_model implements Interfaces.Model{
     }
 
     @Override
-    public int authUserByPhone(String phone) { //0 - error / -1 - doesnt exist / >0 - user
+    public int authUserByPhone(String phone) { //0 - error / <0 (*-1 = id) - doesnt exist / >0 - user
         Map raw_map;
         int user_id = 0;
         try {

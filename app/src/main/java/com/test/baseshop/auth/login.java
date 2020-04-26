@@ -188,6 +188,7 @@ public class login extends AppCompatActivity implements Interfaces.View {
         findViewById(R.id.login_button).setEnabled(true);
     }
 
+
     private void setDisabledButtonOfLogin(){
         findViewById(R.id.login_button).setEnabled(false);
     }

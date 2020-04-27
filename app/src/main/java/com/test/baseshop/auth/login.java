@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -232,6 +233,19 @@ public class login extends AppCompatActivity implements Interfaces.View {
     public void makeSendAgainButtonNotClickable() {
         TextView timer_AND_send_again_code = findViewById(R.id.login_timer_AND_button_send_again);
         timer_AND_send_again_code.setClickable(false);
+    }
+
+    @Override
+    public void clearEditTextsWithCode() {
+        EditText et_first = findViewById(R.id.login_code_firstNumber);
+        EditText et_second = findViewById(R.id.login_code_secondNumber);
+        EditText et_third = findViewById(R.id.login_code_thirdNumber);
+        EditText et_fourth = findViewById(R.id.login_code_fourthNumber);
+        Log.d("ASD","ASDASDAS");
+        et_first.setText("");
+        et_second.setText("");
+        et_third.setText("");
+        et_fourth.setText("");
     }
 
 }

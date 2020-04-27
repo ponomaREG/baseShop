@@ -2,7 +2,6 @@ package com.test.baseshop.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.test.baseshop.auth.fill_info.BottomSheetFillInfo;
 
@@ -43,6 +42,7 @@ public class login_presenter implements Interfaces.Presenter{
     public void OnButtonClick(String input_phone) {
         mask_phone.insertFront(input_phone);
         this.phone = mask_phone.toUnformattedString();
+        view.hideKeyboardAndClearFocus();
         sendCode();
         view.showSectionOfPhoneCode();
         }

@@ -20,6 +20,7 @@ public interface Interfaces {
         void setTimer(String input_time);
         void makeSendAgainButtonClickable();
         void makeSendAgainButtonNotClickable();
+        void clearEditTextsWithCode();
     }
 
     interface Presenter {

@@ -4,25 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/fragment_profile_fragment_info_usericon"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/fragment_profile_fragment_info_icon_man"/>
-
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_profile_fragment_info_usericon"
         android:padding="3dp">
 
+        <ImageView
+            android:id="@+id/fragment_profile_fragment_info_usericon"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/fragment_profile_fragment_info_icon_man"/>
 
     <RelativeLayout
         android:id="@+id/fragment_profile_fragment_info_name_container"
+        android:layout_below="@id/fragment_profile_fragment_info_usericon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp">
@@ -104,6 +104,7 @@
         android:layout_marginTop="23dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="false"
         android:inputType="phone"
         android:hint="@string/fragment_profile_section_info_phone_hint"/>
         <ImageView
@@ -117,9 +118,19 @@
             android:visibility="invisible"/>
     </RelativeLayout>
 
+        <Button
+            android:id="@+id/fragment_profile_fragment_info_button_logout"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/fragment_profile_fragment_info_phone_container"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/fragment_profile_fragment_info_button_selector"
+            android:text="Выйти"/>
 
     </RelativeLayout>
 
-
+    </ScrollView>
 
 </RelativeLayout>

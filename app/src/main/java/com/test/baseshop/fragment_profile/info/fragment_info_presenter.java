@@ -77,8 +77,6 @@ public class fragment_info_presenter implements Interfaces.Presenter {
         if(result_of_check == null) {
             result_of_check = model.sendNewInfoAboutUser(input_type_of_data,input_text,USER_ID);
             if(result_of_check == null){
-//                assert row_view != null;
-//                row_view.clearFocus();
                   view.hideKeyboardAndClearFocus();
             }else view.showError(result_of_check);
         }else view.showError(result_of_check);
@@ -101,12 +99,18 @@ public class fragment_info_presenter implements Interfaces.Presenter {
         else{user_icon.setImageDrawable(context.getDrawable(R.drawable.fragment_profile_fragment_info_icon_man));}
     }
 
+    @Override
+    public void clearPreferences(Context context) {
+        SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        sh.edit().clear().apply();
+    }
+
 
     private String checkInputForCorrent(String text){
         String result = null;
         if(text == null) result = "Что-то пошло не так(";
         else if(text.length() == 0) result = "Поле не заполнено";
-
+        //TODO:ADD CHECK
         return result;
     }
 

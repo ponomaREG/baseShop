@@ -33,13 +33,15 @@ public class RecyclerViewAdapterOrders extends RecyclerView.Adapter<RecyclerView
         this.data_with_items = data_with_items;
 
         this.keys = new ArrayList<>();
-        this.keys.addAll(data_with_items.keySet());
-        this.keys.remove("total");
-        this.keys.remove("orders_numbers");
+        if(data_with_items != null) {
+            this.keys.addAll(data_with_items.keySet());
+            this.keys.remove("total");
+            this.keys.remove("orders_numbers");
 
 //CHECK IF NULL
-        this.numbers_of_orders = (Map<String, Integer>) data_with_items.get("orders_numbers");
-        this.total = (Map<String, Integer>) data_with_items.get("total");
+            this.numbers_of_orders = (Map<String, Integer>) data_with_items.get("orders_numbers");
+            this.total = (Map<String, Integer>) data_with_items.get("total");
+        }
     }
 
     @NonNull

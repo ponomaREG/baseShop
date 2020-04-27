@@ -19,11 +19,7 @@ import com.test.baseshop.R;
 
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_basket#newInstance} factory method to
- * create an instance of this fragment.
- */
+//TODO:CHOOSE FRAGMENT
 public class fragment_basket extends Fragment implements Interfaces.View{
 
     private Interfaces.Presenter basket_presenter;

@@ -25,6 +25,7 @@
         android:textSize="24sp"
         android:gravity="bottom"
         android:hint="+7 (111) 111-11-11"
+        android:text="+7 ("
         android:inputType="phone"
         android:layout_width="215dp"
         android:layout_height="60dp"/>
@@ -112,7 +113,7 @@
 
 
     <TextView
-        android:id="@+id/login_link_register"
+        android:id="@+id/login_entry_as_anonymous"
         android:layout_centerHorizontal="true"
         android:textSize="15sp"
         android:textColor="@android:color/black"

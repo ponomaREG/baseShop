@@ -23,8 +23,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     fragment_menu_presenter(fragment_menu view){
         this.view = view;
         this.model = new fragment_menu_model();
-        SharedPreferences sh = Objects.requireNonNull(view.getContext()).getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
-        USER_ID = sh.getInt("USER_ID",0);
+        initPreferences(Objects.requireNonNull(view.getContext()));
     }
 
 
@@ -87,6 +86,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
 
     @Override
     public void tellModelToSetNewNumberOfItemsForOrder( int item_id, int new_count_of_items_for_order) {
+        if(USER_ID > 0)
         ((Interfaces.Model.Basket) model).sendNewNumberOfItemsForOrder(USER_ID,item_id,new_count_of_items_for_order);
     }
 
@@ -97,6 +97,13 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
 
     @Override
     public HashMap<Integer,Integer> tellModelToGetBasketOfItemsForOrder() {
+        if(USER_ID <= 0) return new HashMap<>();
         return ((Interfaces.Model.Basket) model).getBasketForUser(USER_ID);
+    }
+
+
+    private void initPreferences(Context context){
+        SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        USER_ID = sh.getInt("USER_ID",0);
     }
 }

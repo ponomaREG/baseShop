@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,6 +64,9 @@ public class fragment_info extends Fragment implements Interfaces.View{
         initOfclToEdittexts();
         initOclToCommitInEdittext();
 
+        initOclToButtonLogout();
+        initLongOclToButtonLogout();
+
         presenter.getUserInfo();
     }
 
@@ -107,6 +111,28 @@ public class fragment_info extends Fragment implements Interfaces.View{
     }
 
 
+    private void initOclToButtonLogout(){
+        Button button_logout = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_button_logout);
+        button_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Зажмите долго для потверждения выхода",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void initLongOclToButtonLogout(){
+        Button button_logout = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_button_logout);
+        button_logout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                presenter.clearPreferences(Objects.requireNonNull(getContext()));
+                Objects.requireNonNull(getActivity()).recreate();
+                return false;
+            }
+        });
+    }
+
     @Override
     public void showError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
@@ -141,4 +167,5 @@ public class fragment_info extends Fragment implements Interfaces.View{
         EditText phone_view = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_phone);
         phone_view.setText(phone);
     }
+
 }

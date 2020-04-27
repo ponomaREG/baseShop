@@ -19,5 +19,8 @@
     <string name="fragment_profile_section_info_email_title">Email</string>
     <string name="fragment_profile_section_info_email_hint">test@test.test</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

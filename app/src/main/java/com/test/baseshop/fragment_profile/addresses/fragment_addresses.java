@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import com.test.baseshop.R;
 
 import java.util.Objects;
-
+//TODO:ADD ADDRESS
 public class fragment_addresses extends Fragment implements Interfaces.View{
 
     private fragment_addresses_presenter presenter;

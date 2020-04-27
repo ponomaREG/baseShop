@@ -17,9 +17,19 @@
 
 
 
-    <color name="fragment_profile_section_background">#CCCCCC</color>
-    <color name="fragment_profile_section_background_pressed">#8C8A8A</color>
+    <color name="fragment_basket_button_for_order">#64e1dc</color>
+    <color name="fragment_basket_button_for_order_pressed">#55C6C1</color>
+
+
+
+    <color name="fragment_profile_fragment_info_button_logout">#64e1dc</color>
+    <color name="fragment_profile_fragment_info_button_logout_pressed">#55C6C1</color>
+
+
+    <color name="fragment_profile_section_background">#64e1dc</color>
+    <color name="fragment_profile_section_background_pressed">#55C6C1</color>
     <color name="fragment_profile_section_text">#000000</color>
+
 
 
 

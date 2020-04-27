@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class login extends AppCompatActivity implements Interfaces.View {
 
         initPresenter();
         initOclToButton();
+        initOclToButtonEntryAsAnonim();
 
         presenter.makeMaskToEditText();
     }
@@ -59,6 +61,16 @@ public class login extends AppCompatActivity implements Interfaces.View {
         findViewById(R.id.login_button).setOnClickListener(ocl);
     }
 
+    private void initOclToButtonEntryAsAnonim(){
+        TextView text_entry_as_anonim = findViewById(R.id.login_entry_as_anonymous);
+        text_entry_as_anonim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNextActivity();
+            }
+        });
+    }
+
     private void initEditTextListener(){
 
         TextWatcher watcher = new TextWatcher() {
@@ -74,21 +86,30 @@ public class login extends AppCompatActivity implements Interfaces.View {
                 EditText et_third = findViewById(R.id.login_code_thirdNumber);
                 EditText et_fourth = findViewById(R.id.login_code_fourthNumber);
 
-                if(et_first.getText().toString().length() == 1) et_second.requestFocus();
-                if(et_second.getText().toString().length() == 1) et_third.requestFocus();
-                if(et_third.getText().toString().length() == 1) et_fourth.requestFocus();
-                if(et_fourth.getText().toString().length() == 1) {
-                    //TODO:MAKE BUTTON CLEAR
+                if(s.length() == 1) {
+                    if (et_first.getText().toString().length() == 1) et_second.requestFocus();
+                    if (et_second.getText().toString().length() == 1) et_third.requestFocus();
+                    if (et_third.getText().toString().length() == 1) et_fourth.requestFocus();
+                    if (
+                            (et_fourth.getText().toString().length() == 1)
+                                    && (et_first.getText().toString().length() == 1)
+                                    && (et_second.getText().toString().length() == 1)
+                                    && (et_third.getText().toString().length() == 1)) {
 
-                    hideKeyboardAndClearFocus();
+                        //TODO:MAKE BUTTON CLEAR AND MAYBE OPTIMIZE
+                        hideKeyboardAndClearFocus();
+                        String code = String.format("%s%s%s%s",
+                                et_first.getText().toString(),
+                                et_second.getText().toString(),
+                                et_third.getText().toString(),
+                                et_fourth.getText().toString());
 
-                    String code = String.format("%s%s%s%s",
-                            et_first.getText().toString(),
-                            et_second.getText().toString(),
-                            et_third.getText().toString(),
-                            et_fourth.getText().toString());
-
-                    presenter.checkIsCorrectCode(code);
+                        presenter.checkIsCorrectCode(code);
+                    }
+                }else {
+                    if (et_fourth.getText().toString().length() == 0) et_third.requestFocus();
+                    if (et_third.getText().toString().length() == 0) et_second.requestFocus();
+                    if (et_second.getText().toString().length() == 0) et_first.requestFocus();
                 }
             }
 
@@ -236,6 +257,7 @@ public class login extends AppCompatActivity implements Interfaces.View {
         timer_AND_send_again_code.setClickable(false);
     }
 
+    @Deprecated
     @Override
     public void clearEditTextsWithCode() {
         EditText et_first = findViewById(R.id.login_code_firstNumber);

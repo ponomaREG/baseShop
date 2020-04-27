@@ -14,7 +14,6 @@ import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Objects;
 
 public class baseActivityWithFragments extends AppCompatActivity implements baseInterfaceMVP.View{
 

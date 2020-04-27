@@ -2,11 +2,13 @@ package com.test.baseshop;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.test.baseshop.fragment_basket.fragment_basket;
 import com.test.baseshop.fragment_menu.fragment_menu;
 import com.test.baseshop.fragment_profile.fragment_profile;
+import com.test.baseshop.anonim.fragment_anonim_basket;
 
 public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Presenter{
 
@@ -15,6 +17,11 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
     private fragment_basket basket;
     private fragment_menu menu;
     private fragment_profile profile;
+    private fragment_anonim_basket anonim;
+    private int USER_ID;
+
+
+
 
 
 
@@ -25,6 +32,9 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
         this.basket = fragment_basket.newInstance();
         this.menu = fragment_menu.newInstance();
         this.profile = fragment_profile.newInstance();
+        this.anonim = fragment_anonim_basket.newInstance();
+
+        initPreferences(context);
 
         main_view.showPage(this.menu);
 
@@ -39,13 +49,22 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
                 main_view.showPage(this.menu);
                 break;
             case R.id.menu_main_basket:
-                main_view.showPage(this.basket);
+                if(USER_ID == -1) main_view.showPage(this.anonim);
+                else main_view.showPage(this.basket);
                 break;
-            case R.id.menu_main_profile:
-                main_view.showPage(this.profile);
+            case R.id.menu_main_profile: //TODO:MAKE ANOTHER ANONIM FRAGMENT
+                if(USER_ID == -1) main_view.showPage(this.anonim);
+                else main_view.showPage(this.profile);
                 break;
         }
     }
+
+    private void initPreferences(Context context){
+        SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        USER_ID = sh.getInt("USER_ID",-1);
+        Log.d("USER,",USER_ID+"");
+    }
+
 
     @Override
     public void setIconBySexOfUser(Context context, MenuItem item) {

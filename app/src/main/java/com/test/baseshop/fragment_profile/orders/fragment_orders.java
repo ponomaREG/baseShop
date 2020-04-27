@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.test.baseshop.R;
 
 import java.util.Objects;
-
+//TODO:SHOW ADDRESS
 
 public class fragment_orders extends Fragment implements Interfaces.View{
 

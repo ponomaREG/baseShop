@@ -22,6 +22,7 @@ public interface Interfaces {
         void onCommitClick(android.view.View v, android.view.View parentView);
         void getUserInfo();
         void setImageBySexOfUser(Context context, ImageView user_icon);
+        void clearPreferences(Context context);
     }
 
 

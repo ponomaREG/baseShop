@@ -13,7 +13,7 @@
             android:layout_height="50dp"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="1dp"
+            android:padding="5dp"
             >
 
             <ImageView
@@ -36,7 +36,7 @@
             android:layout_marginStart="15dp"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="1dp"
+            android:padding="5dp"
             >
             <ImageView
                 android:layout_width="20dp"
@@ -55,7 +55,7 @@
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:orientation="vertical"
-            android:padding="1dp"
+            android:padding="5dp"
             android:gravity="center"
             >
             <ImageView

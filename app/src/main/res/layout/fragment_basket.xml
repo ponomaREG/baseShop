@@ -55,7 +55,7 @@
         android:textAllCaps="false"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/fragment_basket_button_for_order"
+        android:background="@drawable/fragment_basket_button_for_order_selector"
         android:text="Заказать"/>
 
 </RelativeLayout>

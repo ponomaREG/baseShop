@@ -79,6 +79,7 @@ public class login extends AppCompatActivity implements Interfaces.View {
                 if(et_third.getText().toString().length() == 1) et_fourth.requestFocus();
                 if(et_fourth.getText().toString().length() == 1) {
                     //TODO:MAKE BUTTON CLEAR
+
                     hideKeyboardAndClearFocus();
 
                     String code = String.format("%s%s%s%s",

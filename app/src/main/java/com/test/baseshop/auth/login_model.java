@@ -13,19 +13,33 @@ public class login_model implements Interfaces.Model{
 
     login_model(Interfaces.Presenter presenter){
         this.presenter = presenter;
+        this.json = new Json();
     }
 
     @Override
-    public int authUserByPhone(String phone) { //0 - error / <0 (*-1 = id) - doesnt exist / >0 - user
-        Map raw_map;
-        int user_id = 0;
+    public Map authUserByCode(String phone,String code) { //0 - error / <0 (*-1 = id) - doesnt exist / >0 - user
+        Map raw_map = null;
         try {
-            raw_map = json.jsonify_user_auth(phone);
+            raw_map = json.jsonify_user_auth(phone, code);
         }catch (Exception e){
             Log.d("ERROR","AUTH");
-            return user_id;
+            return raw_map;
         }
-        user_id = (int) (double) raw_map.get("status");
-        return user_id;
+        return raw_map;
+    }
+
+
+    @Override
+    public void authUserGenCode(String phone) {
+        Map raw_map =null;
+        try{
+            raw_map = json.jsonify_user_code(phone);
+        }catch (Exception e){
+            Log.d("ERROR","GEN CODE");
+        }
+        assert raw_map != null;
+        int status = (int) (double) raw_map.get("status");
+        Log.d("AUTH_STATUS_CODE",status+"");
+        Log.d("AUTH_CODE",String.valueOf(raw_map.get("code")));
     }
 }

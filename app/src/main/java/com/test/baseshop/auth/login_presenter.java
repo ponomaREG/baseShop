@@ -2,19 +2,18 @@ package com.test.baseshop.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.util.Log;
 
-import com.test.baseshop.R;
 import com.test.baseshop.auth.fill_info.BottomSheetFillInfo;
+
+import java.util.Map;
 
 import ru.tinkoff.decoro.MaskImpl;
 import ru.tinkoff.decoro.parser.PhoneNumberUnderscoreSlotsParser;
 import ru.tinkoff.decoro.watchers.FormatWatcher;
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher;
 
-public class login_presenter implements Interfaces.Presenter {
+public class login_presenter implements Interfaces.Presenter{
 
     private Interfaces.View view;
     private Interfaces.Model model;
@@ -42,20 +41,42 @@ public class login_presenter implements Interfaces.Presenter {
 
     @Override
     public void OnButtonClick(String input_phone) {
-        this.phone = input_phone;
         mask_phone.insertFront(input_phone);
-        int user_id_OR_status_of_query = model.authUserByPhone(input_phone);
-        user_id_OR_status_of_query = -1;
-        if(user_id_OR_status_of_query == 0){
-            view.showError();
-        }else if (user_id_OR_status_of_query == -1){
-            view.showSectionOfPhoneCode();
-        }else{
-            initPreferences(this.context, user_id_OR_status_of_query);
+        this.phone = mask_phone.toUnformattedString();
+        sendCode();
+        view.showSectionOfPhoneCode();
+        }
+
+    @Override
+    public void sendCode() {
+        model.authUserGenCode(this.phone);
+    }
+
+    @Override
+    public void checkIfUserAlreadyAuth() {
+        SharedPreferences sf = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        int USER_ID = sf.getInt("USER_ID",-1);
+        if(USER_ID != -1){
             view.startNextActivity();
         }
     }
 
+    @Override
+    public void checkIsCorrectCode(String code) {
+        Map result = model.authUserByCode(phone,code);
+        int status = (int) (double) result.get("status");
+        if(status != -1){
+            if(status == 0){
+                view.showOfferOfFillDesc(BottomSheetFillInfo.newInstance());
+            }else{
+                int user = (int) (double) result.get("user");
+                initPreferences(context,user);
+                view.startNextActivity();
+            }
+        }else{
+            view.showErrorIncorrectCode();
+        }
+    }
 
 
     private void initPreferences(Context context, int user_id){
@@ -63,7 +84,6 @@ public class login_presenter implements Interfaces.Presenter {
         SharedPreferences.Editor editor = sf.edit();
         editor.putInt("USER_ID",user_id);
         editor.apply();
-    }
-
+}
 
 }

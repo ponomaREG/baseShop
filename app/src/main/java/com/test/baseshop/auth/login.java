@@ -42,6 +42,7 @@ public class login extends AppCompatActivity implements Interfaces.View {
 
     private void initPresenter(){
         this.presenter = new login_presenter(this);
+        this.presenter.checkIfUserAlreadyAuth();
     }
 
 
@@ -78,6 +79,14 @@ public class login extends AppCompatActivity implements Interfaces.View {
                 if(et_fourth.getText().toString().length() == 1) {
                     //TODO:MAKE BUTTON CLEAR
                     hideKeyboardAndClearFocus();
+
+                    String code = String.format("%s%s%s%s",
+                            et_first.getText().toString(),
+                            et_second.getText().toString(),
+                            et_third.getText().toString(),
+                            et_fourth.getText().toString());
+
+                    presenter.checkIsCorrectCode(code);
                 }
             }
 
@@ -116,6 +125,11 @@ public class login extends AppCompatActivity implements Interfaces.View {
     public void showError() {
         String message = "Произошла непредвиденная ошибка. Пожалуйста , попробуйте позже";
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showErrorIncorrectCode() {
+        Toast.makeText(this,"Неправильный код",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -169,6 +183,7 @@ public class login extends AppCompatActivity implements Interfaces.View {
             @Override
             public void onClick(View v) {
                 initTimerToAgainSendCode();
+                presenter.sendCode();
             }
         });
     }

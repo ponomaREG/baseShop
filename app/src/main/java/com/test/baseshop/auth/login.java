@@ -209,7 +209,6 @@ public class login extends AppCompatActivity implements Interfaces.View {
     }
 
 
-
 //TODO:OPTIMIZE
     @Override
     public void setSendAgainButton() {

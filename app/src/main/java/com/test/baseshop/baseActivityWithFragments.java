@@ -62,6 +62,7 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
 
     private void setListenerToNavigationView(){
         BottomNavigationView bnv = findViewById(R.id.bottom_navigation);
+        main_presenter.setIconBySexOfUser(this,bnv.getMenu().findItem(R.id.menu_main_profile));
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -71,6 +72,7 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
             }
         });
     }
+
 
 
 

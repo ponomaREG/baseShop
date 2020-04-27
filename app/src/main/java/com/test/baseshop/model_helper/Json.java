@@ -26,6 +26,7 @@ public class Json {
             GET_ADDRESSES_API = "http://161.35.108.15:8000/addresses/get?user=%s",
             SET_USER_INFO = "http://161.35.108.15:8000/user/update?user=%s&%s=%s",
             GET_USER_INFO = "http://161.35.108.15:8000/user/get?user=%s",
+            ADD_USER = "http://161.35.108.15:8000/user/add?first_name=%s&phone=%s&email=%s&sex=%s",
             AUTH_USER = "http://161.35.108.15:8000/user/auth?phone=%s&code=%s",
             AUTH_GEN_CODE = "http://161.35.108.15:8000/user/auth_generate?phone=%s",
             SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s";
@@ -113,6 +114,13 @@ public class Json {
         String result = getUserInfo.execute(String.format(GET_USER_INFO,user_id)).get();
         Gson g = new Gson();
         return g.fromJson(result,Map.class);
+    }
+
+    public Map jsonify_user_add(String name,String phone,String email,String sex) throws ExecutionException, InterruptedException {
+        GetDataFromBackground addUserQuery = new GetDataFromBackground();
+        String s = addUserQuery.execute(String.format(ADD_USER,name,phone,email,sex)).get();
+        Gson g = new Gson();
+        return g.fromJson(s,Map.class);
     }
 
     public int jsonify_user_update(int user_id, String key, String value){

@@ -2,6 +2,7 @@ package com.test.baseshop;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.MenuItem;
 
 import com.test.baseshop.fragment_basket.fragment_basket;
 import com.test.baseshop.fragment_menu.fragment_menu;
@@ -44,6 +45,13 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
                 main_view.showPage(this.profile);
                 break;
         }
+    }
+
+    @Override
+    public void setIconBySexOfUser(Context context, MenuItem item) {
+        SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        int sex_of_user = sh.getInt("USER_SEX",-1);
+        if(sex_of_user == 0) item.setIcon(context.getDrawable(R.drawable.bnv_menu_icon_profile_woman));
     }
 
 }

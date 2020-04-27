@@ -50,7 +50,10 @@ public class fragment_info extends Fragment implements Interfaces.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile_fragment_info,container,false);
+        View parent = inflater.inflate(R.layout.fragment_profile_fragment_info,container,false);
+        ImageView user_icon = parent.findViewById(R.id.fragment_profile_fragment_info_usericon);
+        presenter.setImageBySexOfUser(Objects.requireNonNull(getContext()),user_icon);
+        return parent;
     }
 
 

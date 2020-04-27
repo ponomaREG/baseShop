@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.test.baseshop.R;
 
@@ -90,6 +91,14 @@ public class fragment_info_presenter implements Interfaces.Presenter {
         view.setFirstName(user_info.get("first_name"));
         view.setEmail(user_info.get("email"));
         view.setPhone(user_info.get("phone"));
+    }
+
+    @Override
+    public void setImageBySexOfUser(Context context, ImageView user_icon) {
+        SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
+        int sex_of_user = sh.getInt("USER_SEX",1);
+        if(sex_of_user == 0){user_icon.setImageDrawable(context.getDrawable(R.drawable.fragment_profile_fragment_info_icon_woman));}
+        else{user_icon.setImageDrawable(context.getDrawable(R.drawable.fragment_profile_fragment_info_icon_man));}
     }
 
 

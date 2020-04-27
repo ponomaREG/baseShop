@@ -1,5 +1,8 @@
 package com.test.baseshop.fragment_profile.info;
 
+import android.content.Context;
+import android.widget.ImageView;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +21,7 @@ public interface Interfaces {
         void onFocusChanged(android.view.View v , boolean hasFocus, android.view.View parentView);
         void onCommitClick(android.view.View v, android.view.View parentView);
         void getUserInfo();
+        void setImageBySexOfUser(Context context, ImageView user_icon);
     }
 
 

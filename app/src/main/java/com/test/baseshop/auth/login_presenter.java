@@ -67,7 +67,7 @@ public class login_presenter implements Interfaces.Presenter{
         int status = (int) (double) result.get("status");
         if(status != -1){
             if(status == 0){
-                view.showOfferOfFillDesc(BottomSheetFillInfo.newInstance());
+                view.showOfferOfFillDesc(BottomSheetFillInfo.newInstance(this.phone));
             }else{
                 int user = (int) (double) result.get("user");
                 initPreferences(context,user);

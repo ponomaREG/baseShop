@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.test.baseshop.R;
+import com.test.baseshop.auth.login;
 
 import java.util.Objects;
 
@@ -25,17 +26,23 @@ public class BottomSheetFillInfo extends BottomSheetDialogFragment implements In
 
     private fill_info_presenter presenter;
 
+    private String phone;
+
     public static final String TAG = "ActionBottomDialog";
 
-    public static BottomSheetFillInfo newInstance() {
-
-        return new BottomSheetFillInfo();
+    public static BottomSheetFillInfo newInstance(String phone) {
+        BottomSheetFillInfo fragment = new BottomSheetFillInfo();
+        Bundle args = new Bundle();
+        args.putString("phone",phone);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        if(getArguments() != null) this.phone = (String) getArguments().get("phone");
         return inflater.inflate(R.layout.login_fill_info, container, false);
     }
 
@@ -47,7 +54,7 @@ public class BottomSheetFillInfo extends BottomSheetDialogFragment implements In
 
 
     private void initPresenter(){
-        this.presenter =new fill_info_presenter(this);
+        this.presenter =new fill_info_presenter(this, phone);
     }
 
 
@@ -82,5 +89,15 @@ public class BottomSheetFillInfo extends BottomSheetDialogFragment implements In
     @Override
     public void showErrorEmptyName() {
         Toast.makeText(getContext(),"Заполните поле имени",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showErrorUnknown() {
+        Toast.makeText(getContext(),"Произошла непонятная нам ошибка. Попробуйте позже. Извините(",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void startNextActivity() {
+        ((login) Objects.requireNonNull(getActivity())).startNextActivity();
     }
 }

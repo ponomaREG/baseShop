@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/fragment_anonim_basket_icon_sign"
-        android:layout_marginTop="60dp"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/fragment_anonim_basket_icon_sign"
         />

@@ -29,6 +29,7 @@ public class Json {
             ADD_USER = "http://161.35.108.15:8000/user/add?first_name=%s&phone=%s&email=%s&sex=%s",
             AUTH_USER = "http://161.35.108.15:8000/user/auth?phone=%s&code=%s",
             AUTH_GEN_CODE = "http://161.35.108.15:8000/user/auth_generate?phone=%s",
+            ADD_ADDRESS = "http://161.35.108.15:8000/addresses/add?user=%s&corpus=%s&street=%s&house=%s&porch=%s&flat=%s&floor=%s&title=%s&district=%s",
             SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s";
 
 
@@ -107,6 +108,22 @@ public class Json {
         String result = getAddresses.execute(String.format(GET_ADDRESSES_API,user_id)).get();
         Gson g = new Gson();
         return g.fromJson(result, Map.class);
+    }
+
+//ADD_ADDRESS = "http://161.35.108.15:8000/addresses/add?user=%s&corpus=%s&street=%s&house=%s&porch=%s&flat=%s&floor=%s&title=%s&district=%s",
+    public void jsonify_addresses_add(
+            int user_id, String corpus, String street,
+            String house, String porch, String flat,
+            String floor,String title,String district
+    ){
+        GetDataFromBackground addAddress = new GetDataFromBackground();
+        addAddress.execute(String.format(
+                ADD_ADDRESS,
+                user_id, corpus, street,
+                house, porch, flat,
+                floor, title, district
+        ));
+
     }
 
     public Map jsonify_user(int user_id) throws ExecutionException, InterruptedException {

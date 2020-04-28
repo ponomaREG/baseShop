@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/fragment_profile_fragment_addresses_add_new_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:text="Добавление нового адреса"
+        android:layout_alignParentTop="true"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_title_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_add_new_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="Название"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Квартира оксаны"/>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_district_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_title_of_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="Район"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Центральный"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_street_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_district_of_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="Улица*"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12 курская"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_house_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_street_of_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:text="Дом*"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:textAlignment="center"
+            android:maxLength="4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="51"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_corpus_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_street_of_address"
+        android:layout_toEndOf="@id/fragment_profile_fragment_addresses_house_of_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:text="Корпус"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:textAlignment="center"
+            android:maxLength="3"
+
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="А1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_porch_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_house_of_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="Подъезд"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_floor_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_porch_of_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="Этаж"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_profile_fragment_addresses_flat_of_address"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/fragment_profile_fragment_addresses_floor_of_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="Квартира"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="218"/>
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

@@ -112,16 +112,15 @@ public class Json {
 
 //ADD_ADDRESS = "http://161.35.108.15:8000/addresses/add?user=%s&corpus=%s&street=%s&house=%s&porch=%s&flat=%s&floor=%s&title=%s&district=%s",
     public void jsonify_addresses_add(
-            int user_id, String corpus, String street,
-            String house, String porch, String flat,
-            String floor,String title,String district
+            int user_id,
+            Address address
     ){
         GetDataFromBackground addAddress = new GetDataFromBackground();
         addAddress.execute(String.format(
                 ADD_ADDRESS,
-                user_id, corpus, street,
-                house, porch, flat,
-                floor, title, district
+                user_id, address.getCorpus(), address.getStreet(),
+                address.getHouse(), address.getPorch(), address.getFlat(),
+                address.getFloor(), address.getTitle(), address.getDistrict()
         ));
 
     }
@@ -159,6 +158,7 @@ public class Json {
         Gson g = new Gson();
         return g.fromJson(s,Map.class);
     }
+
 
 }
 

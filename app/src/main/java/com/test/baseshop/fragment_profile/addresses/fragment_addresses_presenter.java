@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.baseshop.R;
+import com.test.baseshop.fragment_profile.addresses.add_new.BottomSheetAddNewAddress;
 import com.test.baseshop.model_helper.Address;
 
 import java.util.List;
@@ -49,10 +50,21 @@ public class fragment_addresses_presenter implements Interfaces.Presenter{
             floor.setText(address.getFloor());
             flat.setText(address.getFlat());
 
-            view.addNewCellOfAddress(address_view);
+            view.addNewCellOfAddressView(address_view);
         }
         View address_view_add = inflater.inflate(R.layout.fragment_profile_fragment_addresses_plus,parent,false);
-        view.addNewCellOfAddress(address_view_add);
+        final fragment_addresses_presenter fragment_addresses_presenter = this;
+        address_view_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.showBottomSheetAddNewAddress(BottomSheetAddNewAddress.newInstance(fragment_addresses_presenter));
+            }
+        });
+        view.addNewCellOfAddressView(address_view_add);
 
+    }
+
+    public void tellViewToUpdateSelfBecauseNewAddressIsAdded(){
+        view.updateCurrentAddressesIfNewIsAdded();
     }
 }

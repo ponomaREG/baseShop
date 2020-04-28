@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.test.baseshop.R;
+import com.test.baseshop.fragment_profile.addresses.add_new.BottomSheetAddNewAddress;
 
 import java.util.Objects;
 //TODO:ADD ADDRESS
@@ -51,9 +52,27 @@ public class fragment_addresses extends Fragment implements Interfaces.View{
     }
 
 
+
     @Override
-    public void addNewCellOfAddress(View v) {
+    public void addNewCellOfAddressView(View v) {
         LinearLayout container_ll = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_addresses_container);
         container_ll.addView(v);
+    }
+
+    @Override
+    public void showBottomSheetAddNewAddress(BottomSheetAddNewAddress bottomSheetAddNewAddress) {
+        bottomSheetAddNewAddress.setCancelable(true);
+        assert getFragmentManager() != null;
+        bottomSheetAddNewAddress.show(getFragmentManager(),BottomSheetAddNewAddress.TAG);
+    }
+
+    @Override
+    public void updateCurrentAddressesIfNewIsAdded(){
+        assert getFragmentManager() != null;
+        getFragmentManager()
+                .beginTransaction()
+                .detach(fragment_addresses.this)
+                .attach(fragment_addresses.this)
+                .commit();
     }
 }

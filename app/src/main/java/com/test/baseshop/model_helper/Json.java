@@ -115,6 +115,7 @@ public class Json {
             int user_id,
             Address address
     ){
+        Log.d("EXECUTE","MODEL");
         GetDataFromBackground addAddress = new GetDataFromBackground();
         addAddress.execute(String.format(
                 ADD_ADDRESS,

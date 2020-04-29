@@ -53,18 +53,13 @@ public class fragment_addresses_presenter implements Interfaces.Presenter{
             view.addNewCellOfAddressView(address_view);
         }
         View address_view_add = inflater.inflate(R.layout.fragment_profile_fragment_addresses_plus,parent,false);
-        final fragment_addresses_presenter fragment_addresses_presenter = this;
         address_view_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                view.showBottomSheetAddNewAddress(BottomSheetAddNewAddress.newInstance(fragment_addresses_presenter));
+                view.showBottomSheetAddNewAddress(BottomSheetAddNewAddress.newInstance());
             }
         });
         view.addNewCellOfAddressView(address_view_add);
 
-    }
-
-    public void tellViewToUpdateSelfBecauseNewAddressIsAdded(){
-        view.updateCurrentAddressesIfNewIsAdded();
     }
 }

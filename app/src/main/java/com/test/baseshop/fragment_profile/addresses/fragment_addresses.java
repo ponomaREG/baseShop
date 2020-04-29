@@ -63,16 +63,13 @@ public class fragment_addresses extends Fragment implements Interfaces.View{
     public void showBottomSheetAddNewAddress(BottomSheetAddNewAddress bottomSheetAddNewAddress) {
         bottomSheetAddNewAddress.setCancelable(true);
         assert getFragmentManager() != null;
-        bottomSheetAddNewAddress.show(getFragmentManager(),BottomSheetAddNewAddress.TAG);
+        bottomSheetAddNewAddress.show(getChildFragmentManager(),BottomSheetAddNewAddress.TAG);
     }
 
     @Override
     public void updateCurrentAddressesIfNewIsAdded(){
-        assert getFragmentManager() != null;
-        getFragmentManager()
-                .beginTransaction()
-                .detach(fragment_addresses.this)
-                .attach(fragment_addresses.this)
-                .commit();
+        LinearLayout container_addresses = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_addresses_container);
+        container_addresses.removeAllViews();
+        presenter.getAddresses(getLayoutInflater(),container_addresses);
     }
 }

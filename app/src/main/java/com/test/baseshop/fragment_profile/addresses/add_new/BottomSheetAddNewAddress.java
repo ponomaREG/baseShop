@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +17,12 @@ import android.widget.Toast;
 
 import com.test.baseshop.R;
 import com.test.baseshop.fragment_profile.addresses.fragment_addresses;
-import com.test.baseshop.fragment_profile.addresses.fragment_addresses_presenter;
 
-import java.util.Objects;
 
 
 public class BottomSheetAddNewAddress extends BottomSheetDialogFragment implements Interfaces.View{
 
     public static String TAG = "ActionAddNewAddress";
-
-    private fragment_addresses_presenter parent_presenter;
 
     private Interfaces.Presenter presenter;
 
@@ -98,7 +94,12 @@ public class BottomSheetAddNewAddress extends BottomSheetDialogFragment implemen
 
     @Override
     public void hideThisBottomSheet() {
-        getActivity()
+        try{
+            assert getParentFragment() != null;
+            ((fragment_addresses) getParentFragment()).updateCurrentAddressesIfNewIsAdded();
+        }catch (Exception e){
+            Log.d("PARENT FRAGMENT","WHAT THE FUCK");
+        }
         this.dismiss();
     }
 

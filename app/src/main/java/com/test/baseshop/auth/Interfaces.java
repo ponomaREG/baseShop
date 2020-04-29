@@ -29,6 +29,7 @@ public interface Interfaces {
            void sendCode();
            void checkIfUserAlreadyAuth();
            void checkIsCorrectCode(String code);
+           void showCode(String code);//TODO:REMOVE
 
     }
 

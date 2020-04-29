@@ -41,5 +41,6 @@ public class login_model implements Interfaces.Model{
         int status = (int) (double) raw_map.get("status");
         Log.d("AUTH_STATUS_CODE",status+"");
         Log.d("AUTH_CODE",String.valueOf(raw_map.get("code")));
+        presenter.showCode(String.valueOf(raw_map.get("code")));
     }
 }

@@ -2,6 +2,7 @@ package com.test.baseshop.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.test.baseshop.auth.fill_info.BottomSheetFillInfo;
 
@@ -76,6 +77,11 @@ public class login_presenter implements Interfaces.Presenter{
         }else{
             view.showErrorIncorrectCode();
         }
+    }
+
+    @Override
+    public void showCode(String code) {
+        Toast.makeText(context,code,Toast.LENGTH_SHORT).show();
     }
 
 

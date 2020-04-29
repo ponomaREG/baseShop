@@ -3,6 +3,7 @@ package com.test.baseshop.fragment_basket;
 
 import android.content.Context;
 
+import com.test.baseshop.fragment_basket.offer_order.BottomSheetOfferOrder;
 import com.test.baseshop.fragment_profile.orders.RecyclerViewAdapterOrders;
 import com.test.baseshop.model_helper.Item;
 
@@ -21,6 +22,7 @@ public interface Interfaces {
         void updateRecycleView();
         void clearBasket();
         void showError(String message);
+        void showOfferOfOrder(BottomSheetOfferOrder bottomSheetOfferOrder);
     }
 
     interface Presenter {
@@ -46,7 +48,7 @@ public interface Interfaces {
         interface Basket {
             List<Item> getDataOFBasketInfoRemote(int user_id);
             void sendNewNumberOfItemsForOrder(int user_id, int item_id, int count_of_items_for_order);
-            void sendThatUserWantToMakeOrder(int user_id);
+//            void sendThatUserWantToMakeOrder(int user_id);
         }
 
         interface Photo {

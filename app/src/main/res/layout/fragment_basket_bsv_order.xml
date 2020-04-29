@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/fragment_basket_bsv_title"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Заказ"
+        android:textSize="28sp"
+        android:textColor="@android:color/black"
+        />
+
+    <TextView
+        android:id="@+id/fragment_basket_bsv_container_addresses_title"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/fragment_basket_bsv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выберите адрес"/>
+
+    <HorizontalScrollView
+        android:id="@+id/fragment_basket_bsv_hsv_container"
+        android:layout_below="@+id/fragment_basket_bsv_container_addresses_title"
+        android:layout_marginTop="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/fragment_basket_bsv_container_addresses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/fragment_basket_bsv_persons_title"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/fragment_basket_bsv_hsv_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Количество персон:"
+            />
+
+        <ImageView
+            android:background="@drawable/fragment_menu_rv_item_icons"
+            android:padding="5dp"
+            android:src="@drawable/more"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_gravity="center"
+            android:text="1"
+            android:layout_margin="3dp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:background="@drawable/fragment_menu_rv_item_icons"
+            android:padding="5dp"
+            android:src="@drawable/minus"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment_basket_bsv_desc_title"
+        android:layout_marginTop="5dp"
+        android:text="Особые замечания"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_basket_bsv_persons_title"
+        />
+
+    <EditText
+        android:id="@+id/fragment_basket_bsv_desc_et"
+        android:layout_below="@id/fragment_basket_bsv_desc_title"
+        android:hint="Код от домофона:1337"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:padding="10dp"
+        android:text="Подтвердить заказ"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/fragment_basket_bsv_desc_et"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fragment_basket_button_for_order"/>
+
+</RelativeLayout>

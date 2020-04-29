@@ -30,7 +30,7 @@ public class Json {
             AUTH_USER = "http://161.35.108.15:8000/user/auth?phone=%s&code=%s",
             AUTH_GEN_CODE = "http://161.35.108.15:8000/user/auth_generate?phone=%s",
             ADD_ADDRESS = "http://161.35.108.15:8000/addresses/add?user=%s&corpus=%s&street=%s&house=%s&porch=%s&flat=%s&floor=%s&title=%s&district=%s",
-            SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s";
+            SET_NEW_ORDER_API = "http://161.35.108.15:8000/orders/add?user=%s&address=%s";
 
 
     private Json instance;
@@ -98,9 +98,10 @@ public class Json {
         return g.fromJson(result_of_query,Map.class);
     }
 
-    public void jsonify_orders_add(int user_id){
+    //TODO:MAKE GET STATUS
+    public void jsonify_orders_add(int user_id, int address_id){
         GetDataFromBackground makeQuery = new GetDataFromBackground();
-        makeQuery.execute(String.format(SET_NEW_ORDER_API,user_id));
+        makeQuery.execute(String.format(SET_NEW_ORDER_API,user_id, address_id));
     }
 
     public Map jsonify_addresses(int user_id) throws ExecutionException, InterruptedException {

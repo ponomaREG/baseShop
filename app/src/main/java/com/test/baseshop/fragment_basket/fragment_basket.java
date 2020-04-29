@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.test.baseshop.R;
+import com.test.baseshop.fragment_basket.offer_order.BottomSheetOfferOrder;
 
 import java.util.Objects;
 
@@ -139,6 +140,13 @@ public class fragment_basket extends Fragment implements Interfaces.View{
     @Override
     public void showError(String message) {
         Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showOfferOfOrder(BottomSheetOfferOrder bottomSheetOfferOrder) {
+        bottomSheetOfferOrder.setCancelable(true);
+        assert getFragmentManager() != null;
+        bottomSheetOfferOrder.show(getChildFragmentManager(),BottomSheetOfferOrder.TAG);
     }
 
 

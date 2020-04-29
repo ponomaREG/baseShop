@@ -2,8 +2,8 @@ package com.test.baseshop.fragment_basket;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
+import com.test.baseshop.fragment_basket.offer_order.BottomSheetOfferOrder;
 import com.test.baseshop.model_helper.Item;
 
 import java.util.List;
@@ -26,9 +26,10 @@ public class fragment_basket_presenter implements Interfaces.Presenter,Interface
     @Override
     public void OnOrderButtonClick(int size_of_adapter_items) {
         if(size_of_adapter_items > 0) {
-            model.sendThatUserWantToMakeOrder(USER_ID);
-            view.clearBasket();
-            view.updateRecycleView();
+            view.showOfferOfOrder(BottomSheetOfferOrder.newInstance());
+//            model.sendThatUserWantToMakeOrder(USER_ID);
+//            view.clearBasket();
+//            view.updateRecycleView();
         }else {
             String message_error = "Но вы же не можете заказать ничего";
             view.showError(message_error);

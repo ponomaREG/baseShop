@@ -30,11 +30,15 @@ public class fragment_orders_model implements Interfaces.Model{
         hashMap_of_result.put("total", raw_result.get("total"));
         hashMap_of_result.put("orders_numbers",raw_result.get("orders_numbers"));
         for(Object key:raw_result.keySet()){
-            if(!(key).equals("total") &&!(key).equals("orders_numbers")) {
+//            raw_result.remove("desc_order"); // TODO:FIX
+//            raw_result.remove("desc_order");
+            if(!(key).equals("total") &&!(key).equals("orders_numbers")&&!(key).equals("desc_order")&&!(key).equals("persons")&&!(key).equals("status")) {
                 Map item_map = (Map) raw_result.get(key);
-                List<Item> items = new ArrayList<>();
+
                 assert item_map != null;
+                List<Item> items = new ArrayList<>();
                 for(Object key_item:item_map.keySet()) {
+                    Log.d("KEY", (String) key);
                     Map item = (Map) item_map.get(key_item);
                     Item new_lot_in_previously_orders = new Item();
                     assert item != null;

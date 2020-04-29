@@ -59,6 +59,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"/>
         <TextView
+            android:id="@+id/fragment_basket_bsv_persons"
             android:layout_gravity="center"
             android:text="1"
             android:layout_margin="3dp"
@@ -93,6 +94,7 @@
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/fragment_basket_bsv_button_for_order"
         android:padding="10dp"
         android:text="Подтвердить заказ"
         android:textAllCaps="false"

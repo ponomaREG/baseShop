@@ -1,12 +1,9 @@
 package com.test.baseshop.fragment_basket.offer_order;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.test.baseshop.model_helper.Address;
 
-import java.util.List;
 import java.util.Map;
 
 public interface Interfaces {
@@ -18,16 +15,18 @@ public interface Interfaces {
         void clearBasket();
         void showDescOfOfferThatUserCanCheckStatusOfOrderInAnotherSection();
         void addNewAddressCellInContainer(android.view.View view);
+        void setButtonForOrderDisabled();
+        void dismissBSV();
     }
 
     interface Presenter{
         void OnAddressClick(android.view.View v);
-        void OnButtonOrderClick();
+        void OnButtonOrderClick(String persons, String desc);
         void getAddresses(LayoutInflater inflater, ViewGroup container);
     }
 
     interface Model{
-        Map sendOrder(int user_id, int address_title);
+        Map sendOrder(int user_id, int address_id, String persons, String desc);
         Map getAddressesForUser(int user_id);
     }
 }

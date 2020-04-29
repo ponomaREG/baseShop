@@ -8,10 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.baseshop.R;
-import com.test.baseshop.model_helper.Address;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -40,11 +37,12 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
     }
 
     @Override
-    public void OnButtonOrderClick() {
+    public void OnButtonOrderClick(String persons, String desc) {
         if(current_address != null){
-            model.sendOrder(USER_ID,current_address_id);
+            model.sendOrder(USER_ID,current_address_id, persons, desc);
             view.clearBasket();
             view.showDescOfOfferThatUserCanCheckStatusOfOrderInAnotherSection();
+            view.dismissBSV();
         }else{
             view.showErrorEmptyAddress();
         }
@@ -58,7 +56,10 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
             return;
         }
         int count_address = (int) (double) raw_result.get("count");
-        if(count_address == 0) view.showErrorZeroAddresses();
+        if(count_address == 0) {
+            view.showErrorZeroAddresses();
+            view.setButtonForOrderDisabled();
+        }
         else{
             raw_result = (Map) raw_result.get("data");
             assert raw_result != null;

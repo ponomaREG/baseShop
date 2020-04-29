@@ -1,12 +1,8 @@
 package com.test.baseshop.fragment_basket.offer_order;
 
-import com.test.baseshop.model_helper.Address;
 import com.test.baseshop.model_helper.Json;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 public class bsv_offer_order_model implements Interfaces.Model {
 
@@ -19,9 +15,9 @@ public class bsv_offer_order_model implements Interfaces.Model {
     }
 
     @Override
-    public Map sendOrder(int user_id, int address_id) {
+    public Map sendOrder(int user_id, int address_id, String persons, String desc) {
         Map raw_result = null;
-
+        json.jsonify_orders_add(user_id,address_id,persons,desc);
         return raw_result;
     }
 

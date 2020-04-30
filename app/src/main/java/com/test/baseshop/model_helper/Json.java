@@ -99,7 +99,7 @@ public class Json {
     }
 
     //TODO:MAKE GET STATUS
-    public void jsonify_orders_add(int user_id, int address_id, String persons , String desc){
+    public void jsonify_orders_add(int user_id, int address_id, int persons , String desc){
         GetDataFromBackground makeQuery = new GetDataFromBackground();
         makeQuery.execute(String.format(SET_NEW_ORDER_API,user_id, address_id, persons, desc));
     }

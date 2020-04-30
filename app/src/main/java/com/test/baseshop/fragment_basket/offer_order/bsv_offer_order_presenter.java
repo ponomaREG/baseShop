@@ -14,10 +14,14 @@ import java.util.Objects;
 
 public class bsv_offer_order_presenter implements Interfaces.Presenter{
 
+    private final int MAX_PERSONS = 4;
+    private final int MIN_PERSONS = 1;
+
     private Interfaces.View view;
     private Interfaces.Model model;
     private View current_address;
     private int current_address_id;
+    private int persons = MIN_PERSONS;
 
     private int USER_ID;
 
@@ -25,6 +29,7 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
         this.view = view;
         this.model = new bsv_offer_order_model(this);
         initPreferces(Objects.requireNonNull(view.getContext()));
+        initStartPersons();
     }
 
 
@@ -37,7 +42,7 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
     }
 
     @Override
-    public void OnButtonOrderClick(String persons, String desc) {
+    public void OnButtonOrderClick( String desc) {
         if(current_address != null){
             model.sendOrder(USER_ID,current_address_id, persons, desc);
             view.clearBasket();
@@ -45,6 +50,22 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
             view.dismissBSV();
         }else{
             view.showErrorEmptyAddress();
+        }
+    }
+
+    @Override
+    public void OnButtonPersonsPlusClick() {
+        if(persons == MAX_PERSONS) view.showErrorUserWantsUpperThanMaxPersons();
+        else persons++;
+        view.showNewPersonsNumber(persons);
+    }
+
+    @Override
+    public void OnButtonPersonsMinusClick() {
+        if(persons == MIN_PERSONS) view.showErrorUserWantsZeroPersons();
+        else {
+            persons--;
+            view.showNewPersonsNumber(persons);
         }
     }
 
@@ -82,6 +103,11 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
         }
     }
 
+
+
+    private void initStartPersons(){
+        view.showNewPersonsNumber(persons);
+    }
 
     private void initPreferces(Context context){
         SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);

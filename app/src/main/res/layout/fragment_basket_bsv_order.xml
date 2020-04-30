@@ -51,13 +51,14 @@
             />
 
         <ImageView
+            android:id="@+id/fragment_basket_bsv_persons_plus"
             android:background="@drawable/fragment_menu_rv_item_icons"
             android:padding="5dp"
             android:src="@drawable/more"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
         <TextView
             android:id="@+id/fragment_basket_bsv_persons"
             android:layout_gravity="center"
@@ -68,13 +69,14 @@
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:id="@+id/fragment_basket_bsv_persons_minus"
             android:background="@drawable/fragment_menu_rv_item_icons"
             android:padding="5dp"
             android:src="@drawable/minus"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
     </LinearLayout>
 
     <TextView

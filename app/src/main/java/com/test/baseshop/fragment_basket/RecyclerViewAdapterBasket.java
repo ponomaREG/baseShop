@@ -37,6 +37,7 @@ public class RecyclerViewAdapterBasket extends RecyclerView.Adapter<RecyclerView
         this.presenter_to_model = (Interfaces.Presenter.ConnectionBetweenModelAndRecyclerList) presenter;
     }
 
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,6 +47,7 @@ public class RecyclerViewAdapterBasket extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+
         final Item current_item = items.get(position);
 
         holder.item_title.setText(current_item.getTitle());

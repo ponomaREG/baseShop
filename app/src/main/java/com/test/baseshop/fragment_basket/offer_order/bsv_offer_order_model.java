@@ -15,7 +15,7 @@ public class bsv_offer_order_model implements Interfaces.Model {
     }
 
     @Override
-    public Map sendOrder(int user_id, int address_id, String persons, String desc) {
+    public Map sendOrder(int user_id, int address_id, int persons, String desc) {
         Map raw_result = null;
         json.jsonify_orders_add(user_id,address_id,persons,desc);
         return raw_result;

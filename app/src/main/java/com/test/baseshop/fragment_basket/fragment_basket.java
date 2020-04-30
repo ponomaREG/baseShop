@@ -135,6 +135,8 @@ public class fragment_basket extends Fragment implements Interfaces.View{
     @Override
     public void clearBasket() {
         this.adapter.getItems().clear();
+
+        setNewTotalSummOfItemsForOrder(0);
     }
 
     @Override

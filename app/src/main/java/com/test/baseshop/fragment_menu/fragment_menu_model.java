@@ -8,6 +8,7 @@ import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
 import com.test.baseshop.model_helper.PhotoDownloader;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
 
     @Override
     public int[] getSections() {
-        return new int[]{1,2,3,4,5,6,8};
+        return new int[]{1,2,3,4,5,6,7,8,9,10};
     }
 
     @Override

@@ -29,8 +29,7 @@ public class fragment_orders extends Fragment implements Interfaces.View{
 
     // TODO: Rename and change types and number of parameters
     public static fragment_orders newInstance(String param1, String param2) {
-        fragment_orders fragment = new fragment_orders();
-        return fragment;
+        return new fragment_orders();
     }
 
     @Override

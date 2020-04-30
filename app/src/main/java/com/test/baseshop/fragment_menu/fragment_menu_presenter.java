@@ -18,7 +18,9 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     private int USER_ID;
 
     static final int ALL = 1;
-    private static final int SUSHI = 2, PIZZA = 3, BURGERS = 5, DRINKS = 6, WOK = 4, SETS = 8;
+    private static final int  SALMON = 2,
+            TROUT = 3, PIKE = 4, TUNA = 5,
+            LOBSTERS = 6, OYSTERS = 7, MUSSELS = 8,CARP = 9,COMBO =10;
 
     fragment_menu_presenter(fragment_menu view){
         this.view = view;
@@ -53,18 +55,24 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
         switch(code){
             case fragment_menu_presenter.ALL:
                 return "Все";
-            case fragment_menu_presenter.SUSHI:
-                return "Роллы";
-            case fragment_menu_presenter.PIZZA:
-                return "Пицца";
-            case fragment_menu_presenter.WOK:
-                return "Воки";
-            case fragment_menu_presenter.BURGERS:
-                return "Бургеры";
-            case fragment_menu_presenter.DRINKS:
-                return "Напитки";
-            case fragment_menu_presenter.SETS:
-                return "Сеты";
+            case fragment_menu_presenter.SALMON:
+                return "Лосось";
+            case fragment_menu_presenter.CARP:
+                return "Карп";
+            case fragment_menu_presenter.TUNA:
+                return "Тунец";
+            case fragment_menu_presenter.TROUT:
+                return "Форель";
+            case fragment_menu_presenter.PIKE:
+                return "Щука";
+            case fragment_menu_presenter.MUSSELS:
+                return "Мидии";
+            case fragment_menu_presenter.OYSTERS:
+                return "Устрицы";
+            case fragment_menu_presenter.LOBSTERS:
+                return "Лобстеры";
+            case fragment_menu_presenter.COMBO:
+                return "Наборы";
         }
         return null;
     }

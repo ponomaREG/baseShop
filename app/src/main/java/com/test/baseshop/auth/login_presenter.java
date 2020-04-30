@@ -2,11 +2,16 @@ package com.test.baseshop.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.test.baseshop.auth.fill_info.BottomSheetFillInfo;
+import com.test.baseshop.fragment_basket.offer_order.BottomSheetOfferOrder;
 
 import java.util.Map;
+import java.util.Objects;
 
 import ru.tinkoff.decoro.MaskImpl;
 import ru.tinkoff.decoro.parser.PhoneNumberUnderscoreSlotsParser;

@@ -48,9 +48,9 @@ public class Json {
         query = searchInfo.execute(query).get();
         Gson g = new Gson();
         Map data = g.fromJson(query,Map.class);
-        if((int) (double) data.get("count") == 0) return null;
+        if((int) (double) data.get("count") == 0) return items;
         ArrayList jsonArrayOfItem = (ArrayList) data.get("data");
-        if(jsonArrayOfItem == null) return null;
+        if(jsonArrayOfItem == null) return items;
         for(Object item_obj:jsonArrayOfItem){
             Map map = (Map) item_obj;
             Item item = new Item();

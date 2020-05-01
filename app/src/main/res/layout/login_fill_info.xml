@@ -6,37 +6,37 @@
 
     <TextView
         android:id="@+id/login_fillInfo_title"
-        android:padding="15dp"
+        android:padding="@dimen/login_fillInfo_title_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="23sp"
+        android:textSize="@dimen/login_fillInfo_title_textSize"
         android:textColor="@android:color/black"
-        android:text="Пожалуйста , расскажите о себе , чтобы мы знали Вас лучше"/>
+        android:text="@string/login_fillInfo_title"/>
 
     <RelativeLayout
         android:id="@+id/login_fillInfo_container_name"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/login_fillInfo_container_name_marginTop"
         android:layout_below="@id/login_fillInfo_title"
         android:layout_width="match_parent"
-        android:padding="10dp"
+        android:padding="@dimen/login_fillInfo_container_name_padding"
         android:layout_height="wrap_content">
     <TextView
         android:id="@+id/login_fillInfo_name_title"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/login_fillInfo_name_title_textSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Мое имя"/>
+        android:text="@string/login_fillInfo_name_title"/>
 
         <EditText
             android:id="@+id/login_fillInfo_name"
             android:layout_below="@id/login_fillInfo_name_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/login_fillInfo_name_marginTop"
             android:textColor="@android:color/black"
-            android:hint="Роберт"
-            android:textSize="20sp"/>
+            android:hint="@string/login_fillInfo_name_hint"
+            android:textSize="@dimen/login_fillInfo_name_textSize"/>
     </RelativeLayout>
 
 
@@ -44,20 +44,20 @@
     <RelativeLayout
         android:id="@+id/login_fillInfo_container_sex"
         android:layout_below="@id/login_fillInfo_container_name"
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
+        android:layout_marginTop="@dimen/login_fillInfo_container_sex_marginTop"
+        android:padding="@dimen/login_fillInfo_container_sex_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/login_fillInfo_sex_title"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="@dimen/login_fillInfo_sex_title_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Мой пол"/>
+            android:text="@string/login_fillInfo_sex_title"/>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/login_fillInfo_sex_container_marginTop"
             android:layout_below="@id/login_fillInfo_sex_title"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -74,8 +74,8 @@
                 android:layout_height="wrap_content"/>
                 <ImageView
                     android:layout_gravity="center"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/login_fillInfo_sex_image_man_width"
+                    android:layout_height="@dimen/login_fillInfo_sex_image_man_height"
                     android:src="@drawable/login_icon_man"/>
 
 
@@ -87,8 +87,8 @@
                     android:layout_height="wrap_content"/>
                 <ImageView
                     android:layout_gravity="center"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/login_fillInfo_sex_image_woman_width"
+                    android:layout_height="@dimen/login_fillInfo_sex_image_woman_height"
                     android:src="@drawable/login_icon_woman"/>
             </RadioGroup>
         </LinearLayout>
@@ -98,42 +98,42 @@
 
     <RelativeLayout
         android:id="@+id/login_fillInfo_container_email"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/login_fillInfo_container_email_marginTop"
         android:layout_below="@id/login_fillInfo_container_sex"
         android:layout_width="match_parent"
-        android:padding="10dp"
+        android:padding="@dimen/login_fillInfo_container_email_padding"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/login_fillInfo_email_title"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="@dimen/login_fillInfo_email_title_textsize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Мой Email (по желанию)"/>
+            android:text="@string/login_fillInfo_email_title"/>
 
         <EditText
             android:id="@+id/login_fillInfo_email"
             android:layout_below="@id/login_fillInfo_email_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/login_fillInfo_email_marginTop"
             android:textColor="@android:color/black"
-            android:hint="test@test.test"
-            android:textSize="20sp"/>
+            android:hint="@string/login_fillInfo_email_hint"
+            android:textSize="@dimen/login_fillInfo_email_textSize"/>
     </RelativeLayout>
 
 
     <Button
         android:id="@+id/login_fillInfo_button_commit"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="@dimen/login_fillInfo_button_commit_marginTop"
+        android:layout_marginBottom="@dimen/login_fillInfo_button_commit_marginBottom"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/login_fillInfo_container_email"
         android:background="@drawable/login_button_selector"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:text="Рассказать о себе"
-        android:layout_width="210dp"
+        android:textSize="@dimen/login_fillInfo_button_commit_textSize"
+        android:text="@string/login_fillInfo_button_commit"
+        android:layout_width="@dimen/login_fillInfo_button_commit_width"
         android:layout_height="wrap_content"/>
 
 

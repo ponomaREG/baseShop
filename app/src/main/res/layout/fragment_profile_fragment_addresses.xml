@@ -6,14 +6,14 @@
 
     <TextView
         android:id="@+id/fragment_profile_fragment_addresses_title"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/fragment_profile_fragment_addresses_title_marginTop"
+        android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_title_marginStart"
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="@dimen/fragment_profile_fragment_addresses_title_textSize"
         android:textColor="@android:color/black"
-        android:text="Ваши адреса доставки"/>
+        android:text="@string/fragment_profile_fragment_addresses_title"/>
 <HorizontalScrollView
     android:id="@+id/fragment_profile_fragment_addresses_baseScrollView"
     android:layout_below="@+id/fragment_profile_fragment_addresses_title"

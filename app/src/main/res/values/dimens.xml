@@ -6,9 +6,258 @@
     <dimen name="fragment_menu_recyclerview_margin_top">10dp</dimen>
 
 
+
+    <dimen name="fragment_basket_LL_total_marginTop">10dp</dimen>
+    <dimen name="fragment_basket_title_marginStart">6dp</dimen>
+    <dimen name="fragment_basket_title_textSize">20sp</dimen>
+    <dimen name="fragment_basket_total_textSize">20sp</dimen>
+    <dimen name="fragment_basket_total_marginStart">6dp</dimen>
+    <dimen name="fragment_basket_total_zero_marginStart">6dp</dimen>
+    <dimen name="fragment_basket_total_zero_textSize">20sp</dimen>
+    <dimen name="fragment_basket_total_sign_marginStart">3dp</dimen>
+    <dimen name="fragment_basket_total_sign_textSize">20sp</dimen>
+    <dimen name="fragment_basket_total_rv_marginTop">15dp</dimen>
+    <dimen name="fragment_basket_button_order_textSize">20sp</dimen>
+    <dimen name="fragment_basket_button_order_width">300dp</dimen>
+    <dimen name="fragment_basket_button_order_marginVertical">30dp</dimen>
+
+
+
+
+
+
     <dimen name="fragment_profile_fragment_addresses_marginTop_or_distance_of_row">3dp</dimen>
     <dimen name="list_item_spacing">16dp</dimen>
     <dimen name="list_item_spacing_half">8dp</dimen>
+
+
+
+
+    <dimen name="fragment_anonim_icon_size">200dp</dimen>
+    <dimen name="fragment_anonim_icon_marginTop">3dp</dimen>
+
+    <dimen name="fragment_anonim_title_marginTop">25dp</dimen>
+    <dimen name="fragment_anonim_title_textSize">45sp</dimen>
+
+    <dimen name="fragment_anonim_desc_marginTop">30dp</dimen>
+    <dimen name="fragment_anonim_desc_textSize">30sp</dimen>
+
+    <dimen name="fragment_anonim_icon_arrow_size">80dp</dimen>
+    <dimen name="fragment_anonim_icon_arrow_marginTop">30dp</dimen>
+
+    <dimen name="fragment_anonim_button_enter_width">150dp</dimen>
+    <dimen name="fragment_anonim_button_enter_textSize">21dp</dimen>
+    <dimen name="fragment_anonim_button_enter_marginTop">30dp</dimen>
+
+    <dimen name="fragment_basket_bsv_title_textSize">28sp</dimen>
+    <dimen name="fragment_basket_bsv_container_addresses_title_marginTop">5dp</dimen>
+    <dimen name="fragment_basket_bsv_hsv_container_marginTop">19dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_title_marginTop">15dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_plus_padding">5dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_plus_margin">5dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_plus_width">25dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_plus_height">25dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_margin">3dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_minus_padding">5dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_minus_margin">5dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_minus_width">25dp</dimen>
+    <dimen name="fragment_basket_bsv_persons_minus_height">25dp</dimen>
+    <dimen name="fragment_basket_bsv_desc_title_marginTop">5dp</dimen>
+    <dimen name="fragment_basket_bsv_button_for_order_padding">10dp</dimen>
+    <dimen name="fragment_basket_bsv_button_for_order_marginTop">20dp</dimen>
+    <dimen name="fragment_basket_bsv_button_for_order_marginBottom">30dp</dimen>
+    <dimen name="fragment_basket_bsv_button_for_order_width">210dp</dimen>
+    <dimen name="fragment_basket_bsv_container_addresses_cell_title_padding">10dp</dimen>
+    <dimen name="fragment_basket_bsv_container_addresses_cell_title_marginTop">5dp</dimen>
+    <dimen name="fragment_basket_bsv_container_addresses_cell_title_marginBottom">5dp</dimen>
+    <dimen name="fragment_basket_bsv_container_addresses_cell_title_marginEnd">10dp</dimen>
+    <dimen name="fragment_basket_bsv_container_addresses_cell_title_marginStarty">10dp</dimen>
+
+    <dimen name="fragment_basket_item_LL_container_padding">5dp</dimen>
+    <dimen name="fragment_basket_item_times_marginStart">15dp</dimen>
+    <dimen name="fragment_basket_item_times_marginEnd">15dp</dimen>
+    <dimen name="fragment_basket_item_price_type_marginStart">5dp</dimen>
+    <dimen name="fragment_basket_item_LL_desc_container_padding">5dp</dimen>
+    <dimen name="fragment_basket_item_desc_title_textSize">21sp</dimen>
+    <dimen name="fragment_basket_item_desc_description_padding">1dp</dimen>
+    <dimen name="fragment_basket_item_desc_ll_icons_height">30dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_plus_width">26dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_plus_marginEnd">8dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_plus_padding">6dp</dimen>
+    <dimen name="fragment_basket_item_desc_count_of_item_textSize">15sp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_minus_width">26dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_minus_marginStart">8dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_minus_marginEnd">10dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_minus_padding">6dp</dimen>
+    <dimen name="fragment_basket_item_desc_container_icon_width">130dp</dimen>
+    <dimen name="fragment_basket_item_desc_container_icon_height">130dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_width">120dp</dimen>
+    <dimen name="fragment_basket_item_desc_icon_height">120dp</dimen>
+
+    <dimen name="fragment_menu_rv_item_padding">10dp</dimen>
+    <dimen name="fragment_menu_rv_item_title_textSize">21sp</dimen>
+    <dimen name="fragment_menu_rv_item_description_padding">1dp</dimen>
+    <dimen name="fragment_menu_rv_item_container_icons">30dp</dimen>
+    <dimen name="fragment_menu_rv_item_price_marginEnd">15dp</dimen>
+    <dimen name="fragment_menu_rv_item_price_textSize">15sp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_plus_width">26dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_plus_marginEnd">8dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_plus_padding">6dp</dimen>
+    <dimen name="fragment_menu_rv_item_count_of_item_textSize">15sp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_minus_width">26dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_minus_marginStart">8dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_minus_marginEnd">10dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_minus_padding">6dp</dimen>
+    <dimen name="fragment_menu_rv_item_container_mainicon_width">130dp</dimen>
+    <dimen name="fragment_menu_rv_item_container_mainicon_height">130dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_width">120dp</dimen>
+    <dimen name="fragment_menu_rv_item_icon_height">120dp</dimen>
+
+    <dimen name="fragment_profile_current_section_marginTop">30dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_title_marginTop">20dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_title_marginStart">20dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_title_textSize">25sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_add_new_bsv_padding">8dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_add_new_title_textSize">28sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_title_of_address_marginTop">7dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_title_of_address_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_district_of_address_marginTop">7dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_district_of_address_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_base_address_cell_margin">20dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_base_address_cell_padding">5dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_base_address_cell_height">240dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_title_user_textSize">26sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_district_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_district_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_district_textSize_et">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_street_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_street_et_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_street_et_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_house_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_house_et_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_house_et_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_corpus_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_corpus_et_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_corpus_et_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_porch_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_porch_et_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_porch_et_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_floor_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_floor_et_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_floor_et_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_flat_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_flat_et_marginStart">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_flat_et_textSize">15sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_plus_margin">20dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_plus_padding">5dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_plus_width">240dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_plus_height">240dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_icon_plus_width">60dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_icon_plus_height">60dp</dimen>
+
+    <dimen name="fragment_profile_fragment_info_padding">3dp</dimen>
+    <dimen name="fragment_profile_fragment_info_usericon_width">150dp</dimen>
+    <dimen name="fragment_profile_fragment_info_usericon_height">150dp</dimen>
+    <dimen name="fragment_profile_fragment_info_name_container_marginTop">23dp</dimen>
+    <dimen name="fragment_profile_fragment_info_name_marginTop">23dp</dimen>
+    <dimen name="fragment_profile_fragment_info_name_commit_marginEnd">5dp</dimen>
+    <dimen name="fragment_profile_fragment_info_email_container_marginTop">23dp</dimen>
+    <dimen name="fragment_profile_fragment_info_email_marignTop">23dp</dimen>
+    <dimen name="fragment_profile_fragment_info_email_commit_marginEnd">5dp</dimen>
+    <dimen name="fragment_profile_fragment_info_phone_container_marginTop">23dp</dimen>
+    <dimen name="fragment_profile_fragment_info_phone_marginTop">23dp</dimen>
+    <dimen name="fragment_profile_fragment_info_phone_commit_marginEnd">5dp</dimen>
+    <dimen name="fragment_profile_fragment_info_button_logout_marginTop">30dp</dimen>
+    <dimen name="fragment_profile_fragment_info_button_logout_width">150dp</dimen>
+
+    <dimen name="fragment_profile_fragment_orders_rv_item_padding">6dp</dimen>
+    <dimen name="fragment_profile_fragment_orders_rv_item_marginBottom">15dp</dimen>
+
+    <dimen name="fragment_profile_fragment_addresses_rv_item_numberOfOrder_title_textSize">25sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_numberOfOrder_textSize">26sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_container_addresses_height">35dp
+    </dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_address_title_textSize">21sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_address_textSize">18sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_address_marginStart">5dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_container_time_height">35dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_time_title_textSize">21sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_time_textSize">18sp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_time_marginStart">5dp</dimen>
+
+    <dimen name="fragment_profile_fragment_orders_rv_item_in_item_padding">3dp</dimen>
+    <dimen name="fragment_profile_addresses_item_rv_item_in_item_RL_container_padding">5dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_in_item_times_marginsStart">10dp
+    </dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_in_item_times_marginEnd">10dp</dimen>
+    <dimen name="fragment_profile_fragment_addresses_rv_item_in_item_price_type_marginStart">5dp
+    </dimen>
+
+
+
+    <dimen name="fragment_profile_sections_marginTop">10dp</dimen>
+    <dimen name="fragment_profile_section_orders_width">110dp</dimen>
+    <dimen name="fragment_profile_section_orders_height">50dp</dimen>
+    <dimen name="fragment_profile_section_orders_padding">5dp</dimen>
+    <dimen name="fragment_profile_section_orders_image_width">20dp</dimen>
+    <dimen name="fragment_profile_section_orders_image_height">20dp</dimen>
+    <dimen name="fragment_profile_section_info_width">110dp</dimen>
+    <dimen name="fragment_profile_section_info_height">50dp</dimen>
+    <dimen name="fragment_profile_section_info_marginEnd">15dp</dimen>
+    <dimen name="fragment_profile_section_info_marginStart">15dp</dimen>
+    <dimen name="fragment_profile_section_info_padding">5dp</dimen>
+    <dimen name="fragment_profile_section_info_image_width">20dp</dimen>
+    <dimen name="fragment_profile_section_info_image_height">20dp</dimen>
+    <dimen name="fragment_profile_section_addresses_width">110dp</dimen>
+    <dimen name="fragment_profile_section_addresses_height">50dp</dimen>
+    <dimen name="fragment_profile_section_addresses_padding">5dp</dimen>
+    <dimen name="fragment_profile_section_addresses_image_width">20dp</dimen>
+    <dimen name="fragment_profile_section_addresses_image_height">20dp</dimen>
+
+
+
+
+    <dimen name="login_fillInfo_title_padding">15dp</dimen>
+    <dimen name="login_fillInfo_title_textSize">23sp</dimen>
+    <dimen name="login_fillInfo_container_name_marginTop">8dp</dimen>
+    <dimen name="login_fillInfo_container_name_padding">10dp</dimen>
+    <dimen name="login_fillInfo_name_title_textSize">18sp</dimen>
+    <dimen name="login_fillInfo_name_textSize">20sp</dimen>
+    <dimen name="login_fillInfo_name_marginTop">10dp</dimen>
+    <dimen name="login_fillInfo_container_sex_marginTop">8dp</dimen>
+    <dimen name="login_fillInfo_container_sex_padding">10dp</dimen>
+    <dimen name="login_fillInfo_sex_title_textSize">18sp</dimen>
+    <dimen name="login_fillInfo_sex_container_marginTop">10dp</dimen>
+    <dimen name="login_fillInfo_sex_image_man_width">35dp</dimen>
+    <dimen name="login_fillInfo_sex_image_man_height">35dp</dimen>
+    <dimen name="login_fillInfo_sex_image_woman_width">35dp</dimen>
+    <dimen name="login_fillInfo_sex_image_woman_height">35dp</dimen>
+    <dimen name="login_fillInfo_container_email_marginTop">8dp</dimen>
+    <dimen name="login_fillInfo_container_email_padding">10dp</dimen>
+    <dimen name="login_fillInfo_email_title_textsize">18sp</dimen>
+    <dimen name="login_fillInfo_email_marginTop">10dp</dimen>
+    <dimen name="login_fillInfo_email_textSize">20sp</dimen>
+    <dimen name="login_fillInfo_button_commit_marginTop">15dp</dimen>
+    <dimen name="login_fillInfo_button_commit_marginBottom">15dp</dimen>
+    <dimen name="login_fillInfo_button_commit_textSize">18sp</dimen>
+    <dimen name="login_fillInfo_button_commit_width">210dp</dimen>
+
+
+
+    <dimen name="login_icon_marginTop">80dp</dimen>
+    <dimen name="login_icon_width">135dp</dimen>
+    <dimen name="login_icon_height">135dp</dimen>
+    <dimen name="login_container_numberInput_marginTop">50dp</dimen>
+    <dimen name="login_numberInput_textsize">24sp</dimen>
+    <dimen name="login_numberInput_width">215dp</dimen>
+    <dimen name="login_numberInput_height">60dp</dimen>
+    <dimen name="login_container_code_marginTop">15dp</dimen>
+    <dimen name="login_container_code_desc_textSize">15sp</dimen>
+    <dimen name="login_button_marginTop">50dp</dimen>
+    <dimen name="login_button_width">210dp</dimen>
+    <dimen name="login_button_textSize">21sp</dimen>
+    <dimen name="login_entry_as_anonymous_textSize">15sp</dimen>
+    <dimen name="login_entry_as_anonymous_marginTop">12dp</dimen>
 
 
 </resources>

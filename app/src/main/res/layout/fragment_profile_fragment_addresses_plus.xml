@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_margin="20dp"
-    android:padding="5dp"
+    android:layout_margin="@dimen/fragment_profile_fragment_addresses_plus_margin"
+    android:padding="@dimen/fragment_profile_fragment_addresses_plus_padding"
     android:gravity="center"
     android:background="@drawable/fragment_profile_fragment_addresses_cell"
-    android:layout_width="240dp"
-    android:layout_height="240dp">
+    android:layout_width="@dimen/fragment_profile_fragment_addresses_plus_width"
+    android:layout_height="@dimen/fragment_profile_fragment_addresses_plus_height">
     <ImageView
         android:src="@drawable/fragment_profile_fragment_addresses_icon_plus"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
+        android:layout_width="@dimen/fragment_profile_fragment_addresses_icon_plus_width"
+        android:layout_height="@dimen/fragment_profile_fragment_addresses_icon_plus_height"/>
 </LinearLayout>

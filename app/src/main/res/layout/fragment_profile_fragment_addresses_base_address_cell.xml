@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="240dp"
-    android:layout_margin="20dp"
-    android:padding="5dp"
-    android:layout_height="240dp"
+    android:layout_margin="@dimen/fragment_profile_fragment_addresses_base_address_cell_margin"
+    android:padding="@dimen/fragment_profile_fragment_addresses_base_address_cell_padding"
+    android:layout_height="@dimen/fragment_profile_fragment_addresses_base_address_cell_height"
     android:background="@drawable/fragment_profile_fragment_addresses_cell">
     <TextView
         android:id="@+id/title_user"
         android:layout_alignParentTop="true"
-        android:text="Квартира Оксаны"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:textSize="26dp"
+        android:textSize="@dimen/fragment_profile_fragment_addresses_title_user_textSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <RelativeLayout
@@ -22,18 +21,17 @@
         android:layout_below="@id/title_user">
         <TextView
             android:id="@+id/district_title"
-            android:textSize="15sp"
-            android:text="Район:"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_district_textSize"
+            android:text="@string/fragment_profile_fragment_addresses_base_address_cell_district"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/district_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_district_marginStart"
             android:layout_toEndOf="@id/district_title"
-            android:textSize="15sp"
-            android:text="Василеостровский"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_district_textSize_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -46,18 +44,17 @@
         android:layout_below="@id/district">
     <TextView
         android:id="@+id/street_title"
-        android:textSize="15sp"
-        android:text="Улица:"
+        android:textSize="@dimen/fragment_profile_fragment_addresses_street_textSize"
+        android:text="@string/fragment_profile_fragment_addresses_base_address_celll_streetUser"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/street_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_street_et_marginStart"
             android:layout_toEndOf="@id/street_title"
-            android:textSize="15sp"
-            android:text="12 линия"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_street_et_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -74,15 +71,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="Дом:"
+            android:text="@string/fragment_profile_fragment_addresses_base_address_cell_houseUser"
             android:textColor="@android:color/black"
-            android:textSize="15sp" />
+            android:textSize="@dimen/fragment_profile_fragment_addresses_house_textSize" />
         <TextView
             android:id="@+id/house_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_house_et_marginStart"
             android:layout_toEndOf="@id/house_title"
-            android:textSize="15sp"
-            android:text="51"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_house_et_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -94,18 +90,17 @@
         android:layout_below="@id/house">
         <TextView
             android:id="@+id/corpus_title"
-            android:textSize="15sp"
-            android:text="Корпус:"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_corpus_textSize"
+            android:text="@string/fragment_profile_fragment_addresses_base_address_cell_corpusUser"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/corpus_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_corpus_et_marginStart"
             android:layout_toEndOf="@id/corpus_title"
-            android:textSize="15sp"
-            android:text="-"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_corpus_et_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -117,18 +112,17 @@
         android:layout_below="@id/corpus">
         <TextView
             android:id="@+id/porch_title"
-            android:textSize="15sp"
-            android:text="Подъезд:"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_porch_textSize"
+            android:text="@string/fragment_profile_fragment_addresses_base_address_cell_porchUser"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/porch_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_porch_et_marginStart"
             android:layout_toEndOf="@id/porch_title"
-            android:textSize="15sp"
-            android:text="26"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_porch_et_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -140,18 +134,17 @@
         android:layout_below="@id/porch">
         <TextView
             android:id="@+id/floor_title"
-            android:textSize="15sp"
-            android:text="Этаж:"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_floor_textSize"
+            android:text="@string/fragment_profile_fragment_addresses_base_address_cell_floorUser"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/floor_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_floor_et_marginStart"
             android:layout_toEndOf="@id/floor_title"
-            android:textSize="15sp"
-            android:text="3"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_floor_et_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -163,18 +156,17 @@
         android:layout_below="@id/floor">
         <TextView
             android:id="@+id/flat_title"
-            android:textSize="15sp"
-            android:text="Квартира:"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_flat_textSize"
+            android:text="@string/fragment_profile_fragment_addresses_base_address_cell_flatUser"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/flat_user"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_flat_et_marginStart"
             android:layout_toEndOf="@id/flat_title"
-            android:textSize="15sp"
-            android:text="320"
+            android:textSize="@dimen/fragment_profile_fragment_addresses_flat_et_textSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>

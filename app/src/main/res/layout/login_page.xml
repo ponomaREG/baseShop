@@ -5,37 +5,37 @@
 
     <ImageView
         android:id="@+id/login_icon"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/login_icon_marginTop"
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
-        android:layout_width="135dp"
-        android:layout_height="135dp"
+        android:layout_width="@dimen/login_icon_width"
+        android:layout_height="@dimen/login_icon_height"
         android:src="@drawable/icon_logo_2"
         />
     <LinearLayout
         android:layout_centerHorizontal="true"
         android:id="@+id/login_container_numberInput"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/login_container_numberInput_marginTop"
         android:layout_below="@+id/login_icon"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <EditText
         android:id="@+id/login_numberInput"
-        android:textSize="24sp"
+        android:textSize="@dimen/login_numberInput_textsize"
         android:gravity="bottom"
-        android:hint="+7 (111) 111-11-11"
-        android:text="+7 ("
+        android:hint="@string/login_numberInput_hint"
+        android:text="@string/login_numberInput_default"
         android:inputType="phone"
-        android:layout_width="215dp"
-        android:layout_height="60dp"/>
+        android:layout_width="@dimen/login_numberInput_width"
+        android:layout_height="@dimen/login_numberInput_height"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/login_container_code"
         android:animateLayoutChanges="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/login_container_code_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -47,8 +47,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Введите Ваш код потверждения"/>
+            android:textSize="@dimen/login_container_code_desc_textSize"
+            android:text="@string/login_container_code_title"/>
 
         <LinearLayout
             android:gravity="center"
@@ -94,7 +94,7 @@
             android:id="@+id/login_timer_AND_button_send_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Отправить еще раз"/>
+            android:text="@string/login_timer_AND_button_send_again_title"/>
     </LinearLayout>
 
     <Button
@@ -102,12 +102,12 @@
         android:background="@drawable/login_button_selector"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/login_container_code"
-        android:layout_marginTop="50dp"
-        android:layout_width="210dp"
+        android:layout_marginTop="@dimen/login_button_marginTop"
+        android:layout_width="@dimen/login_button_width"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="Войти"
-        android:textSize="21sp"
+        android:text="@string/login_button"
+        android:textSize="@dimen/login_button_textSize"
         />
 
 
@@ -115,10 +115,10 @@
     <TextView
         android:id="@+id/login_entry_as_anonymous"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
+        android:textSize="@dimen/login_entry_as_anonymous_textSize"
         android:textColor="@android:color/black"
-        android:text="или войдите без авторизации"
-        android:layout_marginTop="12dp"
+        android:text="@string/login_entry_as_anonymous"
+        android:layout_marginTop="@dimen/login_entry_as_anonymous_marginTop"
         android:layout_below="@id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

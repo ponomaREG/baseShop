@@ -11,7 +11,7 @@
 
     <FrameLayout
         android:id="@+id/fragment_profile_current_section"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/fragment_profile_current_section_marginTop"
         android:layout_below="@+id/fragment_profile_sections"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

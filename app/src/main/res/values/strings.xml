@@ -1,11 +1,48 @@
 <resources>
     <string name="app_name">baseShop</string>
 
+    <string name="login_fillInfo_title">Пожалуйста , расскажите о себе , чтобы мы знали Вас лучше</string>
+    <string name="login_fillInfo_name_title">Мое имя</string>
+    <string name="login_fillInfo_name_hint">Роберт</string>
+    <string name="login_fillInfo_sex_title">Мой пол</string>
+    <string name="login_fillInfo_email_title">Мой Email (по желанию)</string>
+    <string name="login_fillInfo_email_hint">test@test.test</string>
+    <string name="login_fillInfo_button_commit">Рассказать о себе</string>
+
+    <string name="login_numberInput_hint">+7 (111) 111–11–11</string>
+    <string name="login_numberInput_default">+7 (</string>
+    <string name="login_container_code_title">Введите Ваш код потверждения</string>
+    <string name="login_timer_AND_button_send_again_title">Отправить еще раз</string>
+    <string name="login_button">Войти</string>
+    <string name="login_entry_as_anonymous">или войдите без авторизации</string>
+
+
+
 
     <string name="main_bnv_menu">Меню</string>
     <string name="main_bnv_basket">Корзина</string>
     <string name="main_bnv_profile">Профиль</string>
 
+
+
+    <string name="fragmnet_basket_total_title">В корзине товаров на сумму</string>
+    <string name="fragmnet_basket_total_title_sign">Р</string>
+    <string name="fragmnet_basket_total_title_zero">0</string>
+    <string name="fragmnet_basket_total_title_order">Заказать</string>
+
+    <string name="fragment_basket_bsv_order_title">Заказ</string>
+    <string name="fragment_basket_bsv_order_choose">Выберите адрес</string>
+    <string name="fragment_basket_bsv_order_persons">Количество персон:</string>
+    <string name="fragment_basket_bsv_order_default_persons">1</string>
+    <string name="fragment_basket_bsv_order_desc_user">Особые замечания</string>
+    <string name="fragment_basket_bsv_order_desc_hint">Код от домофона:1337</string>
+    <string name="fragment_basket_bsv_order_button_order">Подтвердить заказ</string>
+
+
+
+    <string name="fragment_profile_section_orders_title">Заказы</string>
+    <string name="fragment_profile_section_info_title">Личное</string>
+    <string name="fragment_profile_section_addresses_title">Адреса</string>
 
     <string name="fragment_profile_section_orders">Заказы</string>
     <string name="fragment_profile_section_info">Личное</string>
@@ -19,8 +56,55 @@
     <string name="fragment_profile_section_info_email_title">Email</string>
     <string name="fragment_profile_section_info_email_hint">test@test.test</string>
 
+
+    <string name="fragment_profile_fragment_addresses_title">Ваши адреса доставки</string>
+    <string name="fragment_profile_fragment_addresses_add_new_title">Добавление нового адреса</string>
+    <string name="fragment_profile_fragment_addresses_add_new_titleUser">Название*</string>
+    <string name="fragment_profile_fragment_addresses_add_new_districtUser">Район</string>
+    <string name="fragment_profile_fragment_addresses_add_new_streetUser">Улица*</string>
+    <string name="fragment_profile_fragment_addresses_add_new_houseUser">Дом*</string>
+    <string name="fragment_profile_fragment_addresses_add_new_corpusUser">Корпус</string>
+    <string name="fragment_profile_fragment_addresses_add_new_porchUser">Подъезд</string>
+    <string name="fragment_profile_fragment_addresses_add_new_floorUser">Этаж</string>
+    <string name="fragment_profile_fragment_addresses_add_new_flatUser">Квартира</string>
+    <string name="fragment_profile_fragment_addresses_add_new_mustDesc">* - обязательно к заполнению</string>
+    <string name="fragment_profile_fragment_addresses_add_new_buttonAdd">Добавить</string>
+
+    <string name="fragment_profile_fragment_addresses_base_address_cell_district">Район:</string>
+    <string name="fragment_profile_fragment_addresses_base_address_celll_streetUser">Улица:</string>
+    <string name="fragment_profile_fragment_addresses_base_address_cell_houseUser">Дом:</string>
+    <string name="fragment_profile_fragment_addresses_base_address_cell_corpusUser">Корпус:</string>
+    <string name="fragment_profile_fragment_addresses_base_address_cell_porchUser">Подъезд:</string>
+    <string name="fragment_profile_fragment_addresses_base_address_cell_floorUser">Этаж:</string>
+    <string name="fragment_profile_fragment_addresses_base_address_cell_flatUser">Квартира:</string>
+
+    <string name="fragment_profile_fragment_addresses_rv_item_numberOfOrder_title">Заказ №</string>
+    <string name="fragment_profile_fragment_addresses_rv_item_address_title">Адрес:</string>
+    <string name="fragment_profile_fragment_addresses_rv_item_time_title">Время:</string>
+    <string name="fragment_profile_fragment_addresses_rv_item_total_title">Общая стоимость заказа:</string>
+    <string name="fragment_profile_fragment_addresses_rv_item_total_sign">Р</string>
+    <string name="fragment_profile_fragment_addresses_rv_item_in_item_times">X</string>
+    <string name="fragment_profile_fragment_addresses_rv_item_in_item_price_type">P</string>
+
+
+    <string name="fragment_profile_fragment_info_button_exit">Выйти</string>
+
+
+
+    <string name="fragment_anonim_basket_title">Упс(</string>
+    <string name="fragment_anonim_basket_desc">Похоже мы не знакомы.\nНу к счастью , это можно исправить</string>
+    <string name="fragment_anonim_basket_button_enter">Войти</string>
+
+    <string name="fragment_anonim_basket_contentDescription_icon_logo">ANON ICON</string>
+    <string name="fragment_anonim_basket_contentDescription_arrow">ARROW ICON</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_basket_rvitem_times">X</string>
+    <string name="fragment_basket_rvitem_sign">P</string>
+
 
 
 </resources>

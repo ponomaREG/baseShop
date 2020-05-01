@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_basket_bsv_container_addresses_cell_title"
-    android:padding="10dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginStart="10dp"
+    android:padding="@dimen/fragment_basket_bsv_container_addresses_cell_title_padding"
+    android:layout_marginTop="@dimen/fragment_basket_bsv_container_addresses_cell_title_marginTop"
+    android:layout_marginBottom="@dimen/fragment_basket_bsv_container_addresses_cell_title_marginBottom"
+    android:layout_marginEnd="@dimen/fragment_basket_bsv_container_addresses_cell_title_marginEnd"
+    android:layout_marginStart="@dimen/fragment_basket_bsv_container_addresses_cell_title_marginStarty"
     android:textColor="@android:color/black"
     android:background="@drawable/fragment_basket_bsv_order_cell_address_selector"
-    android:text="Квартира Оксаны"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>

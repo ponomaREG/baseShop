@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/fragment_anonim_basket_icon_sign"
-        android:layout_marginTop="30dp"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/fragment_anonim_icon_marginTop"
+        android:layout_width="@dimen/fragment_anonim_icon_size"
+        android:layout_height="@dimen/fragment_anonim_icon_size"
         android:layout_centerHorizontal="true"
         android:src="@drawable/fragment_anonim_basket_icon_sign"
-        />
+        android:contentDescription="@string/fragment_anonim_basket_contentDescription_icon_logo" />
 
     <TextView
         android:id="@+id/fragment_anonim_basket_title"
@@ -21,44 +21,44 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:textSize="45sp"
-        android:text="Упс("
+        android:layout_marginTop="@dimen/fragment_anonim_title_marginTop"
+        android:textSize="@dimen/fragment_anonim_title_textSize"
+        android:text="@string/fragment_anonim_basket_title"
         android:textColor="@android:color/black" />
 
 
     <TextView
         android:id="@+id/fragment_anonim_basket_desc"
         android:textAlignment="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/fragment_anonim_desc_marginTop"
         android:layout_below="@+id/fragment_anonim_basket_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
-        android:text="Похоже мы не знакомы.\nНу к счастью , это можно исправить"/>
+        android:textSize="@dimen/fragment_anonim_desc_textSize"
+        android:text="@string/fragment_anonim_basket_desc"/>
 
     <ImageView
         android:id="@+id/fragment_anonim_basket_icon_arrow"
         android:layout_below="@id/fragment_anonim_basket_desc"
-        android:layout_marginTop="30dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/fragment_anonim_icon_arrow_marginTop"
+        android:layout_width="@dimen/fragment_anonim_icon_arrow_size"
+        android:layout_height="@dimen/fragment_anonim_icon_arrow_size"
         android:layout_centerHorizontal="true"
         android:src="@drawable/fragment_anonim_basket_icon_arrow"
-        />
+        android:contentDescription="@string/fragment_anonim_basket_contentDescription_arrow" />
 
     <Button
         android:id="@+id/fragment_anonim_basket_button_entry"
         android:background="@drawable/fragment_profile_fragment_info_button_selector"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="Войти"
+        android:layout_marginTop="@dimen/fragment_anonim_button_enter_marginTop"
+        android:text="@string/fragment_anonim_basket_button_enter"
         android:textAllCaps="false"
         android:layout_below="@+id/fragment_anonim_basket_icon_arrow"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/fragment_anonim_button_enter_width"
         android:layout_height="wrap_content"
-        android:textSize="21sp"
+        android:textSize="@dimen/fragment_anonim_button_enter_textSize"
         />
 
 

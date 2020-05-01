@@ -37,7 +37,7 @@ public class login_presenter implements Interfaces.Presenter{
 
     @Override
     public void makeMaskToEditText() {
-        mask_phone =  MaskImpl.createTerminated(new PhoneNumberUnderscoreSlotsParser().parseSlots("+7 (___) ___-__-__"));
+        mask_phone =  MaskImpl.createTerminated(new PhoneNumberUnderscoreSlotsParser().parseSlots("+7 (___) ___–__–__"));
         FormatWatcher watcher = new MaskFormatWatcher(
                 mask_phone
         );

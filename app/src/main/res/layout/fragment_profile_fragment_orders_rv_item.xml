@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="6dp"
-    android:layout_marginBottom="15dp">
+    android:padding="@dimen/fragment_profile_fragment_orders_rv_item_padding"
+    android:layout_marginBottom="@dimen/fragment_profile_fragment_orders_rv_item_marginBottom">
 
 
     <RelativeLayout
@@ -16,17 +16,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:textSize="25sp"
+        android:textSize="@dimen/fragment_profile_fragment_addresses_rv_item_numberOfOrder_title_textSize"
         android:textColor="@android:color/black"
-        android:text="Заказ № "/>
+        android:text="@string/fragment_profile_fragment_addresses_rv_item_numberOfOrder_title"/>
     <TextView
         android:id="@+id/fragment_profile_fragment_addresses_rv_item_numberOfOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
+        android:textSize="@dimen/fragment_profile_fragment_addresses_rv_item_numberOfOrder_textSize"
         android:textColor="@android:color/black"
-        android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_numberOfOrder_title"
-        android:text="1337"/>
+        android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_numberOfOrder_title" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -38,25 +37,24 @@
         <RelativeLayout
             android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_addresses"
             android:layout_width="match_parent"
-            android:layout_height="35dp">
+            android:layout_height="@dimen/fragment_profile_fragment_addresses_rv_item_container_addresses_height">
             <TextView
                 android:layout_alignParentBottom="true"
                 android:id="@+id/fragment_profile_fragment_addresses_rv_item_address_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="21sp"
+                android:textSize="@dimen/fragment_profile_fragment_addresses_rv_item_address_title_textSize"
                 android:textColor="@android:color/black"
-                android:text="Адрес:"/>
+                android:text="@string/fragment_profile_fragment_addresses_rv_item_address_title"/>
             <TextView
                 android:id="@+id/fragment_profile_fragment_addresses_rv_item_address"
                 android:layout_alignParentBottom="true"
-                android:text="12 линия ВО, 51"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/fragment_profile_fragment_addresses_rv_item_address_textSize"
                 android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_address_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"/>
+                android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_rv_item_address_marginStart"/>
         </RelativeLayout>
 
 
@@ -65,25 +63,24 @@
             android:id="@+id/fragment_profile_fragment_addresses_rv_item_container_time"
             android:layout_below="@id/fragment_profile_fragment_addresses_rv_item_container_addresses"
             android:layout_width="match_parent"
-            android:layout_height="35dp">
+            android:layout_height="@dimen/fragment_profile_fragment_addresses_rv_item_container_time_height">
             <TextView
                 android:layout_alignParentBottom="true"
                 android:id="@+id/fragment_profile_fragment_addresses_rv_item_time_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="21sp"
+                android:textSize="@dimen/fragment_profile_fragment_addresses_rv_item_time_title_textSize"
                 android:textColor="@android:color/black"
-                android:text="Время:"/>
+                android:text="@string/fragment_profile_fragment_addresses_rv_item_time_title"/>
             <TextView
                 android:id="@+id/fragment_profile_fragment_addresses_rv_item_time"
                 android:layout_alignParentBottom="true"
-                android:text="20.04.2020 20:32"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/fragment_profile_fragment_addresses_rv_item_time_textSize"
                 android:layout_toEndOf="@id/fragment_profile_fragment_addresses_rv_item_time_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"/>
+                android:layout_marginStart="@dimen/fragment_profile_fragment_addresses_rv_item_time_marginStart"/>
         </RelativeLayout>
 
     </RelativeLayout>
@@ -113,10 +110,9 @@
                 android:layout_height="wrap_content"
                 android:textSize="21sp"
                 android:textColor="@android:color/black"
-                android:text="Общая стоимость заказа:"/>
+                android:text="@string/fragment_profile_fragment_addresses_rv_item_total_title"/>
             <TextView
                 android:id="@+id/fragment_profile_fragment_addresses_rv_item_total"
-                android:text="2653"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:layout_toStartOf="@id/fragment_profile_fragment_addresses_rv_item_total_sign"
@@ -128,7 +124,7 @@
             android:id="@+id/fragment_profile_fragment_addresses_rv_item_total_sign"
             android:layout_alignParentEnd="true"
             android:textColor="@android:color/black"
-            android:text="Р"
+            android:text="@string/fragment_profile_fragment_addresses_rv_item_total_sign"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

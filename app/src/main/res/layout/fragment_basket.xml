@@ -6,40 +6,40 @@
     tools:context=".fragment_basket.fragment_basket">
     <LinearLayout
         android:id="@+id/fragment_basket_LL_total_summ"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/fragment_basket_LL_total_marginTop"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="@dimen/fragment_basket_total_marginStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textAllCaps="false"
-            android:textSize="20sp"
-            android:text="В корзине товаров на сумму"/>
+            android:textSize="@dimen/fragment_basket_total_textSize"
+            android:text="@string/fragmnet_basket_total_title"/>
         <TextView
             android:id="@+id/fragment_basket_total_summ"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="@dimen/fragment_basket_total_zero_marginStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textAllCaps="false"
-            android:textSize="20sp"
-            android:text="0"/>
+            android:textSize="@dimen/fragment_basket_total_zero_textSize"
+            android:text="@string/fragmnet_basket_total_title_zero"/>
         <TextView
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="@dimen/fragment_basket_total_sign_marginStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textAllCaps="false"
-            android:textSize="20sp"
-            android:text="Р"/>
+            android:textSize="@dimen/fragment_basket_total_sign_textSize"
+            android:text="@string/fragmnet_basket_total_title_sign"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_basket_recycler_view"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/fragment_basket_total_rv_marginTop"
         android:layout_below="@+id/fragment_basket_LL_total_summ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,13 +49,13 @@
         android:id="@+id/fragment_basket_button_for_order"
         android:textColor="@android:color/black"
         android:layout_alignParentBottom="true"
-        android:layout_marginVertical="30dp"
-        android:layout_width="300dp"
-        android:textSize="20sp"
+        android:layout_marginVertical="@dimen/fragment_basket_button_order_marginVertical"
+        android:layout_width="@dimen/fragment_basket_button_order_width"
+        android:textSize="@dimen/fragment_basket_button_order_textSize"
         android:textAllCaps="false"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/fragment_basket_button_for_order_selector"
-        android:text="Заказать"/>
+        android:text="@string/fragmnet_basket_total_title_order"/>
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">baseShop</string>
+    <string name="app_name">FishShop</string>
 
     <string name="login_fillInfo_title">Пожалуйста , расскажите о себе , чтобы мы знали Вас лучше</string>
     <string name="login_fillInfo_name_title">Мое имя</string>

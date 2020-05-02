@@ -1,4 +1,6 @@
 Sample food delivery application. The application is still quite slow, since any data storage, as well as receiving, occurs through API.<br/>
+<h3>Any advice on architecture, structure, code will help me</h3>
+<br/>
 APPLICATION IS NOT SECURE<br/>
 API: https://github.com/ponomaREG/api_baseshop<br/>
 

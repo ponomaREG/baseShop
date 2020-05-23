@@ -3,6 +3,8 @@ package com.test.baseshop.fragment_menu;
 
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
@@ -15,21 +17,26 @@ import java.util.Map;
 
 public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.Photo, Interfaces.Model.Basket{
 
+    Interfaces.Presenter presenter;
     private Json json;
 
-    fragment_menu_model(){
+    fragment_menu_model(Interfaces.Presenter presenter){
+        this.presenter = presenter;
         this.json = new Json();
     }
 
     @Override
-    public List<Item> getItemsByFilter(int code) {
-        List<Item> arr = null;
-        try {
-            arr = json.jsonify(code);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return arr;
+    public void getItemsByFilter(int code) {
+
+        AsyncGetItemsMenuRemote getItemsByFilter = new AsyncGetItemsMenuRemote();
+        getItemsByFilter.execute(code);
+//        List<Item> arr = null;
+//        try {
+//            arr = json.jsonify(code);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return arr;
     }
 
     @Override
@@ -57,7 +64,7 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
         HashMap<Integer,Integer> items_whichs_already_in_basket = new HashMap<>();
         Map raw_map_result_of_basket_query;
         try {
-            raw_map_result_of_basket_query = json.jsonify_basket(user_id);
+            raw_map_result_of_basket_query = json.jsonify_basket_async(user_id);
         } catch (Exception e) {
             e.printStackTrace();
             return items_whichs_already_in_basket;
@@ -85,4 +92,51 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
             e.printStackTrace();
         }
     }
+
+
+
+    class AsyncGetItemsMenuRemote extends AsyncTask<Integer, Void, Void>{
+
+        private List<Item> items = new ArrayList<>();
+
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            Map data = null;
+            try {
+                data = json.jsonify(integers[0]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if(data.containsKey("count")) {
+                if ((int) (double) data.get("count") == 0) return null;
+            }else return null;
+            ArrayList jsonArrayOfItem = (ArrayList) data.get("data");
+            if(jsonArrayOfItem == null) return null;
+            for(Object item_obj:jsonArrayOfItem){
+                Map map = (Map) item_obj;
+                Item item = new Item();
+                int id = (int) (double) map.get("id");
+                String title = (String) map.get("title");
+                String desc = (String) map.get("desc");
+                int price = (int) (double) map.get("price");
+                int weight = (int) (double) map.get("weight");
+                Log.d("Title",title);
+                item.setId(id)
+                        .setTitle(title)
+                        .setDesc(desc)
+                        .setPrice(price)
+                        .setWeight(weight);
+                items.add(item);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            presenter.setDataFromModel(items);
+        }
+    }
+
 }

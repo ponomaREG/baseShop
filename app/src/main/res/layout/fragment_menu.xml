@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".fragment_menu.fragment_menu">
 
     <HorizontalScrollView
@@ -22,8 +21,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="@dimen/fragment_menu_recyclerview_margin_top"
+        android:layout_below="@id/fragment_menu_sections_horizontal_scrool_view"
         android:id="@+id/menu_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/fragment_menu_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

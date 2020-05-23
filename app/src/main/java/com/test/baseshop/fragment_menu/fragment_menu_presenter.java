@@ -15,6 +15,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     private Interfaces.View view;
     private Interfaces.Model model;
     private View section_current = null;
+    private Context context;
     private int USER_ID;
 
     static final int ALL = 1;
@@ -23,18 +24,18 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
             LOBSTERS = 6, OYSTERS = 7, MUSSELS = 8,CARP = 9,COMBO =10;
 
     fragment_menu_presenter(fragment_menu view){
+        this.context = view.getContext();
         this.view = view;
-        this.model = new fragment_menu_model();
+        this.model = new fragment_menu_model(this);
         initPreferences(Objects.requireNonNull(view.getContext()));
     }
 
 
     @Override
-    public void getData(Context context, int code) {
-        List<Item> items = model.getItemsByFilter(code);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model, this);
-        view.setAdapter(adapter);
-        view.updateRecyclerView();
+    public void getData(int code) {
+        view.showProgressBar();
+        view.clearAdapter();
+        model.getItemsByFilter(code);
     }
 
     @Override
@@ -75,6 +76,13 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
                 return "Наборы";
         }
         return null;
+    }
+
+    @Override
+    public void setDataFromModel(List<Item> items) {
+        view.hideProgressBar();
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model, this);
+        view.setAdapter(adapter);
     }
 
     @Override

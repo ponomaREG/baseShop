@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.test.baseshop.R;
@@ -81,6 +82,11 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     }
 
     @Override
+    public void clearAdapter() {
+        if(adapter != null) adapter.clearAll();
+    }
+
+    @Override
     public void setSections(int[] sections_codes) {
         View.OnClickListener ocl = getOclForSectionItem();
         LayoutInflater inflater = this.getLayoutInflater();
@@ -93,7 +99,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
             ll_sections.addView(section_view);
             if(section_code == fragment_menu_presenter.ALL) {
                 menu_presenter.OnSectionItemClick(section_view);
-                menu_presenter.getData(getContext(),section_code);
+                menu_presenter.getData(section_code);
             }
         }
     }
@@ -127,6 +133,18 @@ public class fragment_menu extends Fragment implements Interfaces.View{
         count_of_item_for_order.setTag(number_of_item_for_order);
     }
 
+    @Override
+    public void showProgressBar() {
+        ProgressBar progressBar = Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        ProgressBar progressBar = Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_progressBar);
+        progressBar.setVisibility(View.GONE);
+    }
+
     private View.OnClickListener getOclForSectionItem() {
         return new View.OnClickListener() {
             @Override
@@ -138,7 +156,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
                 float offset = (float) (size.x/2.26);
                 hr.smoothScrollTo((int) (v.getLeft() - offset),0);
                 menu_presenter.OnSectionItemClick(v);
-                menu_presenter.getData(getContext(), (Integer) v.getTag());
+                menu_presenter.getData((Integer) v.getTag());
             }
         };
     }

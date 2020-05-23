@@ -103,6 +103,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return items.size();
     }
 
+
+    public void clearAll(){
+        this.items.clear();
+        this.notifyDataSetChanged();
+    }
+
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, desc, price, weight, number_of_item_for_order;
         ImageView image_of_item, plus_icon, minus_icon;

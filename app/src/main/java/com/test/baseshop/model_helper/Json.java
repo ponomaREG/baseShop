@@ -42,39 +42,29 @@ public class Json {
     public Json getInstance(){
         return instance; }
 
-    public List<Item> jsonify(int section_code) throws ExecutionException, InterruptedException {
-        GetDataFromBackground searchInfo = new GetDataFromBackground();
-        List<Item> items = new ArrayList<>();
+    public Map jsonify(int section_code) throws ExecutionException, InterruptedException, IOException {
+//        GetDataFromBackground searchInfo = new GetDataFromBackground();
+//        List<Item> items = new ArrayList<>();
         String query = String.format(SEARCH_API,section_code);
-        query = searchInfo.execute(query).get();
+//        query = searchInfo.execute(query).get();
+        String result = IOUtils.toString(new URL(query), StandardCharsets.UTF_8);
         Gson g = new Gson();
-        Map data = g.fromJson(query,Map.class);
-        if((int) (double) data.get("count") == 0) return items;
-        ArrayList jsonArrayOfItem = (ArrayList) data.get("data");
-        if(jsonArrayOfItem == null) return items;
-        for(Object item_obj:jsonArrayOfItem){
-            Map map = (Map) item_obj;
-            Item item = new Item();
-            int id = (int) (double) map.get("id");
-            String title = (String) map.get("title");
-            String desc = (String) map.get("desc");
-            int price = (int) (double) map.get("price");
-            int weight = (int) (double) map.get("weight");
-            Log.d("Title",title);
-            item.setId(id)
-            .setTitle(title)
-            .setDesc(desc)
-            .setPrice(price)
-            .setWeight(weight);
-            items.add(item);
-        }
-        return items;
+        return g.fromJson(result,Map.class);
     }
 
         public Map jsonify_basket(int user_id) throws ExecutionException, InterruptedException, IOException {
 //            GetDataFromBackground searchInfo = new GetDataFromBackground();
             String info =String.format(GET_BASKET_API,user_id);
             String result_of_query = IOUtils.toString(new URL(info), StandardCharsets.UTF_8);
+            Gson g = new Gson();
+            return g.fromJson(result_of_query,Map.class);
+
+    }
+
+        public Map jsonify_basket_async(int user_id) throws ExecutionException, InterruptedException, IOException {
+            GetDataFromBackground searchInfo = new GetDataFromBackground();
+            String info =String.format(GET_BASKET_API,user_id);
+            String result_of_query = searchInfo.execute(info).get();
             Gson g = new Gson();
             return g.fromJson(result_of_query,Map.class);
 
@@ -92,6 +82,7 @@ public class Json {
         searchInfo.execute(String.format(SET_BASKET_API,user_id,item_id,count_of_items_for_order));
         Log.d("USER_ID",user_id+"");
     }
+
 
     public Map jsonify_orders(int user_id) throws ExecutionException, InterruptedException {
         GetDataFromBackground searchInfo = new GetDataFromBackground();

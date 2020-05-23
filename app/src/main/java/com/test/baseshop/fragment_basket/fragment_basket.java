@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ public class fragment_basket extends Fragment implements Interfaces.View{
         super.onViewCreated(view, savedInstanceState);
         initOclOfButtonForOrder();
         initRecyclerView();
-        basket_presenter.getDataOfBasketInfo(getContext());
+        basket_presenter.getDataOfBasketInfo();
     }
 
     private void initPresenter(){
@@ -149,6 +150,12 @@ public class fragment_basket extends Fragment implements Interfaces.View{
         bottomSheetOfferOrder.setCancelable(true);
         assert getFragmentManager() != null;
         bottomSheetOfferOrder.show(getChildFragmentManager(),BottomSheetOfferOrder.TAG);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        ProgressBar progressBar = Objects.requireNonNull(getView()).findViewById(R.id.fragment_basket_progressBar);
+        progressBar.setVisibility(View.GONE);
     }
 
 

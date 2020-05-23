@@ -23,11 +23,13 @@ public interface Interfaces {
         void clearBasket();
         void showError(String message);
         void showOfferOfOrder(BottomSheetOfferOrder bottomSheetOfferOrder);
+        void hideProgressBar();
     }
 
     interface Presenter {
         void OnOrderButtonClick(int size_of_adapter_items);
-        void getDataOfBasketInfo(Context context);
+        void getDataOfBasketInfo();
+        void setDataOfBasket(List<Item> items);
         interface ConnectionBetweenViewAndRecyclerList {
             void tellViewToRemoveItemForOrder(int position);
             void tellViewWhatDatasetUpdated();
@@ -46,7 +48,7 @@ public interface Interfaces {
     interface Model {
 
         interface Basket {
-            List<Item> getDataOFBasketInfoRemote(int user_id);
+            void getDataOFBasketInfoRemote(int user_id);
             void sendNewNumberOfItemsForOrder(int user_id, int item_id, int count_of_items_for_order);
 //            void sendThatUserWantToMakeOrder(int user_id);
         }

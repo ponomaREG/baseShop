@@ -14,10 +14,12 @@ public class fragment_basket_presenter implements Interfaces.Presenter,Interface
     private com.test.baseshop.fragment_basket.Interfaces.View view;
     private com.test.baseshop.fragment_basket.Interfaces.Model.Basket model;
     private int USER_ID;
+    private Context context;
 
     fragment_basket_presenter(fragment_basket view){
+        this.context = view.getContext();
         this.view = view;
-        this.model = new fragment_basket_model();
+        this.model = new fragment_basket_model(this);
         SharedPreferences sh = Objects.requireNonNull(view.getContext()).getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
         USER_ID = sh.getInt("USER_ID",0);
     }
@@ -37,11 +39,19 @@ public class fragment_basket_presenter implements Interfaces.Presenter,Interface
     }
 
     @Override
-    public void getDataOfBasketInfo(Context context) {
-        List<Item> list_of_items = model.getDataOFBasketInfoRemote(USER_ID);
-        RecyclerViewAdapterBasket adapter = new RecyclerViewAdapterBasket(context,list_of_items,(Interfaces.Model.Photo) model,this);
+    public void getDataOfBasketInfo() {
+        model.getDataOFBasketInfoRemote(USER_ID);
+//        RecyclerViewAdapterBasket adapter = new RecyclerViewAdapterBasket(context,list_of_items,(Interfaces.Model.Photo) model,this);
+//        view.setAdapter(adapter);
+//        view.updateRecycleView();
+    }
+
+    @Override
+    public void setDataOfBasket(List<Item> items) {
+        view.hideProgressBar();
+
+        RecyclerViewAdapterBasket adapter = new RecyclerViewAdapterBasket(context,items,(Interfaces.Model.Photo) model,this);
         view.setAdapter(adapter);
-        view.updateRecycleView();
     }
 
     @Override

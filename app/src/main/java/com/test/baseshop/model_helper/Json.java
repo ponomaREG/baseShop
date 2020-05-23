@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -70,9 +71,10 @@ public class Json {
         return items;
     }
 
-        public Map jsonify_basket(int user_id) throws ExecutionException, InterruptedException {
-            GetDataFromBackground searchInfo = new GetDataFromBackground();
-            String result_of_query = searchInfo.execute(String.format(GET_BASKET_API,user_id)).get();
+        public Map jsonify_basket(int user_id) throws ExecutionException, InterruptedException, IOException {
+//            GetDataFromBackground searchInfo = new GetDataFromBackground();
+            String info =String.format(GET_BASKET_API,user_id);
+            String result_of_query = IOUtils.toString(new URL(info), StandardCharsets.UTF_8);
             Gson g = new Gson();
             return g.fromJson(result_of_query,Map.class);
 

@@ -85,10 +85,7 @@ public class fragment_info_presenter implements Interfaces.Presenter {
 
     @Override
     public void getUserInfo() {
-        HashMap<String,String> user_info = model.getUserInfo(USER_ID);
-        view.setFirstName(user_info.get("first_name"));
-        view.setEmail(user_info.get("email"));
-        view.setPhone(user_info.get("phone"));
+        model.getUserInfo(USER_ID);
     }
 
     @Override
@@ -103,6 +100,14 @@ public class fragment_info_presenter implements Interfaces.Presenter {
     public void clearPreferences(Context context) {
         SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
         sh.edit().clear().apply();
+    }
+
+    @Override
+    public void setUserInfoFromModel(HashMap<String, String> userInfoFromModel) {
+        view.hideProgressBar();
+        view.setFirstName(userInfoFromModel.get("first_name"));
+        view.setEmail(userInfoFromModel.get("email"));
+        view.setPhone(userInfoFromModel.get("phone"));
     }
 
 

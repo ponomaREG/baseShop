@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ import java.util.Objects;
 public class fragment_info extends Fragment implements Interfaces.View{
 
     private fragment_info_presenter presenter;
+    private boolean isAlreadyOpened = false;
 
 
     public fragment_info() {
@@ -44,16 +47,18 @@ public class fragment_info extends Fragment implements Interfaces.View{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d("ON CREATE","!");
         initPresenter();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("ON CREATE VIEW","!");
         View parent = inflater.inflate(R.layout.fragment_profile_fragment_info,container,false);
         ImageView user_icon = parent.findViewById(R.id.fragment_profile_fragment_info_usericon);
         presenter.setImageBySexOfUser(Objects.requireNonNull(getContext()),user_icon);
+        if(isAlreadyOpened) parent.findViewById(R.id.fragment_profile_fragment_info_progressBar).setVisibility(View.GONE);
         return parent;
     }
 
@@ -61,13 +66,17 @@ public class fragment_info extends Fragment implements Interfaces.View{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.d("ON VIEW CREATED","!");
         initOfclToEdittexts();
         initOclToCommitInEdittext();
 
         initOclToButtonLogout();
         initLongOclToButtonLogout();
 
-        presenter.getUserInfo();
+        if(!isAlreadyOpened) {
+            presenter.getUserInfo();
+            isAlreadyOpened = true;
+        }
     }
 
 
@@ -167,5 +176,30 @@ public class fragment_info extends Fragment implements Interfaces.View{
         EditText phone_view = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_info_phone);
         phone_view.setText(phone);
     }
+
+    @Override
+    public void hideProgressBar() {
+        getView().findViewById(R.id.fragment_profile_fragment_info_progressBar).setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d("ON STOP","!");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("ON DESTROY","!");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d("ON VIEW DESTROY","!");
+
+    }
+
 
 }

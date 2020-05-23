@@ -120,9 +120,9 @@ public class Json {
 
     }
 
-    public Map jsonify_user(int user_id) throws ExecutionException, InterruptedException {
-        GetDataFromBackground getUserInfo = new GetDataFromBackground();
-        String result = getUserInfo.execute(String.format(GET_USER_INFO,user_id)).get();
+    public Map jsonify_user(int user_id) throws ExecutionException, InterruptedException, IOException {
+        String query = String.format(GET_USER_INFO,user_id);
+        String result = IOUtils.toString(new URL(query), StandardCharsets.UTF_8);
         Gson g = new Gson();
         return g.fromJson(result,Map.class);
     }

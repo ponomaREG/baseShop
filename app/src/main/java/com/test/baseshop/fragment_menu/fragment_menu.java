@@ -66,14 +66,17 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     @Override
     public void setAdapter(RecyclerViewAdapter adapter) {
         this.adapter = adapter;
-        RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.menu_recyclerview);
-        rv.setHasFixedSize(true);
-        rv.setItemViewCacheSize(20);
-        rv.setDrawingCacheEnabled(true);
-        rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.addItemDecoration(new DividerItemDecoration(rv.getContext(),DividerItemDecoration.VERTICAL));
-        rv.setAdapter(adapter);
+        View parent = getView();
+        if(parent != null) {
+            RecyclerView rv = parent.findViewById(R.id.menu_recyclerview);
+            rv.setHasFixedSize(true);
+            rv.setItemViewCacheSize(20);
+            rv.setDrawingCacheEnabled(true);
+            rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+            rv.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv.addItemDecoration(new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL));
+            rv.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -135,14 +138,20 @@ public class fragment_menu extends Fragment implements Interfaces.View{
 
     @Override
     public void showProgressBar() {
-        ProgressBar progressBar = Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_progressBar);
-        progressBar.setVisibility(View.VISIBLE);
+        View parent = getView();
+        if(parent != null) {
+            ProgressBar progressBar = parent.findViewById(R.id.fragment_menu_progressBar);
+            progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void hideProgressBar() {
-        ProgressBar progressBar = Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_progressBar);
-        progressBar.setVisibility(View.GONE);
+        View parent = getView();
+        if(parent != null) {
+            ProgressBar progressBar = parent.findViewById(R.id.fragment_menu_progressBar);
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     private View.OnClickListener getOclForSectionItem() {

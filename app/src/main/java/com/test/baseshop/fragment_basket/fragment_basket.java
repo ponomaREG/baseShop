@@ -154,8 +154,11 @@ public class fragment_basket extends Fragment implements Interfaces.View{
 
     @Override
     public void hideProgressBar() {
-        ProgressBar progressBar = Objects.requireNonNull(getView()).findViewById(R.id.fragment_basket_progressBar);
-        progressBar.setVisibility(View.GONE);
+        View parent = getView();
+        if(parent!=null) {
+            ProgressBar progressBar = parent.findViewById(R.id.fragment_basket_progressBar);
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
 

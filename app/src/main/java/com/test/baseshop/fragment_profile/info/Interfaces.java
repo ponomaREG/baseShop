@@ -14,6 +14,7 @@ public interface Interfaces {
         void setFirstName(String firstName);
         void setEmail(String email);
         void setPhone(String phone);
+        void hideProgressBar();
     }
 
 
@@ -23,12 +24,13 @@ public interface Interfaces {
         void getUserInfo();
         void setImageBySexOfUser(Context context, ImageView user_icon);
         void clearPreferences(Context context);
+        void setUserInfoFromModel(HashMap<String, String> userInfoFromModel);
     }
 
 
     interface Model{
         String sendNewInfoAboutUser(String key, String new_info, int user_id);
-        HashMap<String,String> getUserInfo(int user_id);
+        void getUserInfo(int user_id);
     }
 
 

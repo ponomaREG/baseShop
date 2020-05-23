@@ -1,5 +1,6 @@
 package com.test.baseshop.fragment_profile.info;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.test.baseshop.model_helper.Json;
@@ -33,29 +34,70 @@ public class fragment_info_model implements Interfaces.Model {
     }
 
     @Override
-    public HashMap<String, String> getUserInfo(int user_id) {
-        HashMap<String,String> user_info = new HashMap<>();
-        Map raw_map;
-        try {
-           raw_map = json.jsonify_user(user_id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d("ERROR","USER INFO");
-            return user_info;
+    public void getUserInfo(int user_id) {
+        AsynsGetUserInfoFromServer asyns = new AsynsGetUserInfoFromServer();
+        asyns.execute(user_id);
+//        HashMap<String,String> user_info = new HashMap<>();
+//        Map raw_map;
+//        try {
+//           raw_map = json.jsonify_user(user_id);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            Log.d("ERROR","USER INFO");
+//            return;
+//        }
+//        int count = (int) (double) raw_map.get("count");
+//        if(count == 0) return user_info;
+//        ArrayList arrayListOfJson = (ArrayList) raw_map.get("data");
+//        assert arrayListOfJson != null;
+//        for(Object user:arrayListOfJson){
+//            Map user_info_map = (Map) user;
+//            String first_name = (String) user_info_map.get("first_name"); //TODO:FIX FOR
+//            String phone = (String) user_info_map.get("phone");
+//            String email = (String) user_info_map.get("email");
+//            user_info.put("first_name",first_name);
+//            user_info.put("phone",phone);
+//            user_info.put("email",email);
+//        }
+//        return user_info;
+    }
+
+
+
+    class AsynsGetUserInfoFromServer extends AsyncTask<Integer, Void , Void>{
+
+        private HashMap<String,String> userInfo = new HashMap<>();
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            Map raw_map;
+            try {
+                raw_map = json.jsonify_user(integers[0]);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("ERROR","USER INFO");
+                return null;
+            }
+            int count = (int) (double) raw_map.get("count");
+            if(count == 0) return null;
+            ArrayList arrayListOfJson = (ArrayList) raw_map.get("data");
+            assert arrayListOfJson != null;
+            for(Object user:arrayListOfJson){
+                Map user_info_map = (Map) user;
+                String first_name = (String) user_info_map.get("first_name"); //TODO:FIX FOR
+                String phone = (String) user_info_map.get("phone");
+                String email = (String) user_info_map.get("email");
+                userInfo.put("first_name",first_name);
+                userInfo.put("phone",phone);
+                userInfo.put("email",email);
+            }
+            return null;
         }
-        int count = (int) (double) raw_map.get("count");
-        if(count == 0) return user_info;
-        ArrayList arrayListOfJson = (ArrayList) raw_map.get("data");
-        assert arrayListOfJson != null;
-        for(Object user:arrayListOfJson){
-            Map user_info_map = (Map) user;
-            String first_name = (String) user_info_map.get("first_name"); //TODO:FIX FOR
-            String phone = (String) user_info_map.get("phone");
-            String email = (String) user_info_map.get("email");
-            user_info.put("first_name",first_name);
-            user_info.put("phone",phone);
-            user_info.put("email",email);
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            presenter.setUserInfoFromModel(userInfo);
         }
-        return user_info;
     }
 }

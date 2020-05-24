@@ -15,13 +15,16 @@ public interface Interfaces {
         void addNewCellOfAddressView(android.view.View v);
         void showBottomSheetAddNewAddress(BottomSheetAddNewAddress bottomSheetAddNewAddress);
         void updateCurrentAddressesIfNewIsAdded();
+        void hideProgressBar();
     }
 
     interface Presenter{
-        void getAddresses(LayoutInflater inflater, ViewGroup parent);
+        void getAddresses(ViewGroup parent);
+        void setAddresses(List<Address> addresses);
+        void onButtonNewAddressClick();
     }
 
     interface Model{
-         List<Address> getAddresses(int user_id);
+         void getAddresses(int user_id);
     }
 }

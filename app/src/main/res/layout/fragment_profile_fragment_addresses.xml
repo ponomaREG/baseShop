@@ -20,12 +20,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:scrollbars="none">
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/fragment_profile_fragment_addresses_progressBar"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <LinearLayout
         android:id="@+id/fragment_profile_fragment_addresses_container"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <include android:id="@+id/fragment_profile_fragment_addresses_plus" layout="@layout/fragment_profile_fragment_addresses_plus"/>
+    </LinearLayout>
 
 </HorizontalScrollView>
 

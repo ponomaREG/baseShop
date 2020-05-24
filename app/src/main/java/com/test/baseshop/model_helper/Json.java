@@ -99,9 +99,11 @@ public class Json {
         makeQuery.execute(String.format(SET_NEW_ORDER_API,user_id, address_id, persons, desc));
     }
 
-    public Map jsonify_addresses(int user_id) throws ExecutionException, InterruptedException {
-        GetDataFromBackground getAddresses = new GetDataFromBackground();
-        String result = getAddresses.execute(String.format(GET_ADDRESSES_API,user_id)).get();
+    public Map jsonify_addresses(int user_id) throws ExecutionException, InterruptedException, IOException {
+//        GetDataFromBackground getAddresses = new GetDataFromBackground();
+        String query = String.format(GET_ADDRESSES_API,user_id);
+        String result = IOUtils.toString(new URL(query), StandardCharsets.UTF_8);
+//        String result = getAddresses.execute(String.format(GET_ADDRESSES_API,user_id)).get();
         Gson g = new Gson();
         return g.fromJson(result, Map.class);
     }

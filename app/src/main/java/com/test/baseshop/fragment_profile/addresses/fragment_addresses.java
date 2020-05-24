@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.test.baseshop.R;
 import com.test.baseshop.fragment_profile.addresses.add_new.BottomSheetAddNewAddress;
@@ -44,13 +46,26 @@ public class fragment_addresses extends Fragment implements Interfaces.View{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.getAddresses(getLayoutInflater(), (ViewGroup) view.findViewById(R.id.fragment_profile_fragment_addresses_container));
+        presenter.getAddresses((ViewGroup) view.findViewById(R.id.fragment_profile_fragment_addresses_container));
+        initOclToButtonNewAddress();
     }
 
     private void initPresenter(){
         this.presenter = new fragment_addresses_presenter(this);
     }
 
+    private void initOclToButtonNewAddress(){
+        View parent = getView();
+        if(parent != null){
+            View plusButton = parent.findViewById(R.id.fragment_profile_fragment_addresses_plus);
+            plusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onButtonNewAddressClick();
+                }
+            });
+        }
+    }
 
 
     @Override
@@ -70,6 +85,15 @@ public class fragment_addresses extends Fragment implements Interfaces.View{
     public void updateCurrentAddressesIfNewIsAdded(){
         LinearLayout container_addresses = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_addresses_container);
         container_addresses.removeAllViews();
-        presenter.getAddresses(getLayoutInflater(),container_addresses);
+        presenter.getAddresses(container_addresses);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        View parent = getView();
+        if(parent != null) {
+            ProgressBar progressBar = parent.findViewById(R.id.fragment_profile_fragment_addresses_progressBar);
+            progressBar.setVisibility(View.GONE);
+        }
     }
 }

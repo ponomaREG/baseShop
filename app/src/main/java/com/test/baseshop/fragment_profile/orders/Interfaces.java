@@ -8,15 +8,16 @@ public interface Interfaces {
 
     interface View{
         void setAdapter(RecyclerViewAdapterOrders adapter);
+        void hideProgressBar();
     }
 
     interface Presenter{
-        void getData(Context context);
-
+        void getData();
+        void setAdapter(HashMap<String, Object> orders);
     }
 
     interface Model{
-        HashMap<String, Object> getOrdersByID(int user_id);
+        void getOrdersByID(int user_id);
 
     }
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.test.baseshop.R;
 
@@ -47,7 +48,7 @@ public class fragment_orders extends Fragment implements Interfaces.View{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.getData(getContext());
+        presenter.getData();
     }
 
     private void initPresenter(){
@@ -56,9 +57,19 @@ public class fragment_orders extends Fragment implements Interfaces.View{
 
     @Override
     public void setAdapter(RecyclerViewAdapterOrders adapter) {
-        RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_addresses_rv);
+        RecyclerView rv = Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_fragment_orders_rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.addItemDecoration(new DividerItemDecoration(rv.getContext(),DividerItemDecoration.VERTICAL));
         rv.setAdapter(adapter);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        View parent = getView();
+        if(parent != null) {
+        ProgressBar progressBar = parent.findViewById(R.id.fragment_profile_fragment_orders_progressBar);
+        progressBar.setVisibility(View.GONE);
+        }
+
     }
 }

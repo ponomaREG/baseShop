@@ -84,9 +84,11 @@ public class Json {
     }
 
 
-    public Map jsonify_orders(int user_id) throws ExecutionException, InterruptedException {
-        GetDataFromBackground searchInfo = new GetDataFromBackground();
-        String result_of_query = searchInfo.execute(String.format(GET_ORDERS_API,user_id)).get();
+    public Map jsonify_orders(int user_id) throws ExecutionException, InterruptedException, IOException {
+        String query = String.format(GET_ORDERS_API,user_id);
+        String result_of_query = IOUtils.toString(new URL(query), StandardCharsets.UTF_8);
+//        GetDataFromBackground searchInfo = new GetDataFromBackground();
+//        String result_of_query = searchInfo.execute(String.format(GET_ORDERS_API,user_id)).get();
         Gson g = new Gson();
         return g.fromJson(result_of_query,Map.class);
     }

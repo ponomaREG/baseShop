@@ -41,7 +41,7 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
 
     @Override
     public int[] getSections() {
-        return new int[]{1,2,3,4,5,6,7,8,9,10};
+        return new int[]{2,3,4,5,6,7,8,9,10};
     }
 
     @Override
@@ -121,11 +121,13 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
                 String desc = (String) map.get("desc");
                 int price = (int) (double) map.get("price");
                 int weight = (int) (double) map.get("weight");
+                int section = (int) (double) map.get("section");
                 Log.d("Title",title);
                 item.setId(id)
                         .setTitle(title)
                         .setDesc(desc)
                         .setPrice(price)
+                        .setSection(section)
                         .setWeight(weight);
                 items.add(item);
             }

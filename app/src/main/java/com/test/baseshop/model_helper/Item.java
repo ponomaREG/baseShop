@@ -8,6 +8,9 @@ public class Item {
     private int weight = 1000, id, price , number_of_item_for_order = 0 , total_price;
     private String image_link = "TeSt";
     private ImageView image_view_of_icon;
+    private int section;
+    private String section_title;
+    private boolean if_exists_section_title = false;
 
 
     public Item(){
@@ -20,6 +23,13 @@ public class Item {
     public Item setWeight(int weight){this.weight = weight; return this;}
     public Item setPrice(int price){this.price = price; return  this;}
     public Item setImageView(ImageView view){this.image_view_of_icon = view; return this;}
+    public Item setSection(int section) { this.section = section; return  this; }
+    public Item setSection_title(String section_title) { this.section_title = section_title;return this; }
+
+    public void setIf_exists_section_title(boolean if_exists_section_title) {
+        this.if_exists_section_title = if_exists_section_title;
+    }
+
     public Item setNumberOfItemForOrder(int number_of_item_for_order){this.number_of_item_for_order = number_of_item_for_order;return this;}
 
     public int getTotalPrice(){return this.total_price;}
@@ -31,6 +41,12 @@ public class Item {
     public int getPrice(){return this.price;}
     public ImageView getImageViewOfIcon(){return this.image_view_of_icon;}
     public int getNumberOfItemForOrder(){return this.number_of_item_for_order;}
+    public int getSection() { return section; }
+    public String getSection_title() { return section_title; }
+
+    public boolean isIf_exists_section_title() {
+        return if_exists_section_title;
+    }
 
     public void calculateTotalPrice(){this.total_price = this.number_of_item_for_order * this.price;}
 }

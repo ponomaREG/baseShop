@@ -1,7 +1,6 @@
 package com.test.baseshop.fragment_profile.addresses;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.test.baseshop.model_helper.Address;
 import com.test.baseshop.model_helper.Json;
@@ -67,7 +66,6 @@ public class fragment_addresses_model implements Interfaces.Model {
                 raw_map = json.jsonify_addresses(integers[0]);
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.d("ERROR","ADDRESSES");
                 return null;
             }
             int count = (int) (double) raw_map.get("count");

@@ -81,6 +81,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
     @Override
     public void setDataFromModel(List<Item> items) {
         view.hideProgressBar();
+        for(Item item:items) item.setSection_title(getTitleOfSectionByCode(item.getSection()));
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model, this);
         view.setAdapter(adapter);
     }

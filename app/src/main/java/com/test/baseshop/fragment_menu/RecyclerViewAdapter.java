@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Interfaces.Presenter.ConnectionBetweenViewAndRecyclerList presenter_to_view;
     private Interfaces.Presenter.ConnectionBetweenModelAndRecyclerList presenter_to_model;
     private HashMap<Integer,Integer> items_which_already_in_busket;
+    private int current_section = -1;
 
     private final static String MONEY_SIGN = "%sР", WEIGHT_SIGN = "%s г.";
 
@@ -40,11 +42,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        setIfExistsMainSectionTitleOnItems();
         return new MyViewHolder(inflater.inflate(R.layout.fragment_menu_rv_item,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+
+        if(items.get(position).isIf_exists_section_title()){
+            holder.sectionTitle.setVisibility(View.VISIBLE);
+            holder.sectionTitle_title.setText(items.get(position).getSection_title());
+        }
+//        else if(updateCurrentSectionNeedForSectionTitle(position) == 1){
+//            holder.sectionTitle.setVisibility(View.VISIBLE);
+//            holder.sectionTitle_title.setText(items.get(position).getSection_title());
+//            items.get(position).setIf_exists_section_title(true);
+//        }
         holder.title.setText(items.get(position).getTitle());
         holder.desc.setText(items.get(position).getDesc());
         holder.price.setText(String.format(MONEY_SIGN,items.get(position).getPrice()));
@@ -103,6 +116,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return items.size();
     }
 
+    public boolean ifExistsSectionTitleAt(int position){
+        return items.get(position).isIf_exists_section_title();
+    }
+
+    public int getSectionIntAt(int position){
+        if(ifExistsSectionTitleAt(position)){
+            return items.get(position).getSection();
+        }
+        return -1;
+    }
+
 
     public void clearAll(){
         this.items.clear();
@@ -110,11 +134,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, desc, price, weight, number_of_item_for_order;
+        TextView title, desc, price, weight, number_of_item_for_order, sectionTitle_title;
         ImageView image_of_item, plus_icon, minus_icon;
+        LinearLayout sectionTitle;
         MyViewHolder(View v) {
             super(v);
             title = v.findViewById(R.id.fragment_menu_rv_item_title);
+            sectionTitle = v.findViewById(R.id.fragment_menu_rv_item_sectionTitle);
+            sectionTitle_title = v.findViewById(R.id.fragment_menu_rv_item_sectionTitle_title);
             desc = v.findViewById(R.id.fragment_menu_rv_item_description);
             price = v.findViewById(R.id.fragment_menu_rv_item_price);
             weight = v.findViewById(R.id.fragment_menu_rv_item_weight);
@@ -132,6 +159,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 items.get(position).getId(),
                 count_of_item_for_order
         );
+    }
+
+    private int updateCurrentSectionNeedForSectionTitle(int position){
+        int item_section = items.get(position).getSection();
+        if(current_section != -1){
+            if(current_section != item_section){
+                current_section = item_section;
+                return 1;
+            }
+            else return 0;
+
+        }
+        current_section = item_section;
+        return 1;
+    }
+
+    private void setIfExistsMainSectionTitleOnItems(){
+        Item item;
+        for(int i = 0;i<items.size();i++){
+            item = items.get(i);
+            if(updateCurrentSectionNeedForSectionTitle(i) == 1){
+                item.setIf_exists_section_title(true);
+            }
+        }
     }
 
 

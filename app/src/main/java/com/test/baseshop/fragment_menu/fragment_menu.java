@@ -53,15 +53,13 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         menu_presenter.getSections();
+        menu_presenter.getData(fragment_menu_presenter.ALL);
 //        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.ALL);
     }
 
     private void initPresenter(){
         this.menu_presenter = new fragment_menu_presenter(this);
     }
-
-
-
 
     @Override
     public void setAdapter(RecyclerViewAdapter adapter) {
@@ -70,6 +68,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
         if(parent != null) {
             RecyclerView rv = parent.findViewById(R.id.menu_recyclerview);
             rv.setHasFixedSize(true);
+            rv.setNestedScrollingEnabled(false);
             rv.setItemViewCacheSize(20);
             rv.setDrawingCacheEnabled(true);
             rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
@@ -164,8 +163,19 @@ public class fragment_menu extends Fragment implements Interfaces.View{
                 HorizontalScrollView hr = (Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_sections_horizontal_scrool_view));
                 float offset = (float) (size.x/2.26);
                 hr.smoothScrollTo((int) (v.getLeft() - offset),0);
+                RecyclerView rv = getView().findViewById(R.id.menu_recyclerview);
+                View item_to_scroll;
+                RecyclerViewAdapter adapter = (RecyclerViewAdapter) rv.getAdapter();
+
+                for(int i = 0;i<adapter.getItemCount();i++){
+                    item_to_scroll = rv.getChildAt(i);
+                    if((adapter.ifExistsSectionTitleAt(i))&&(adapter.getSectionIntAt(i)==((Integer) v.getTag()))){
+                        item_to_scroll = rv.getChildAt(i);
+                        ((LinearLayoutManager) rv.getLayoutManager()).scrollToPositionWithOffset(i,20);
+                    }
+                }
                 menu_presenter.OnSectionItemClick(v);
-                menu_presenter.getData((Integer) v.getTag());
+//                menu_presenter.getData((Integer) v.getTag());
             }
         };
     }

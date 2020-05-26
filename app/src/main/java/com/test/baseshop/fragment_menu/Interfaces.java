@@ -22,6 +22,7 @@ public interface Interfaces {
     }
 
     interface Presenter{
+        void loadData();
         void getData(int code);
         void getSections();
         void OnSectionItemClick(android.view.View v);
@@ -43,8 +44,10 @@ public interface Interfaces {
     }
 
     interface Model{
+        List<Item> getItemsFromDB();
         void getItemsByFilter(int code);
         int[] getSections();
+        void pushMenuDataIntoDatabase(List<Item> items);
 
         interface Basket{
             HashMap<Integer,Integer> getBasketForUser(int user_id);

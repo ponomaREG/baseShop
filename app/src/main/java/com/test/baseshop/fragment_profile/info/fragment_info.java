@@ -34,6 +34,8 @@ public class fragment_info extends Fragment implements Interfaces.View{
     private fragment_info_presenter presenter;
     private boolean isAlreadyOpened = false;
 
+    private View view;
+
 
     public fragment_info() {
         // Required empty public constructor
@@ -55,11 +57,14 @@ public class fragment_info extends Fragment implements Interfaces.View{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("ON CREATE VIEW","!");
-        View parent = inflater.inflate(R.layout.fragment_profile_fragment_info,container,false);
-        ImageView user_icon = parent.findViewById(R.id.fragment_profile_fragment_info_usericon);
-        presenter.setImageBySexOfUser(Objects.requireNonNull(getContext()),user_icon);
-        if(isAlreadyOpened) parent.findViewById(R.id.fragment_profile_fragment_info_progressBar).setVisibility(View.GONE);
-        return parent;
+        if(!isAlreadyOpened) {
+            view = inflater.inflate(R.layout.fragment_profile_fragment_info, container, false);
+            ImageView user_icon = view.findViewById(R.id.fragment_profile_fragment_info_usericon);
+            presenter.setImageBySexOfUser(Objects.requireNonNull(getContext()), user_icon);
+//            if (isAlreadyOpened)
+//                view.findViewById(R.id.fragment_profile_fragment_info_progressBar).setVisibility(View.GONE);
+        }
+        return view;
     }
 
 

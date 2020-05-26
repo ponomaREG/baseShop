@@ -96,13 +96,13 @@ public class RecyclerViewAdapterBasket extends RecyclerView.Adapter<RecyclerView
         View.OnClickListener ocl_for_make_visible = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((Integer) v.getTag() == View.VISIBLE) {
-                    v.setTag(View.GONE);
-                    presenter_to_view.tellViewToHideLLContainerWithDesc(position);
-                } else {
-                    v.setTag(View.VISIBLE);
-                    presenter_to_view.tellViewToShowLLContainerWithDesc(position);
-                }
+//                if ((Integer) v.getTag() == View.VISIBLE) {//TODO:Отсутствует синхронизация с Меню
+//                    v.setTag(View.GONE);
+//                    presenter_to_view.tellViewToHideLLContainerWithDesc(position);
+//                } else {
+//                    v.setTag(View.VISIBLE);
+//                    presenter_to_view.tellViewToShowLLContainerWithDesc(position);
+//                }
             }
         };
         holder.item_LL_container.setOnClickListener(ocl_for_make_visible);

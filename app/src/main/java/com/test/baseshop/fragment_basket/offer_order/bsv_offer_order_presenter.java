@@ -22,6 +22,8 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
     private View current_address;
     private int current_address_id;
     private int persons = MIN_PERSONS;
+    private LayoutInflater inflater;
+    private ViewGroup parent;
 
     private int USER_ID;
 
@@ -70,8 +72,8 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
     }
 
     @Override
-    public void getAddresses(LayoutInflater inflater, ViewGroup container) {
-        Map raw_result = model.getAddressesForUser(USER_ID);
+    public void setAddresses(Map raw_result) {
+        view.hideProgressBar();
         if(raw_result == null){
             view.showErrorStrange();
             return;
@@ -86,7 +88,7 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
             assert raw_result != null;
             for(Object key: raw_result.keySet()) {
                 Map raw_result_address = (Map) raw_result.get(key);
-                View address_cell = inflater.inflate(R.layout.fragment_basket_bsv_order_cell_address, container, false);
+                View address_cell = inflater.inflate(R.layout.fragment_basket_bsv_order_cell_address, parent, false);
                 TextView address_textview = address_cell.findViewById(R.id.fragment_basket_bsv_container_addresses_cell_title);
                 assert raw_result_address != null;
                 address_textview.setText((String) raw_result_address.get("title"));
@@ -102,6 +104,15 @@ public class bsv_offer_order_presenter implements Interfaces.Presenter{
 
         }
     }
+
+    @Override
+    public void getAddresses(LayoutInflater inflater, ViewGroup container) {
+        model.getAddressesForUser(USER_ID);
+        this.inflater = inflater;
+        this.parent = container;
+    }
+
+
 
 
 

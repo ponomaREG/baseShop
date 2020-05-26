@@ -29,6 +29,8 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     private Interfaces.Presenter menu_presenter;
 
     private RecyclerViewAdapter adapter;
+    private boolean isLoaded = false;
+    private View view;
 
     public fragment_menu() {
     }
@@ -46,14 +48,19 @@ public class fragment_menu extends Fragment implements Interfaces.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        if(!isLoaded) view = inflater.inflate(R.layout.fragment_menu, container, false);
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        menu_presenter.getSections();
-        menu_presenter.getData(fragment_menu_presenter.ALL);
+        if(!isLoaded) {
+            menu_presenter.getSections();
+            menu_presenter.getData(fragment_menu_presenter.ALL);
+            isLoaded = true;
+        }
+//        menu_presenter.getData(fragment_menu_presenter.ALL);
 //        menu_presenter.getData(getContext(), com.test.baseshop.fragment_menu.fragment_menu_presenter.ALL);
     }
 
@@ -99,10 +106,10 @@ public class fragment_menu extends Fragment implements Interfaces.View{
             section_view.setTag(section_code);
             section_view.setOnClickListener(ocl);
             ll_sections.addView(section_view);
-            if(section_code == fragment_menu_presenter.ALL) {
-                menu_presenter.OnSectionItemClick(section_view);
-                menu_presenter.getData(section_code);
-            }
+//            if(section_code == fragment_menu_presenter.ALL) {
+//                menu_presenter.OnSectionItemClick(section_view);
+//                menu_presenter.getData(section_code);
+//            }
         }
     }
 

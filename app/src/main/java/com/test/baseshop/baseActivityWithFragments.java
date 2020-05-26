@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.test.baseshop.model_helper.DBHelper;
 
 
 public class baseActivityWithFragments extends AppCompatActivity implements baseInterfaceMVP.View{
@@ -29,6 +30,7 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
         prepareView();
         initFragmentManager();
         initPresenter();
+//        initDBHelperInstance();
         setListenerToNavigationView();
     }
 
@@ -58,6 +60,13 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
         fm = this.getSupportFragmentManager();
     }
 
+
+    @Deprecated
+    private void initDBHelperInstance(){
+        DBHelper dbHelper = new DBHelper(this);
+        dbHelper.copyDataBase();
+        dbHelper.updateDataBase();
+    }
 
     private void setListenerToNavigationView(){
         BottomNavigationView bnv = findViewById(R.id.bottom_navigation);

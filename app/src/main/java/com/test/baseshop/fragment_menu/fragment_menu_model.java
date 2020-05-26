@@ -2,10 +2,14 @@ package com.test.baseshop.fragment_menu;
 
 
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.test.baseshop.model_helper.DBHelper;
 import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
 import com.test.baseshop.model_helper.PhotoDownloader;
@@ -26,10 +30,38 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
     }
 
     @Override
-    public void getItemsByFilter(int code) {
+    public List<Item> getItemsFromDB() {
+        List<Item> items = new ArrayList<>();
+        DBHelper dbHelper = DBHelper.getInstance();
+        Cursor c = dbHelper.getMenuItems();
+        c.moveToFirst();
+        for(int i = 0;i < c.getCount();i++){
+            Item item = new Item();
+            int id = c.getInt(c.getColumnIndex("id"));
+            String title = c.getString(c.getColumnIndex("title"));
+            String desc = c.getString(c.getColumnIndex("desc"));
+            int price = c.getInt(c.getColumnIndex("price"));
+            int section = c.getInt(c.getColumnIndex("section"));
+            int weight = c.getInt(c.getColumnIndex("weight"));
 
+            item.setId(id)
+                    .setSection(section)
+                    .setPrice(price)
+                    .setWeight(weight)
+                    .setTitle(title)
+                    .setDesc(desc);
+            items.add(item);
+            c.moveToNext();
+        }
+        c.close();
+        return items;
+    }
+
+    @Override
+    public void getItemsByFilter(int code) {
         AsyncGetItemsMenuRemote getItemsByFilter = new AsyncGetItemsMenuRemote();
         getItemsByFilter.execute(code);
+
 //        List<Item> arr = null;
 //        try {
 //            arr = json.jsonify(code);
@@ -42,6 +74,24 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
     @Override
     public int[] getSections() {
         return new int[]{2,3,4,5,6,7,8,9,10};
+    }
+
+    @Override
+    public void pushMenuDataIntoDatabase(List<Item> items) {
+        DBHelper dbHelper = DBHelper.getInstance();
+        dbHelper.clearMenu();
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        for(Item item:items){
+            ContentValues cv = new ContentValues();
+            cv.put("id",item.getId());
+            cv.put("desc",item.getDesc());
+            cv.put("title",item.getTitle());
+            cv.put("price",item.getPrice());
+            cv.put("section",item.getSection());
+            cv.put("weight",item.getWeight());
+            database.insert("menu",null,cv);
+        }
+        database.close();
     }
 
     @Override

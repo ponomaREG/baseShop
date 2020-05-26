@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -146,5 +147,14 @@ public class BottomSheetOfferOrder extends BottomSheetDialogFragment implements 
     public void showNewPersonsNumber(int persons) {
         TextView et_persons = Objects.requireNonNull(getView()).findViewById(R.id.fragment_basket_bsv_persons);
         et_persons.setText(String.valueOf(persons));
+    }
+
+    @Override
+    public void hideProgressBar() {
+        View container = getView();
+        if(container != null) {
+            ProgressBar progressBar_in_container_addresses = container.findViewById(R.id.fragment_basket_bsv_container_addresses_progressBar);
+            progressBar_in_container_addresses.setVisibility(View.GONE);
+        }
     }
 }

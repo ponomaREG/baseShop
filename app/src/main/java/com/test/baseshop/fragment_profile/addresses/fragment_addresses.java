@@ -22,6 +22,9 @@ public class fragment_addresses extends Fragment implements Interfaces.View{
 
     private fragment_addresses_presenter presenter;
 
+    private View view;
+    private boolean isLoaded = false;
+
 
     public fragment_addresses() {
     }
@@ -40,14 +43,19 @@ public class fragment_addresses extends Fragment implements Interfaces.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-      return inflater.inflate(R.layout.fragment_profile_fragment_addresses, container, false);
+        if(!isLoaded)
+        view = inflater.inflate(R.layout.fragment_profile_fragment_addresses, container, false);
+      return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.getAddresses((ViewGroup) view.findViewById(R.id.fragment_profile_fragment_addresses_container));
-        initOclToButtonNewAddress();
+        if(!isLoaded) {
+            presenter.getAddresses((ViewGroup) view.findViewById(R.id.fragment_profile_fragment_addresses_container));
+            initOclToButtonNewAddress();
+            isLoaded = true;
+        }
     }
 
     private void initPresenter(){

@@ -20,6 +20,7 @@ public interface Interfaces {
         void setButtonForOrderDisabled();
         void dismissBSV();
         void showNewPersonsNumber(int persons);
+        void hideProgressBar();
     }
 
     interface Presenter{
@@ -27,11 +28,12 @@ public interface Interfaces {
         void OnButtonOrderClick(String desc);
         void OnButtonPersonsPlusClick();
         void OnButtonPersonsMinusClick();
+        void setAddresses(Map result); //TODO:LIST ADDRESS
         void getAddresses(LayoutInflater inflater, ViewGroup container);
     }
 
     interface Model{
         Map sendOrder(int user_id, int address_id, int persons, String desc);
-        Map getAddressesForUser(int user_id);
+        void getAddressesForUser(int user_id);
     }
 }

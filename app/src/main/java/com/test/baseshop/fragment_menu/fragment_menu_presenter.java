@@ -2,6 +2,7 @@ package com.test.baseshop.fragment_menu;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 
 import com.test.baseshop.model_helper.Item;
@@ -32,11 +33,26 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
 
 
     @Override
+    public void loadData() { //TODO:Другой метод
+        List<Item> itemsFromDB = model.getItemsFromDB();
+        Log.d("items",itemsFromDB.size()+"");
+        if(itemsFromDB.size() == 0){
+            Log.d("GET DATA","123");
+            getData(ALL);
+        }else {
+            Log.d("set data","1");
+            setDataFromModel(itemsFromDB);
+        }
+    }
+
+    @Override
     public void getData(int code) {
         view.showProgressBar();
         view.clearAdapter();
         model.getItemsByFilter(code);
     }
+
+
 
     @Override
     public void getSections() {
@@ -84,6 +100,7 @@ public class fragment_menu_presenter implements Interfaces.Presenter, Interfaces
         for(Item item:items) item.setSection_title(getTitleOfSectionByCode(item.getSection()));
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(context,items,(Interfaces.Model.Photo) model, this);
         view.setAdapter(adapter);
+//        model.pushMenuDataIntoDatabase(items);
     }
 
     @Override

@@ -4,8 +4,11 @@ import android.content.Context;
 
 import com.test.baseshop.model_helper.Item;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 public interface Interfaces {
 
@@ -22,7 +25,9 @@ public interface Interfaces {
     }
 
     interface Presenter{
+        @Deprecated
         void loadData();
+
         void getData(int code);
         void getSections();
         void OnSectionItemClick(android.view.View v);
@@ -44,10 +49,17 @@ public interface Interfaces {
     }
 
     interface Model{
+        @Deprecated
         List<Item> getItemsFromDB();
+
         void getItemsByFilter(int code);
         int[] getSections();
+
         void pushMenuDataIntoDatabase(List<Item> items);
+
+        interface RXAndroid{
+            Observable<List<Item>> getItems(int code);
+        }
 
         interface Basket{
             HashMap<Integer,Integer> getBasketForUser(int user_id);
@@ -55,6 +67,7 @@ public interface Interfaces {
         }
 
         interface Photo{
+            @Deprecated
             void setImageInBackground(Item item);
             void setImageWithPicasso(Item item);
             }

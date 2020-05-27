@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:padding="3dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ex"/>
+<TextView
     android:id="@+id/fragment_menu_section_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -8,3 +18,5 @@
     android:textColor="@drawable/fragment_menu_section_textcolor_selector"
     android:background="@drawable/fragment_menu_section_text_selector"
     />
+
+</LinearLayout>

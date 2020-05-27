@@ -14,10 +14,21 @@ import com.test.baseshop.model_helper.Item;
 import com.test.baseshop.model_helper.Json;
 import com.test.baseshop.model_helper.PhotoDownloader;
 
+import java.net.HttpRetryException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Cancellable;
+import io.reactivex.schedulers.Schedulers;
 
 public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.Photo, Interfaces.Model.Basket{
 
@@ -59,8 +70,33 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
 
     @Override
     public void getItemsByFilter(int code) {
-        AsyncGetItemsMenuRemote getItemsByFilter = new AsyncGetItemsMenuRemote();
-        getItemsByFilter.execute(code);
+
+
+        RXGetItemsMenuRemote getItems = new RXGetItemsMenuRemote();
+        getItems.getItems(code).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Item>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(List<Item> items) {
+                        presenter.setDataFromModel(items);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        presenter.setDataFromModel(new ArrayList<Item>());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+//        AsyncGetItemsMenuRemote getItemsByFilter = new AsyncGetItemsMenuRemote();
+//        getItemsByFilter.execute(code);
 
 //        List<Item> arr = null;
 //        try {
@@ -145,50 +181,105 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
 
 
 
-    class AsyncGetItemsMenuRemote extends AsyncTask<Integer, Void, Void>{
-
-        private List<Item> items = new ArrayList<>();
+    class RXGetItemsMenuRemote implements Interfaces.Model.RXAndroid {
 
 
         @Override
-        protected Void doInBackground(Integer... integers) {
-            Map data = null;
-            try {
-                data = json.jsonify(integers[0]);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if(data.containsKey("count")) {
-                if ((int) (double) data.get("count") == 0) return null;
-            }else return null;
-            ArrayList jsonArrayOfItem = (ArrayList) data.get("data");
-            if(jsonArrayOfItem == null) return null;
-            for(Object item_obj:jsonArrayOfItem){
-                Map map = (Map) item_obj;
-                Item item = new Item();
-                int id = (int) (double) map.get("id");
-                String title = (String) map.get("title");
-                String desc = (String) map.get("desc");
-                int price = (int) (double) map.get("price");
-                int weight = (int) (double) map.get("weight");
-                int section = (int) (double) map.get("section");
-                Log.d("Title",title);
-                item.setId(id)
-                        .setTitle(title)
-                        .setDesc(desc)
-                        .setPrice(price)
-                        .setSection(section)
-                        .setWeight(weight);
-                items.add(item);
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            presenter.setDataFromModel(items);
+        public Observable<List<Item>> getItems(final int code) {
+            return Observable.create(new ObservableOnSubscribe<List<Item>>() {
+                @Override
+                public void subscribe(ObservableEmitter<List<Item>> observableEmitter) throws Exception {
+                    List<Item> items = new ArrayList<>();
+                    Map data = null;
+                    try {
+                        data = json.jsonify(code);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        observableEmitter.onError(new Exception());
+                        observableEmitter.onComplete();
+                    }
+                    if(data.containsKey("count")) {
+                        if ((int) (double) data.get("count") == 0) {
+                            observableEmitter.onNext(items);
+                            observableEmitter.onComplete();
+                        }
+                    }else {
+                        observableEmitter.onError(new Exception());
+                        observableEmitter.onComplete();
+                    }
+                    ArrayList jsonArrayOfItem = (ArrayList) data.get("data");
+                    if(jsonArrayOfItem == null) {
+                        observableEmitter.onError(new Exception());
+                        observableEmitter.onComplete();
+                    }
+                    for(Object item_obj:jsonArrayOfItem){
+                        Map map = (Map) item_obj;
+                        Item item = new Item();
+                        int id = (int) (double) map.get("id");
+                        String title = (String) map.get("title");
+                        String desc = (String) map.get("desc");
+                        int price = (int) (double) map.get("price");
+                        int weight = (int) (double) map.get("weight");
+                        int section = (int) (double) map.get("section");
+                        Log.d("Title",title);
+                        item.setId(id)
+                                .setTitle(title)
+                                .setDesc(desc)
+                                .setPrice(price)
+                                .setSection(section)
+                                .setWeight(weight);
+                        items.add(item);
+                    }
+                    observableEmitter.onNext(items);
+                    observableEmitter.onComplete();
+                }
+            });
         }
     }
+//    class AsyncGetItemsMenuRemote extends AsyncTask<Integer, Void, Void>{
+//
+//        private List<Item> items = new ArrayList<>();
+//
+//
+//        @Override
+//        protected Void doInBackground(Integer... integers) {
+//            Map data = null;
+//            try {
+//                data = json.jsonify(integers[0]);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            if(data.containsKey("count")) {
+//                if ((int) (double) data.get("count") == 0) return null;
+//            }else return null;
+//            ArrayList jsonArrayOfItem = (ArrayList) data.get("data");
+//            if(jsonArrayOfItem == null) return null;
+//            for(Object item_obj:jsonArrayOfItem){
+//                Map map = (Map) item_obj;
+//                Item item = new Item();
+//                int id = (int) (double) map.get("id");
+//                String title = (String) map.get("title");
+//                String desc = (String) map.get("desc");
+//                int price = (int) (double) map.get("price");
+//                int weight = (int) (double) map.get("weight");
+//                int section = (int) (double) map.get("section");
+//                Log.d("Title",title);
+//                item.setId(id)
+//                        .setTitle(title)
+//                        .setDesc(desc)
+//                        .setPrice(price)
+//                        .setSection(section)
+//                        .setWeight(weight);
+//                items.add(item);
+//            }
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            super.onPostExecute(aVoid);
+//            presenter.setDataFromModel(items);
+//        }
+//    }
 
 }

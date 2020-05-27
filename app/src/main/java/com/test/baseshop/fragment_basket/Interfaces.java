@@ -10,6 +10,8 @@ import com.test.baseshop.model_helper.Item;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+
 public interface Interfaces {
 
     interface View {
@@ -56,6 +58,11 @@ public interface Interfaces {
         interface Photo {
             void setImageInBackground(Item item);
             void setImageWithPicasso(Item item);
+        }
+
+        interface RX{
+            Observable<List<Item>> getDataOfBasketInfoRemote(int user_id);
+
         }
 
 

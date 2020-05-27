@@ -9,6 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class fragment_addresses_model implements Interfaces.Model {
     private Interfaces.Presenter presenter;
     private Json json;
@@ -21,8 +29,33 @@ public class fragment_addresses_model implements Interfaces.Model {
 
     @Override
     public void getAddresses(int user_id) {
-        AsyncGetAddressesFromServer getAddressesFromServerAsync = new AsyncGetAddressesFromServer();
-        getAddressesFromServerAsync.execute(user_id);
+        RXGetAddressesFromServer getAddressesFromServer = new RXGetAddressesFromServer();
+        getAddressesFromServer.getAddresses(user_id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<List<Address>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<Address> addresses) {
+                        presenter.setAddresses(addresses);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        presenter.setAddresses(new ArrayList<Address>()); //TODO:ERROR
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+//        AsyncGetAddressesFromServer getAddressesFromServerAsync = new AsyncGetAddressesFromServer();
+//        getAddressesFromServerAsync.execute(user_id);
 //        Map raw_map;
 //        List<Address> addresses = new ArrayList<>();
 //        try {
@@ -55,45 +88,88 @@ public class fragment_addresses_model implements Interfaces.Model {
     }
 
 
-    class AsyncGetAddressesFromServer extends AsyncTask<Integer, Void, Void>{
-
-        List<Address> addresses = new ArrayList<>();
+    class RXGetAddressesFromServer implements Interfaces.Model.RX{
 
         @Override
-        protected Void doInBackground(Integer... integers) {
-            Map raw_map;
-            try {
-                raw_map = json.jsonify_addresses(integers[0]);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-            int count = (int) (double) raw_map.get("count");
-            if(count == 0) return null;
-            raw_map = (Map) raw_map.get("data");
+        public Observable<List<Address>> getAddresses(final int user_id) {
+            return Observable.create(new ObservableOnSubscribe<List<Address>>() {
+                @Override
+                public void subscribe(ObservableEmitter<List<Address>> e) throws Exception {
+                    List<Address> addresses = new ArrayList<>();
+                    Map raw_map = null;
+                    try {
+                        raw_map = json.jsonify_addresses(user_id);
+                    } catch (Exception exc) {
+                        exc.printStackTrace();
+                        e.onError(exc);
+                        e.onComplete();
+                    }
+                    int count = (int) (double) raw_map.get("count");
+                    if(count == 0) {
+                        e.onNext(addresses);
+                    }
+                    raw_map = (Map) raw_map.get("data");
 
-            assert raw_map != null;
-            for(Object key:raw_map.keySet()){
-                Address new_address = new Address();
-                Map map_address = (Map) raw_map.get(key);
-                assert map_address != null;
-                new_address.setCorpus((String) map_address.get("corpus"))
-                        .setDistrict((String) map_address.get("district"))
-                        .setFlat((String) map_address.get("flat"))
-                        .setFloor((String) map_address.get("floor"))
-                        .setHouse((String) map_address.get("house"))
-                        .setPorch((String) map_address.get("porch"))
-                        .setStreet((String) map_address.get("street"))
-                        .setTitle((String) map_address.get("title"));
-                addresses.add(new_address);
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            presenter.setAddresses(addresses);
+                    assert raw_map != null;
+                    for(Object key:raw_map.keySet()){
+                        Address new_address = new Address();
+                        Map map_address = (Map) raw_map.get(key);
+                        assert map_address != null;
+                        new_address.setCorpus((String) map_address.get("corpus"))
+                                .setDistrict((String) map_address.get("district"))
+                                .setFlat((String) map_address.get("flat"))
+                                .setFloor((String) map_address.get("floor"))
+                                .setHouse((String) map_address.get("house"))
+                                .setPorch((String) map_address.get("porch"))
+                                .setStreet((String) map_address.get("street"))
+                                .setTitle((String) map_address.get("title"));
+                        addresses.add(new_address);
+                    }
+                    e.onNext(addresses);
+                }
+            });
         }
     }
+
+//    class AsyncGetAddressesFromServer extends AsyncTask<Integer, Void, Void>{
+//
+//        List<Address> addresses = new ArrayList<>();
+//
+//        @Override
+//        protected Void doInBackground(Integer... integers) {
+//            Map raw_map;
+//            try {
+//                raw_map = json.jsonify_addresses(integers[0]);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                return null;
+//            }
+//            int count = (int) (double) raw_map.get("count");
+//            if(count == 0) return null;
+//            raw_map = (Map) raw_map.get("data");
+//
+//            assert raw_map != null;
+//            for(Object key:raw_map.keySet()){
+//                Address new_address = new Address();
+//                Map map_address = (Map) raw_map.get(key);
+//                assert map_address != null;
+//                new_address.setCorpus((String) map_address.get("corpus"))
+//                        .setDistrict((String) map_address.get("district"))
+//                        .setFlat((String) map_address.get("flat"))
+//                        .setFloor((String) map_address.get("floor"))
+//                        .setHouse((String) map_address.get("house"))
+//                        .setPorch((String) map_address.get("porch"))
+//                        .setStreet((String) map_address.get("street"))
+//                        .setTitle((String) map_address.get("title"));
+//                addresses.add(new_address);
+//            }
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            super.onPostExecute(aVoid);
+//            presenter.setAddresses(addresses);
+//        }
+//    }
 }

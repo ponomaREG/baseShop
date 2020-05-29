@@ -9,6 +9,7 @@ public interface Interfaces {
     interface View{
         void setAdapter(RecyclerViewAdapterOrders adapter);
         void hideProgressBar();
+        void showMessageEmptyOrders();
     }
 
     interface Presenter{

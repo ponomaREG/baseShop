@@ -7,6 +7,7 @@
     <item android:id="@+id/menu_main_basket"
         android:title="@string/main_bnv_basket"
         android:icon="@drawable/bnv_menu_icon_basket"
+        android:checked="true"
         />
     <item android:id="@+id/menu_main_profile"
         android:title="@string/main_bnv_profile"

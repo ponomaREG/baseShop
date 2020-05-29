@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.test.baseshop.R;
 
@@ -71,5 +73,14 @@ public class fragment_orders extends Fragment implements Interfaces.View{
         progressBar.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    public void showMessageEmptyOrders() {
+        try {
+            Toast.makeText(getContext(), "К сожалению, Вы еще ничего не заказали", Toast.LENGTH_LONG).show();
+        }catch (NullPointerException exc){
+            Log.d("Error!","Too many quick swipes on fragment(orders)!");
+        }
     }
 }

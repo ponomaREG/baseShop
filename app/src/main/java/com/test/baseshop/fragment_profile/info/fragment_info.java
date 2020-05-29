@@ -184,26 +184,9 @@ public class fragment_info extends Fragment implements Interfaces.View{
 
     @Override
     public void hideProgressBar() {
-        getView().findViewById(R.id.fragment_profile_fragment_info_progressBar).setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d("ON STOP","!");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d("ON DESTROY","!");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.d("ON VIEW DESTROY","!");
-
+        View par_view = getView();
+        if( par_view != null)
+        par_view.findViewById(R.id.fragment_profile_fragment_info_progressBar).setVisibility(View.GONE);
     }
 
 

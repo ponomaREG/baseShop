@@ -10,11 +10,14 @@ public interface baseInterfaceMVP {
     interface Presenter{
         void OnItemClick(int page);
         void setIconBySexOfUser(Context context, MenuItem item);
+        void getStartPage();
     }
 
 
     interface View{
         void showPage(Fragment fragment);
+        void initDefaultSelectedMenuItem(int id);
+        void initStartPage(Fragment fragment);
     }
 
 

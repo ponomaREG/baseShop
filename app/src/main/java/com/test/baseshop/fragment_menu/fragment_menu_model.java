@@ -221,7 +221,7 @@ public class fragment_menu_model implements Interfaces.Model, Interfaces.Model.P
                         int price = (int) (double) map.get("price");
                         int weight = (int) (double) map.get("weight");
                         int section = (int) (double) map.get("section");
-                        Log.d("Title",title);
+//                        Log.d("Title",title);
                         item.setId(id)
                                 .setTitle(title)
                                 .setDesc(desc)

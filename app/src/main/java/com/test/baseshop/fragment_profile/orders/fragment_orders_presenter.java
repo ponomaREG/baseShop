@@ -30,7 +30,10 @@ public class fragment_orders_presenter implements Interfaces.Presenter {
     @Override
     public void setAdapter(HashMap<String, Object> orders) {
         view.hideProgressBar();
-        RecyclerViewAdapterOrders adapter = new RecyclerViewAdapterOrders(context,orders);
-        view.setAdapter(adapter);
+        if(orders.size() == 0) view.showMessageEmptyOrders();
+        else {
+            RecyclerViewAdapterOrders adapter = new RecyclerViewAdapterOrders(context, orders);
+            view.setAdapter(adapter);
+        }
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -32,6 +33,9 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
         initPresenter();
 //        initDBHelperInstance();
         setListenerToNavigationView();
+
+
+        main_presenter.getStartPage();
     }
 
     private void prepareView(){
@@ -79,6 +83,20 @@ public class baseActivityWithFragments extends AppCompatActivity implements base
                 return false;
             }
         });
+    }
+//TODO:EXIT DEFAULT ICON
+    @Override
+    public void initDefaultSelectedMenuItem(int id){
+        BottomNavigationView bnv = findViewById(R.id.bottom_navigation);
+        bnv.getMenu().setGroupCheckable(0,false,true);
+        bnv.getMenu().setGroupCheckable(0,true,true);
+        Log.d("INIT DEFAULT","!");
+        bnv.getMenu().findItem(id).setChecked(true);
+    }
+
+    @Override
+    public void initStartPage(Fragment fragment){
+        showPage(fragment);
     }
 
 

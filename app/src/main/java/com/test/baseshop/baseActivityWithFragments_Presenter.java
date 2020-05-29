@@ -36,7 +36,7 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
 
         initPreferences(context);
 
-        main_view.showPage(this.menu);
+//        main_view.showPage(this.menu);
 
     }
 
@@ -52,7 +52,7 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
                 if(USER_ID == -1) main_view.showPage(this.anonim);
                 else main_view.showPage(this.basket);
                 break;
-            case R.id.menu_main_profile: //TODO:MAKE ANOTHER ANONIM FRAGMENT
+            case R.id.menu_main_profile:
                 if(USER_ID == -1) main_view.showPage(this.anonim);
                 else main_view.showPage(this.profile);
                 break;
@@ -71,6 +71,12 @@ public class baseActivityWithFragments_Presenter implements baseInterfaceMVP.Pre
         SharedPreferences sh = context.getSharedPreferences("AUTH_PREF",Context.MODE_PRIVATE);
         int sex_of_user = sh.getInt("USER_SEX",-1);
         if(sex_of_user == 0) item.setIcon(context.getDrawable(R.drawable.bnv_menu_icon_profile_woman));
+    }
+
+    @Override
+    public void getStartPage() {
+        main_view.initDefaultSelectedMenuItem(R.id.menu_main_menu);
+        main_view.initStartPage(this.menu);
     }
 
 }

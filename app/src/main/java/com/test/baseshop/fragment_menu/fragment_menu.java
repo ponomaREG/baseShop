@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,8 +105,8 @@ public class fragment_menu extends Fragment implements Interfaces.View{
             View section = inflater.inflate(R.layout.fragment_menu_section_item,ll_sections,false);
             TextView section_view = section.findViewById(R.id.fragment_menu_section_item);
             section_view.setText(menu_presenter.getTitleOfSectionByCode(section_code));
-            section_view.setTag(section_code);
-            section_view.setOnClickListener(ocl);
+            section.setTag(section_code);
+            section.setOnClickListener(ocl);
             ll_sections.addView(section);
 //            if(section_code == fragment_menu_presenter.ALL) {
 //                menu_presenter.OnSectionItemClick(section_view);
@@ -170,6 +171,8 @@ public class fragment_menu extends Fragment implements Interfaces.View{
                 display.getSize(size);
                 HorizontalScrollView hr = (Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_sections_horizontal_scrool_view));
                 float offset = (float) (size.x/2.26);
+                Log.d("v.getLeft",v.getLeft()+"");
+                Log.d("offset",offset+"");
                 hr.smoothScrollTo((int) (v.getLeft() - offset),0);
                 RecyclerView rv = getView().findViewById(R.id.menu_recyclerview);
                 View item_to_scroll;

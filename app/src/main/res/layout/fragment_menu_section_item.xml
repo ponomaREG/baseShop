@@ -4,11 +4,12 @@
     android:orientation="vertical"
     android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView
-        android:padding="3dp"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/ex"/>
+<!--    <ImageView-->
+<!--        android:visibility="visible"-->
+<!--        android:padding="3dp"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:src="@drawable/ex"/>-->
 <TextView
     android:id="@+id/fragment_menu_section_item"
     android:layout_width="wrap_content"

@@ -81,6 +81,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
             rv.setDrawingCacheEnabled(true);
             rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv.setOnScrollChangeListener(getOnScrollListenerForRv());
             rv.addItemDecoration(new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL));
             rv.setAdapter(adapter);
         }
@@ -166,29 +167,51 @@ public class fragment_menu extends Fragment implements Interfaces.View{
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Display display = Objects.requireNonNull(getActivity()).getWindowManager().getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
-                HorizontalScrollView hr = (Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_sections_horizontal_scrool_view));
-                float offset = (float) (size.x/2.26);
-                Log.d("v.getLeft",v.getLeft()+"");
-                Log.d("offset",offset+"");
-                hr.smoothScrollTo((int) (v.getLeft() - offset),0);
                 RecyclerView rv = getView().findViewById(R.id.menu_recyclerview);
-                View item_to_scroll;
                 RecyclerViewAdapter adapter = (RecyclerViewAdapter) rv.getAdapter();
-
+                horizontalScroolToSection(v);
                 for(int i = 0;i<adapter.getItemCount();i++){
-                    item_to_scroll = rv.getChildAt(i);
                     if((adapter.ifExistsSectionTitleAt(i))&&(adapter.getSectionIntAt(i)==((Integer) v.getTag()))){
-                        item_to_scroll = rv.getChildAt(i);
                         ((LinearLayoutManager) rv.getLayoutManager()).scrollToPositionWithOffset(i,20);
+                        break;
                     }
                 }
                 menu_presenter.OnSectionItemClick(v);
 //                menu_presenter.getData((Integer) v.getTag());
             }
         };
+    }
+
+    private View.OnScrollChangeListener getOnScrollListenerForRv(){
+        return new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) ((RecyclerView) v).getLayoutManager();
+                if (linearLayoutManager != null) {
+                    int i = linearLayoutManager.findFirstVisibleItemPosition();
+                    RecyclerViewAdapter adapter = (RecyclerViewAdapter) ((RecyclerView) v).getAdapter();
+                    if(adapter.ifExistsSectionTitleAt(i)) {
+                        int section_view_int = adapter.getSectionIntAt(i);
+                        View view_parent = getView();
+                        if (view != null) {
+                            View section_view = view_parent.<HorizontalScrollView>findViewById(R.id.fragment_menu_sections_horizontal_scrool_view).findViewWithTag(section_view_int);
+                            horizontalScroolToSection(section_view);
+                            menu_presenter.OnSectionItemClick(section_view);
+                        }
+                    }
+                }
+            }
+        };
+    }
+
+
+    private void horizontalScroolToSection(View v){
+        Display display = Objects.requireNonNull(getActivity()).getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        HorizontalScrollView hr = (Objects.requireNonNull(getView()).findViewById(R.id.fragment_menu_sections_horizontal_scrool_view));
+        float offset = (float) (size.x/2.26);
+        hr.smoothScrollTo((int) (v.getLeft() - offset),0);
     }
 
 }

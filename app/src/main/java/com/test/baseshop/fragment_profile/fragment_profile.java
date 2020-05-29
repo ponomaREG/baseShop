@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class fragment_profile extends Fragment implements Interfaces.View{
         super.onCreate(savedInstanceState);
         initPresenter();
         initFragmentManager();
+        initStartPage();
     }
 
     @Override
@@ -46,6 +48,15 @@ public class fragment_profile extends Fragment implements Interfaces.View{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initOclOfSectionLayouts();
+        presenter.getStartPage();
+//        initStartPage();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        initStartPage();
     }
 
     private void initFragmentManager(){
@@ -64,10 +75,12 @@ public class fragment_profile extends Fragment implements Interfaces.View{
                 presenter.OnSectionItemClick(v);
             }
         };
-
-        Objects.requireNonNull(getView()).findViewById(R.id.fragment_profile_section_orders).setOnClickListener(ocl);
-        getView().findViewById(R.id.fragment_profile_section_info).setOnClickListener(ocl);
-        getView().findViewById(R.id.fragment_profile_section_addresses).setOnClickListener(ocl);
+        View parent_view = getView();
+        if(parent_view != null) {
+            parent_view.findViewById(R.id.fragment_profile_section_orders).setOnClickListener(ocl);
+            parent_view.findViewById(R.id.fragment_profile_section_info).setOnClickListener(ocl);
+            parent_view.findViewById(R.id.fragment_profile_section_addresses).setOnClickListener(ocl);
+        }
     }
 
 
@@ -78,13 +91,33 @@ public class fragment_profile extends Fragment implements Interfaces.View{
 //    }
 
 
+
+
     @Override
     public void showPage(Fragment fragment) {
-        FragmentTransaction ft = fm.beginTransaction();
-        if(!fm.popBackStackImmediate(fragment.getClass().getName(),0)) {
-            ft.replace(R.id.fragment_profile_current_section, fragment);
-            ft.addToBackStack(fragment.getClass().getName());
-            ft.commit();
+        try {
+            if (!fm.popBackStackImmediate(fragment.getClass().getName(), 0)) {
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragment_profile_current_section, fragment);
+                ft.addToBackStack(fragment.getClass().getName());
+                ft.commit();
+            }
+        }catch (IllegalStateException exc){
+            Log.d("ERROR",exc.getMessage());
         }
+    }
+
+    @Override
+    public void initStartPage(Fragment fragment) {
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragment_profile_current_section, fragment);
+        ft.addToBackStack(fragment.getClass().getName());//TODO:WTF
+        ft.commit();
+        presenter.OnSectionItemClick(getView().findViewById(R.id.fragment_profile_section_info));
+    }
+
+    private void initStartPage(){
+        View parent_view = getView();
+        if(parent_view != null)  presenter.OnSectionItemClick(parent_view.findViewById(R.id.fragment_profile_section_info));
     }
 }

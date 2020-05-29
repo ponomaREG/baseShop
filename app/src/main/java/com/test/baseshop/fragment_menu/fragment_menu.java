@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -173,7 +172,7 @@ public class fragment_menu extends Fragment implements Interfaces.View{
                 for(int i = 0;i<adapter.getItemCount();i++){
                     if((adapter.ifExistsSectionTitleAt(i))&&(adapter.getSectionIntAt(i)==((Integer) v.getTag()))){
                         ((LinearLayoutManager) rv.getLayoutManager()).scrollToPositionWithOffset(i,20);
-                        break;
+//                        break;
                     }
                 }
                 menu_presenter.OnSectionItemClick(v);

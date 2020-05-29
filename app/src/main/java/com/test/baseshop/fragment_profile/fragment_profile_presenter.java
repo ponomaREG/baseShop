@@ -28,10 +28,7 @@ public class fragment_profile_presenter implements Interfaces.Presenter {
 
     @Override
     public void OnSectionItemClick(View v) {
-        if(current_view != null) current_view.setSelected(false);
-        current_view = v;
-        current_view.setSelected(true);
-
+        clickOnSectionView(v);
         switch (v.getId()){
             case R.id.fragment_profile_section_orders:
                 view.showPage(this.fragment_orders);
@@ -42,6 +39,20 @@ public class fragment_profile_presenter implements Interfaces.Presenter {
             case R.id.fragment_profile_section_addresses:
                 view.showPage(this.fragment_addresses);
                 break;
+//            default:
+//                view.showPage(this.fragment_info);
+//                break;
         }
+    }
+
+    @Override
+    public void getStartPage() {
+        view.initStartPage(this.fragment_info);
+    }
+
+    private void clickOnSectionView(View v){
+        if(current_view != null) current_view.setSelected(false);
+        current_view = v;
+        current_view.setSelected(true);
     }
 }

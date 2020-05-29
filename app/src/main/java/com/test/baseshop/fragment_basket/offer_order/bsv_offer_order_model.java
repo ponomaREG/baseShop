@@ -21,7 +21,11 @@ public class bsv_offer_order_model implements Interfaces.Model {
     @Override
     public Map sendOrder(int user_id, int address_id, int persons, String desc) {
         Map raw_result = null;
-        json.jsonify_orders_add(user_id,address_id,persons,desc);
+        try {
+            json.jsonify_orders_add(user_id,address_id,persons,desc);
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
         return raw_result;
     }
 
@@ -47,9 +51,7 @@ public class bsv_offer_order_model implements Interfaces.Model {
         protected Void doInBackground(Integer... integers) {
             try {
                 raw_map = json.jsonify_addresses(integers[0]);
-            } catch (ExecutionException | InterruptedException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (ExecutionException | InterruptedException | IOException e) {
                 e.printStackTrace();
             }
             return null;
